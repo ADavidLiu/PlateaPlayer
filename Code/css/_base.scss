@@ -1,0 +1,69 @@
+// Font stacks
+
+// Colors
+$white: #f2f2f2;
+$black: rgba(64, 64, 64, 0.5);
+$gray: rgba(92, 92, 92, 0.5);
+$accent: #4cddb0;
+// Resets
+html,
+body {
+    overflow-x: hidden;
+    font-size: 12px;
+    background-color: black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+ul,
+ol,
+span {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+ol {
+    list-style: none;
+    padding-left: 0;
+}
+
+input,
+button {
+    border: none;
+    &:focus {
+        outline: none;
+    }
+}
+
+::selection {
+    background-color: $accent;
+    color: $white;
+}
+
+@media screen and (min-width: 768px) {
+    html,
+    body {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    html,
+    body {
+        font-size: 15px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    html,
+    body {
+        font-size: 16px;
+    }
+}

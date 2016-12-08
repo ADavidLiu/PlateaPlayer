@@ -1,0 +1,403 @@
+/*------------- BASE IMPORT -------------*/
+
+@import "_base";
+
+/*------------- TABLE OF CONTENTS -------------*/
+
+
+/*
+
+    1. CANVAS
+    2. VIDEO
+    3. BARRA DE PROGRESO
+    4. BARRA DE VOLUMEN (TENTATIVO)
+    5. MENU
+    6. FILTROS
+    7. SLIDERS
+    8. MENSAJE CENTRAL
+
+*/
+
+
+/*------------- 1. CANVAS -------------*/
+
+canvas {
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+
+/*------------- 2. VIDEO -------------*/
+
+.video {
+    &__container {
+        position: fixed;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        video {
+            width: 100vw;
+            height: auto;
+            max-height: 100vh;
+        }
+    }
+    &__controls {
+        position: absolute;
+        z-index: 2;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: $black;
+        text-align: right;
+        opacity: 0;
+        transition: opacity .25s;
+        min-height: 30px;
+        &--visible {
+            opacity: 1;
+        }
+        &-content {
+            display: inline-block;
+            width: 100%;
+            padding: 0 15px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        li {
+            cursor: pointer;
+            i {
+                font-size: 1rem;
+                color: $white;
+            }
+        }
+    }
+    &__control {
+        float: right;
+        &--play,
+        &--pause {
+            i {
+                color: $accent !important;
+            }
+        }
+        &--loop.active {
+            i {
+                color: $accent !important;
+            }
+        }
+        &--playback {
+            width: 30%;
+            max-width: 150px;
+            display: flex;
+            justify-content: space-between;
+        }
+        &--volume-wrapper {
+            float: left;
+            position: relative;
+            i {
+                float: left;
+                margin-right: 15px;
+                min-width: 13px;
+            }   
+            input[type=range] {
+                -webkit-appearance: none;
+                margin: 0;
+                width: auto;
+                float: left;
+                position: absolute;
+                top: 50%;
+                right: -120px;
+                transform: translateY(-50%);
+                border-radius: 2px;
+            }
+        }
+    }
+}
+
+
+/*------------- 3. BARRA DE PROGRESO -------------*/
+
+.barra-progreso {
+    width: 100%;
+    height: 5px;
+    background-color: $black;
+    position: absolute;
+    left: 0;
+    top: -5px;
+    border-bottom: 1px solid $gray;
+    &__progreso {
+        height: 5px;
+        background-color: $accent;
+        position: relative;
+        &:after {
+            position: absolute;
+            content: "";
+            height: 15px;
+            width: 15px;
+            border-radius: 100%;
+            background-color: $white;
+            top: 50%;
+            right: -5px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8);
+        }
+    }
+}
+
+
+/*------------- 4. BARRA DE VOLUMEN (TENTATIVO) -------------*/
+
+.barra-volumen {
+    float: left;
+    background-color: $white;
+    height: 4px;
+    width: 100px;
+    position: absolute;
+    top: 50%;
+    right: -90px;
+    transform: translateY(-50%);
+    border-radius: 2px;
+    &__volumen {
+        height: 4px;
+        background-color: $accent;
+        position: relative;
+        width: 50%;
+        border-radius: 2px;
+        &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -5px;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: $white;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8);
+            border-radius: 100%;
+            cursor: pointer;
+        }
+    }
+}
+
+
+/*------------- 5. MENU -------------*/
+
+.menu {
+    position: absolute;
+    z-index: 2;
+    top: 2.3rem;
+    right: 4.6rem;
+    color: $white;
+    width: 80%;
+    max-width: 415px;
+    opacity: 0;
+    transition: opacity .25s;
+    &--visible {
+        opacity: 1;
+    }
+    &__item {
+        margin: 0 auto;
+        text-align: center;
+        width: 100%;
+        &-icon {
+            background-color: $black;
+            display: inline-block;
+            height: 2.3rem;
+            width: 2.3rem;
+            position: absolute;
+            top: 0;
+            right: -2.3rem;
+            cursor: pointer;
+            border-radius: 2px;
+            i {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 1rem;
+            }
+        }
+        &-content {
+            display: inline-block;
+            text-align: left;
+            width: 100%;
+            background-color: $black;
+            padding: 15px;
+            border-radius: 2px;
+            position: relative;
+            right: 0;
+            opacity: 0;
+            transition: all .25s;
+            pointer-events: none;
+            visibility: hidden;
+            &--visible {
+                opacity: 1;
+                right: 15px;
+                pointer-events: all;
+                visibility: visible;
+            }
+        }
+    }
+}
+
+
+/*------------- 6. FILTROS -------------*/
+
+.filters {
+    li {
+        & + li {
+            margin-top: 15px;
+        }
+        label {
+            float: left;
+            width: 10%;
+            margin-bottom: 0;
+        }
+        input {
+            float: right !important;
+            width: 75%;
+            display: inline-block;
+            max-width: 346.5px;
+            position: relative;
+            top: 8px;
+        }
+    }
+}
+
+
+/*------------- 7. SLIDERS -------------*/
+
+input[type=range] {
+    -webkit-appearance: none;
+    margin: 0;
+    width: auto;
+    float: left;
+    border-radius: 2px;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: #4cddb0;
+    border-radius: 2px;
+    border: 0px solid #000000;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -3px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #4cddb0;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000;
+    background: #4cddb0;
+    border-radius: 2px;
+    border: 0px solid #000000;
+}
+
+input[type=range]::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #4cddb0;
+    border: 0px solid #000000;
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px #000000;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: $white;
+    border: 0px solid #000000;
+    border-radius: 4px;
+    box-shadow: 0px 0px 0px #000000;
+}
+
+input[type=range]::-ms-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 0px solid #000000;
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: #4cddb0;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: $white;
+}
+
+/*------------- 8. MENSAJE CENTRAL -------------*/
+
+.mensaje {
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    width: auto;
+    border-radius: 2px;
+    margin: 0 auto;
+    background-color: $black;
+    padding: 15px;
+    opacity: 0;
+    transition: all .25s;
+    &--visible {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    &__texto {
+        text-align: center;
+        font-size: 3rem;
+        color: $white;
+    }
+}

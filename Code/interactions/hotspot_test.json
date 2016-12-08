@@ -1,0 +1,32 @@
+{
+    "data": {
+        "shift": [
+            {
+                "type": "GEOMETRY",
+                "data": {
+                    "geometry": "ELLIPSE",
+                    "width": 50,
+                    "height": 50
+                },
+                "motion": [
+                    {
+                        "position": {
+                            "x": 50,
+                            "y": 50
+                        },
+                        "start_time": 5,
+                        "duration": 3
+                    },
+                    {
+                        "position": {
+                            "x": 10,
+                            "y": 20
+                        },
+                        "start_time": 8,
+                        "duration": 2
+                    }
+                ]
+            }
+        ]
+    }
+}

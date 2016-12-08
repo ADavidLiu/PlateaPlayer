@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlateaPlayer</title>
+    <!--<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/addons/p5.dom.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/player.js"></script>
+    <!-- Funcionalidad del player -->
+</head>
+
+<body>
+
+    <!-- Contenedor principal -->
+    <div class="video__container" id="videoContainer">
+
+        <!-- Mensaje central -->
+        <div class="mensaje" id="mensajeContainer">
+
+        </div>
+        <!-- Fin del mensaje central -->
+
+        <!-- Contenedor del menu de video -->
+        <div class="menu">
+            <ul class="menu__list">
+                <li class="menu__item">
+                    <div class="menu__item-icon menu__item-icon--filters">
+                        <i class="fa fa-magic" aria-hidden="true"></i>
+                    </div>
+                    <div class="menu__item-content menu__item-content--filters">
+                        <ul class="filters">
+                            <li class="clearfix">
+                                <label>Blur</label>
+                                <input type="range" value="0" min="0" max="100" step="1" class="filters__slider filters__slider--blur">
+                            </li>
+                            <li class="clearfix">
+                                <label>Grayscale</label>
+                                <input type="range" value="0" min="0" max="100" step="1" class="filters__slider filters__slider--grayscale">
+                            </li>
+                            <li class="clearfix">
+                                <label>Sepia</label>
+                                <input type="range" value="0" min="0" max="100" step="1" class="filters__slider filters__slider--sepia">
+                            </li>
+                            <li class="clearfix">
+                                <label>Invert</label>
+                                <input type="range" value="0" min="0" max="100" step="1" class="filters__slider filters__slider--invert">
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- Contenedor del menu de video -->
+
+        <!-- Contenedor de los controles -->
+        <div class="video__controls">
+
+            <!-- Barra de progreso -->
+            <div class="barra-progreso">
+                <div class="barra-progreso__progreso"></div>
+            </div>
+            <!-- Fin barra de progreso -->
+
+            <!-- Controles de playback -->
+            <ul class="list-inline video__controls-content">
+
+                <!-- Contenedor del control de volumen -->
+                <li class="video__control video__control--volume-wrapper">
+                    <i class="fa fa-volume-up" aria-hidden="true"></i>
+                    <i class="fa fa-volume-off hidden" aria-hidden="true"></i>
+                    <i class="fa fa-volume-down hidden" aria-hidden="true"></i>
+                    <input type="range" min="0.0" step="0.01" max="1.0" value="0.5" data-orientation="vertical" class="video__control video__control--volume">
+                </li>
+                <!-- Fin contenedor del control de volumen -->
+
+                <ul class="video__control video__control--playback">
+                    <li class="video__control video__control--fullscreen">
+                        <i class="fa fa-expand" aria-hidden="true"></i>
+                        <i class="fa fa-compress hidden" aria-hidden="true"></i>
+                    </li>
+                    <li class="video__control video__control--loop"><i class="fa fa-repeat" aria-hidden="true"></i></li>
+                    <li class="video__control video__control--stop"><i class="fa fa-stop" aria-hidden="true"></i></li>
+                    <li class="video__control video__control--slower"><i class="fa fa-step-backward" aria-hidden="true"></i></li>
+                    <li class="video__control video__control--play video__control--playing hidden"><i class="fa fa-play" aria-hidden="true"></i></i>
+                    </li>
+                    <li class="video__control video__control--pause video__control--playing"><i class="fa fa-pause" aria-hidden="true"></i></li>
+                    <li class="video__control video__control--faster"><i class="fa fa-step-forward" aria-hidden="true"></i></li>
+                </ul>
+
+            </ul>
+            <!-- Fin controles de playback -->
+
+        </div>
+        <!-- Fin contenedor de los controles -->
+
+    </div>
+    <!-- Fin contenedor principal -->
+
+</body>
+
+</html>
