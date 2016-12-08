@@ -47,54 +47,15 @@ var coordenadas;
 var interactions;
 var x = 0;
 var y = 0;
+var start_time;
+var duration;
+var fin;
+var hasFin = false;
 
-// Se cargan las interacciones
+// Se cargan las interacciones desde un JSON
 function preload() {
     var path = "../interactions/hotspot_test.json";
     json = loadJSON(path, determinarInteracciones);
-}
-
-function determinarInteracciones() {
-    // Propiedades generales
-    interactions = json.data.shift;
-    var numShift = interactions.length;
-    coordenadas = interactions[0].motion[0].position;
-    type = interactions[0].type;
-    
-    // Determina la acción
-    switch (type) {
-        case "GEOMETRY":
-            var geometria = interactions[0].data.geometry;
-            switch (geometria) {
-                case "ELLIPSE":
-                    isEllipse = true;
-                    break;
-                case "POLYGON":
-                    ispolygon = true;
-            }
-    }
-}
-
-// Funciones para crear elementos
-function crearEllipse(coordenadas, ancho, alto) {
-    x = coordenadas.x;
-    y = coordenadas.y;
-    
-    // Escala y posiciona el elemento relativo al tamaño del canvas
-    var anchoPorcentaje = (ancho * canvas.width)/100;
-    var altoPorcentaje = (alto * canvas.height)/100;
-    var xPorcentaje = (ancho * canvas.width)/100;
-    var yPorcentaje = (alto * canvas.height)/100;
-    
-    //console.log("(" + anchoPorcentaje + "," + altoPorcentaje + ")");
-    
-    stroke(255, 204, 0);
-    strokeWeight(2);
-    noFill();
-    
-    // Dibuja y elimina luego de 30ms
-    ellipse(xPorcentaje, yPorcentaje, anchoPorcentaje, altoPorcentaje);
-    setTimeout(clear, 30);
 }
 
 // Configuración inicial y eventos
@@ -169,17 +130,17 @@ function setup() {
     btnVolumeUp.mouseClicked(silenciarVideo);
     btnVolumeDown.mouseClicked(silenciarVideo);
     btnVolumeOff.mouseClicked(silenciarVideo);
-    
+
     // Fullscreen
     btnFullscreen = select(".fa-expand");
     btnNoFullscreen = select(".fa-compress");
-    
-    btnFullscreen.mouseClicked(function() {
+
+    btnFullscreen.mouseClicked(function () {
         fullscreen(1);
         cambiarIconos(btnNoFullscreen, btnFullscreen);
     });
-    
-    btnNoFullscreen.mouseClicked(function() {
+
+    btnNoFullscreen.mouseClicked(function () {
         fullscreen(0);
         cambiarIconos(btnFullscreen, btnNoFullscreen);
     });
@@ -250,17 +211,106 @@ function draw() {
 
     // Se dibujan los elementos
     if (isEllipse) {
-        crearEllipse(coordenadas, interactions[0].data.width, interactions[0].data.height);
+        crearEllipse(coordenadas, interactions[0].data.width, interactions[0].data.height, inicio, duracion);
     }
 }
 
-// Se ejecuta cuando la ventana sea resized
+// Se ejecuta cuando la ventana sea redimensionada
 function windowResized() {
     // Escala el canvas al tamaño del video cuando la ventana cambie de tamaño
     escalarCanvas();
 }
 
-// Funciones propias
+// Administra los eventos interactivos
+function determinarInteracciones() {
+    // Propiedades generales
+    var numShifts = json.data.shift.length;
+
+    interactions = json.data.shift;
+
+    /*for (var i = 0; i < numShifts; i++) {
+        var numMotions = interactions[i].motion.length;
+        for (var j = 0; j < numMotions; j++) {
+            coordenadas = interactions[i].motion[j].position;
+            type = interactions[i].type;
+            inicio = interactions[i].motion[j].start_time;
+            duracion = interactions[i].motion[j].duration;
+
+            // Determina la acción
+            switch (type) {
+            case "GEOMETRY":
+                var geometria = interactions[i].data.geometry;
+                switch (geometria) {
+                case "ELLIPSE":
+                    isEllipse = true;
+                    break;
+                case "POLYGON":
+                    ispolygon = true;
+                    break;
+                }
+                break;
+            }
+        }
+    }*/
+
+    coordenadas = interactions[0].motion[0].position;
+    type = interactions[0].type;
+    inicio = interactions[0].motion[0].start_time;
+    duracion = interactions[0].motion[0].duration;
+
+    // Determina la acción
+    switch (type) {
+    case "GEOMETRY":
+        var geometria = interactions[0].data.geometry;
+        switch (geometria) {
+        case "ELLIPSE":
+            isEllipse = true;
+            break;
+        case "POLYGON":
+            ispolygon = true;
+            break;
+        }
+        break;
+    }
+}
+
+// Funciones para crear elementos
+function crearEllipse(coordenadas, ancho, alto, inicio, duracion) {
+    // Se obtienen las coordenadas del objeto
+    x = coordenadas.x;
+    y = coordenadas.y;
+
+    // Escala y posiciona el elemento relativo al tamaño del canvas
+    var anchoPorcentaje = (ancho * canvas.width) / 100;
+    var altoPorcentaje = (alto * canvas.height) / 100;
+    var xPorcentaje = (x * canvas.width) / 100;
+    var yPorcentaje = (y * canvas.height) / 100;
+
+    stroke(255, 204, 0);
+    strokeWeight(2);
+    noFill();
+
+    // Dibuja y elimina luego de su duración
+    console.log("Time: " + video.time());
+    if (!hasFin) {
+        fin = inicio + duracion;
+        hasFin = true;
+    }
+    if (video.time() >= inicio && video.time() <= fin) {
+        console.log("Sí");
+        ellipse(xPorcentaje, yPorcentaje, anchoPorcentaje, altoPorcentaje);
+    } else if (video.time() > fin) {
+        console.log("Fin");
+        hasFin = false;
+        isEllipse = false;
+        clear();
+    } else {
+        console.log("No");
+        clear();
+    }
+}
+
+// Funciones para controlar el player
 function cambiarFiltros() {
     var blur = "blur(" + sliderBlur.value() + "px)";
     var grayscale = "grayscale(" + sliderGrayscale.value() + "%)";
