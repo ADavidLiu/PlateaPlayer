@@ -1,0 +1,31 @@
+.barra-volumen {
+    float: left;
+    background-color: $white;
+    height: 4px;
+    width: 100px;
+    position: absolute;
+    top: 50%;
+    right: -90px;
+    transform: translateY(-50%);
+    border-radius: 2px;
+    &__volumen {
+        height: 4px;
+        background-color: $accent;
+        position: relative;
+        width: 50%;
+        border-radius: 2px;
+        &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -5px;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background-color: $white;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8);
+            border-radius: 100%;
+            cursor: pointer;
+        }
+    }
+}

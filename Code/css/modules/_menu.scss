@@ -1,0 +1,57 @@
+.menu {
+    position: absolute;
+    z-index: 2;
+    top: 2.3rem;
+    right: 4.6rem;
+    color: $white;
+    width: 80%;
+    max-width: 415px;
+    opacity: 0;
+    transition: opacity .25s;
+    &--visible {
+        opacity: 1;
+    }
+    &__item {
+        margin: 0 auto;
+        text-align: center;
+        width: 100%;
+        &-icon {
+            background-color: $black;
+            display: inline-block;
+            height: 2.3rem;
+            width: 2.3rem;
+            position: absolute;
+            top: 0;
+            right: -2.3rem;
+            cursor: pointer;
+            border-radius: 2px;
+            i {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 1rem;
+            }
+        }
+        &-content {
+            display: inline-block;
+            text-align: left;
+            width: 100%;
+            background-color: $black;
+            padding: 15px;
+            border-radius: 2px;
+            position: relative;
+            right: 0;
+            opacity: 0;
+            transition: all .25s;
+            pointer-events: none;
+            visibility: hidden;
+            &--visible {
+                opacity: 1;
+                right: 15px;
+                pointer-events: all;
+                visibility: visible;
+            }
+        }
+    }
+}

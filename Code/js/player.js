@@ -1,4 +1,9 @@
-// Variables
+/*------------------------------------
+
+Variables para el player
+
+------------------------------------*/
+
 var canvas,
     video,
     controles,
@@ -34,6 +39,14 @@ var canvas,
     btnFullscreen,
     btnNoFullscreen;
 
+
+
+/*------------------------------------
+
+Variables para las interacciones
+
+------------------------------------*/
+
 var json,
     numShifts,
     interactions,
@@ -55,13 +68,39 @@ var coordenadas,
     i = 0,
     j = 0;
 
-// Se cargan las interacciones desde un JSON
+
+
+/*------------------------------------
+
+Carga las interacciones desde el JSON
+
+------------------------------------*/
+
 function preload() {
     var path = "../interactions/hotspot_test.json";
     json = loadJSON(path, determinarInteracciones);
 }
 
-// Configuración inicial y eventos
+
+
+/*------------------------------------
+
+Configuración inicial y event binding
+
+------------------------------------*/
+
+function determinarInteracciones () {
+    console.log("Determinar interacciones");
+}
+
+
+
+/*------------------------------------
+
+Configuración inicial y event binding
+
+------------------------------------*/
+
 function setup() {
     // Se carga el video desde el sistema de archivos
     barraProgreso = select(".barra-progreso__progreso");
@@ -78,7 +117,6 @@ function setup() {
 
     // Se inicia el video
     video.play();
-    //video.onended(finalizarVideo);
 
     // Pointer a los controles
     controles = select(".video__controls");
@@ -112,18 +150,6 @@ function setup() {
     sliderVolume = select(".video__control--volume");
     sliderVolume.changed(cambiarVolumen);
     sliderVolume.input(cambiarVolumen);
-
-    /*sliderVolumeContainer = select(".barra-volumen");
-    sliderVolume = select(".barra-volumen__volumen");
-    
-    sliderVolume.dragOver(function () {
-        console.log("Movido");
-    });
-    
-    sliderVolumeContainer.dragOver(function () {
-        console.log("Movido container");
-    });*/
-
 
     btnVolumeUp = select(".fa-volume-up");
     btnVolumeOff = select(".fa-volume-off");
@@ -198,7 +224,14 @@ function setup() {
 
 }
 
-// Loop de ejecución
+
+
+/*------------------------------------
+
+Loop de ejecución
+
+------------------------------------*/
+
 function draw() {
     // Control a través del mismo video
     if (!isReproduciendo) {
@@ -218,193 +251,17 @@ function draw() {
     }
 }
 
-// Se ejecuta cuando la ventana sea redimensionada
+
+
+/*------------------------------------
+
+Se ejecuta cuando la ventana sea redimensionada
+
+------------------------------------*/
+
 function windowResized() {
     // Escala el canvas al tamaño del video cuando la ventana cambie de tamaño
     escalarCanvas();
-}
-
-// Administra los eventos interactivos
-function determinarInteracciones() {
-    // Propiedades generales
-    numShifts = json.data.shift.length;
-    interactions = json.data.shift;
-
-    ejecutarInteracciones(numShifts);
-
-    /*
-    for (var i = 0; i < numShifts; i++) {
-        var numMotions = interactions[i].motion.length;
-        for (var j = 0; j < numMotions; j++) {
-            coordenadas = interactions[i].motion[j].position;
-            type = interactions[i].type;
-            inicio = interactions[i].motion[j].start_time;
-            duracion = interactions[i].motion[j].duration;
-
-            // Determina la acción
-            switch (type) {
-            case "GEOMETRY":
-                var geometria = interactions[i].data.geometry;
-                switch (geometria) {
-                case "ELLIPSE":
-                    isEllipse = true;
-                    break;
-                case "POLYGON":
-                    ispolygon = true;
-                    break;
-                }
-                break;
-            }
-        }
-    }
-    */
-
-    /*
-    coordenadas = interactions[0].motion[0].position;
-    type = interactions[0].type;
-    inicio = interactions[0].motion[0].start_time;
-    duracion = interactions[0].motion[0].duration;
-
-    // Determina la acción
-    switch (type) {
-    case "GEOMETRY":
-        var geometria = interactions[0].data.geometry;
-        switch (geometria) {
-        case "ELLIPSE":
-            isEllipse = true;
-            break;
-        case "POLYGON":
-            ispolygon = true;
-            break;
-        }
-        break;
-    }
-    */
-}
-
-function ejecutarInteracciones(numShifts) {
-    console.log(numShifts);
-
-    if (i < numShifts) {
-        console.log("i: " + i);
-        var numMotions = interactions[i].motion.length;
-        console.log("Entró al loop de shifts");
-        if (j < numMotions) {
-            console.log("j: " + j);
-            console.log("numMotions: " + numMotions);
-            console.log("Entró al loop de motions");
-
-            coordenadas = interactions[i].motion[j].position;
-            inicio = interactions[i].motion[j].start_time;
-            duracion = interactions[i].motion[j].duration;
-
-            type = interactions[i].type;
-
-            // Determina la acción
-            switch (type) {
-            case "GEOMETRY":
-                var geometria = interactions[i].data.geometry;
-                switch (geometria) {
-                case "ELLIPSE":
-                    isEllipse = true;
-                    break;
-                case "POLYGON":
-                    ispolygon = true;
-                    break;
-                }
-                break;
-            }
-            j++;
-        } else {
-            console.log("All motions checked");
-        }
-        i++;
-    } else {
-        console.log("All shifts checked");
-    }
-
-    /*for (i; i < numShifts; i++) {
-        var numMotions = interactions[i].motion.length;
-        console.log("Entró al loop de shifts");
-        console.log("j: " + j);
-        for (j; j < numMotions; j++) {
-            console.log("numMotions: " + numMotions);
-            console.log("Entró al loop de motions");
-            coordenadas = interactions[i].motion[j].position;
-            type = interactions[i].type;
-            inicio = interactions[i].motion[j].start_time;
-            duracion = interactions[i].motion[j].duration;
-
-            // Determina la acción
-            switch (type) {
-            case "GEOMETRY":
-                var geometria = interactions[i].data.geometry;
-                switch (geometria) {
-                case "ELLIPSE":
-                    isEllipse = true;
-                    break;
-                case "POLYGON":
-                    ispolygon = true;
-                    break;
-                }
-                break;
-            }
-        }
-    }*/
-}
-
-// Funciones para crear elementos
-function crearEllipse(coordenadas, ancho, alto, inicio, duracion) {
-    // Se determina el fin de la interacción en segundos
-    if (!hasFin) {
-        fin = inicio + duracion;
-        hasFin = true;
-    }
-
-    // Se obtienen las coordenadas del objeto
-    x = coordenadas.x;
-    y = coordenadas.y;
-
-    // Escala y posiciona el elemento relativo al tamaño del canvas
-    var anchoPorcentaje = (ancho * canvas.width) / 100;
-    var altoPorcentaje = (alto * canvas.height) / 100;
-    var xPorcentaje = (x * canvas.width) / 100;
-    var yPorcentaje = (y * canvas.height) / 100;
-
-    stroke(255, 204, 0);
-    strokeWeight(2);
-    noFill();
-
-    // Dibuja y elimina luego de su duración
-    //console.log("Time: " + video.time());
-    /*if (video.time() >= inicio && video.time() <= fin) {
-        //console.log("Sí");
-        ellipse(xPorcentaje, yPorcentaje, anchoPorcentaje, altoPorcentaje);
-    } else if (video.time() > fin) {
-        console.log("Fin");
-        hasFin = false;
-        isEllipse = false;
-        ejecutarInteracciones(numShifts);
-        clear();
-    } else {
-        //console.log("No");
-        clear();
-    }*/
-
-
-
-
-
-    if (video.time() >= inicio && video.time() < fin) {
-        ellipse(xPorcentaje, yPorcentaje, anchoPorcentaje, altoPorcentaje);
-    } else {
-        clear();
-    }
-
-
-
-
-
 }
 
 
@@ -415,14 +272,13 @@ Funciones para controlar el player
 
 ------------------------------------*/
 
-
 function cambiarFiltros() {
     var blur = "blur(" + sliderBlur.value() + "px)";
     var grayscale = "grayscale(" + sliderGrayscale.value() + "%)";
     var sepia = "sepia(" + sliderSepia.value() + "%)";
     var invert = "invert(" + sliderInvert.value() + "%)";
     var filtros = blur + " " + grayscale + " " + sepia + " " + invert;
-    console.log(filtros);
+    //console.log(filtros);
     video.style("filter", filtros);
 }
 
@@ -545,11 +401,6 @@ function cambiarTiempo() {
     nuevoTiempo = 0;
 }
 
-function finalizarVideo() {
-    console.log("Finished");
-    detenerVideo();
-}
-
 function cambiarIconos(elem1, elem2) {
     if (hasClass(elem1, "hidden")) {
         elem1.removeClass("hidden");
@@ -576,7 +427,7 @@ function mostrarControles() {
         controles.addClass("video__controls--visible");
         menu.addClass("menu--visible");
         // Oculta los controles después de 4 segundos si no se mueve el mouse
-        //setTimeout(ocultarControles, 4000);
+        setTimeout(ocultarControles, 4000);
     }
 }
 

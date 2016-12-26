@@ -1,0 +1,59 @@
+/*------------- BASE IMPORT -------------*/
+
+@import "_variables";
+@import "_base";
+
+/*------------- TABLE OF CONTENTS -------------*/
+
+
+/*
+
+    1. CANVAS
+    2. VIDEO
+    3. BARRA DE PROGRESO
+    4. BARRA DE VOLUMEN (TENTATIVO)
+    5. MENU
+    6. FILTROS
+    7. SLIDERS
+    8. MENSAJE CENTRAL
+
+*/
+
+
+/*------------- 1. CANVAS -------------*/
+
+@import "modules/_canvas";
+
+
+/*------------- 2. VIDEO -------------*/
+
+@import "modules/_video";
+
+
+/*------------- 3. BARRA DE PROGRESO -------------*/
+
+@import "modules/_barra-progreso.scss";
+
+
+/*------------- 4. BARRA DE VOLUMEN (TENTATIVO) -------------*/
+
+@import "modules/barra-volumen";
+
+
+/*------------- 5. MENU -------------*/
+
+@import "modules/_menu.scss";
+
+
+/*------------- 6. FILTROS -------------*/
+
+@import "modules/_filters.scss";
+
+
+/*------------- 7. SLIDERS -------------*/
+
+@import "modules/_sliders.scss";
+
+/*------------- 8. MENSAJE CENTRAL -------------*/
+
+@import "modules/_mensaje";

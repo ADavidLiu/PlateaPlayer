@@ -1,0 +1,27 @@
+.barra-progreso {
+    width: 100%;
+    height: 5px !important;
+    background-color: $black;
+    position: absolute;
+    left: 0;
+    top: -5px;
+    border-bottom: 1px solid $gray;
+    &__progreso {
+        height: 5px;
+        background-color: $accent;
+        position: relative;
+        &:after {
+            position: absolute;
+            content: "";
+            height: 15px;
+            width: 15px;
+            border-radius: 100%;
+            background-color: $white;
+            top: 50%;
+            right: -5px;
+            transform: translateY(-50%);
+            cursor: pointer;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8);
+        }
+    }
+}
