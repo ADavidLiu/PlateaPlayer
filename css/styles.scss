@@ -30,12 +30,12 @@ A. PLAYER
 
 /*------------- 1. CANVAS -------------*/
 
-@import "modules/_canvas";
+@import "modules/_canvas.scss";
 
 
 /*------------- 2. VIDEO -------------*/
 
-@import "modules/_video";
+@import "modules/_video.scss";
 
 
 /*------------- 3. BARRA DE PROGRESO -------------*/
@@ -45,7 +45,7 @@ A. PLAYER
 
 /*------------- 4. BARRA DE VOLUMEN (TENTATIVO) -------------*/
 
-@import "modules/barra-volumen";
+@import "modules/_barra-volumen.scss";
 
 
 /*------------- 5. MENU -------------*/
@@ -65,7 +65,7 @@ A. PLAYER
 
 /*------------- 8. MENSAJE CENTRAL -------------*/
 
-@import "modules/_mensaje";
+@import "modules/_mensaje.scss";
 
 
 /*------------------------------------
@@ -74,6 +74,6 @@ B. INTERACTIONS
 
 ------------------------------------*/
 
-/*------------- 9. GEOMETRY -------------*/
+/*------------- 9. INTERACCIONES -------------*/
 
-@import "modules/_geometry.scss";
+@import "modules/_interacciones.scss";

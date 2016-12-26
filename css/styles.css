@@ -420,7 +420,7 @@ input[type=range]:focus::-ms-fill-upper {
 B. INTERACTIONS
 
 ------------------------------------*/
-/*------------- 9. GEOMETRY -------------*/
+/*------------- 9. INTERACCIONES -------------*/
 .interactive {
   position: absolute;
   z-index: 99999;
@@ -428,7 +428,8 @@ B. INTERACTIONS
   cursor: pointer; }
   .interactive--visible {
     display: block; }
-  .interactive__geometry {
+  .interactive__geometry--ellipse {
+    border-radius: 100%;
+    border: 0.3rem solid #4cddb0; }
+  .interactive__geometry--poly {
     background-color: #4cddb0; }
-    .interactive__geometry--ellipse {
-      border-radius: 100%; }

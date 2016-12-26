@@ -1,0 +1,96 @@
+{
+    "interactions": [
+        {
+            "id": "00001",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "shift": [
+                        {
+                            "type": "POLY",
+                            "geometry": {
+                                "width": 40,
+                                "height": 60,
+                                "vertices": [
+                                    {
+                                        "x": 0,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 75
+                                    },
+                                    {
+                                        "x": 75,
+                                        "y": 75
+                                    },
+                                    {
+                                        "x": 75,
+                                        "y": 100
+                                    },
+                                    {
+                                        "x": 50,
+                                        "y": 75
+                                    },
+                                    {
+                                        "x": 0,
+                                        "y": 75
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "transform": [
+                        {
+                            "type": "TRANSLATE",
+                            "start_time": 1,
+                            "duration": 5,
+                            "translate": {
+                                "x": 5,
+                                "y": 30
+                            }
+                        }
+                    ]
+                }
+            },
+            "show_time": 1,
+            "duration": 6,
+            "isPaused": false
+        },
+        {
+            "id": "00002",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "shift": [
+                        {
+                            "type": "ELLIPSE",
+                            "geometry": {
+                                "width": 20,
+                                "height": 20
+                            }
+                        }
+                    ],
+                    "transform": [
+                        {
+                            "type": "TRANSLATE",
+                            "start_time": 1,
+                            "duration": 5,
+                            "translate": {
+                                "x": 70,
+                                "y": 10
+                            }
+                        }
+                    ]
+                }
+            },
+            "show_time": 1,
+            "duration": 6,
+            "isPaused": false
+        }
+    ]
+}

@@ -7,9 +7,12 @@
         display: block;
     }
     &__geometry {
-        background-color: $accent;
         &--ellipse {
             border-radius: 100%;
+            border: 0.3rem solid $accent;
+        }
+        &--poly {
+            background-color: $accent;
         }
     }
 }

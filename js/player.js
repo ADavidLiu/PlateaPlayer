@@ -64,7 +64,7 @@ function preload() {
     video = createVideo("../videos/videoPrueba.mp4", function () {
         duracion = video.duration();
         // Se lee el JSON
-        var path = "../interactions/hotspot_test.json";
+        var path = "../interactions/hotspot_geometry.json";
         json = loadJSON(path, determinarInteracciones);
     });
     video.parent("videoContainer");
@@ -79,7 +79,7 @@ Determinación de interacciones respectivas
 ------------------------------------*/
 
 function determinarInteracciones() {
-    console.log(json);
+    //console.log(json);
     interactions = json.interactions;
     for (var i = 0; i < interactions.length; i++) {
         // Se determina el tipo de interacción
@@ -87,11 +87,7 @@ function determinarInteracciones() {
         switch (interaccion.type.event) {
             case "HOT_SPOT":
                 for (var j = 0; j < interaccion.type.data.shift.length; j++) {
-                    if (interaccion.type.data.shift[j].type === "ELLIPSE") {
-                        isEllipse(interaccion.type.data.shift[j], interaccion.type.data.transform[j]);
-                    } else {
-                        isPolygon(interaccion.type.data.shift[j], interaccion.type.data.transform[j]);
-                    }
+                    crearGeometria(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
                 }
                 break;
             // AQUÍ IRÍAN LOS CASOS DE LOS OTROS TIPOS DE INTERACCIÓN
@@ -103,36 +99,30 @@ function determinarInteracciones() {
 
 /*------------------------------------
 
-Control de ejecución de las interacciones
-
-------------------------------------*/
-
-function isEllipse(shift, transform) {
-    // Crea el elemento con un 'div' vacío
-    var elem = createDiv("");
-    elem.parent("videoContainer");
-    // Añade los estilos necesarios
-    elem.addClass("interactive interactive__geometry interactive__geometry--ellipse");
-    // Se dimensiona relativamente
-    elem.style("width", shift.geometry.width + "%");
-    elem.style("height", shift.geometry.height + "%");
-    // Se manejan los tiempos de aparición
-    aparecer(elem, transform);
-}
-
-function isPolygon(shift, transform) {
-    
-}
-
-
-
-/*------------------------------------
-
 Funciones para transformar las interacciones
 
 ------------------------------------*/
 
-function aparecer(elem, transform) {
+function crearGeometria(shift, transform, isPaused) {
+    // Crea el elemento con un 'div' vacío
+    var elem = createDiv("");
+    elem.parent("videoContainer");
+    // Añade los estilos necesarios
+    if (shift.type === "ELLIPSE") {
+        elem.addClass("interactive interactive__geometry interactive__geometry--ellipse");
+    } else {
+        elem.addClass("interactive interactive__geometry interactive__geometry--poly");
+        var vertices = shift.geometry.vertices;
+        formarPoligono(elem, vertices);
+    }
+    // Se dimensiona relativamente
+    elem.style("width", shift.geometry.width + "%");
+    elem.style("height", shift.geometry.height + "%");
+    // Se manejan los tiempos de aparición
+    aparecer(elem, transform, isPaused);
+}
+
+function aparecer(elem, transform, isPaused) {
     // Posiciona el elemento
     elem.style("top", transform.translate.y + "%");
     elem.style("left", transform.translate.x + "%");
@@ -141,19 +131,36 @@ function aparecer(elem, transform) {
     var fin = transform.start_time + transform.duration;
     var intervalo = setInterval(function() {
         if (video.time() >= transform.start_time && video.time() < fin) {
+            // Sólo se ejecuta una vez
             if (!hasClass(elem, "interactive--visible")) {
                 elem.addClass("interactive--visible");
+                if (isPaused) {
+                    pausarVideo();
+                }
+                // Se elimina después de cumplida su duración
+                var timeout = setTimeout(function () {
+                    elem.remove();
+                    reanudarVideo();
+                    clearTimeout(timeout);
+                    console.log("INTERACCIÓN TERMINADA");
+                }, transform.duration * 1000);
+            } else {
+                clearInterval(intervalo);
             }
-        } else if (video.time() > fin) {
-            elem.remove();
-            clearInterval(intervalo);
-            console.log("INTERACCIÓN TERMINADA");
         }
-    }, 500);
+    }, 1); // Cada milisegundo
 }
 
-function trasladar(coordOld, coordNew) {
-    console.log("Trasladado a las coordenadas " + "(" + coordNew.x + "," + coordNew.y + ")");
+function formarPoligono(elem, vertices) {
+    console.log(vertices);
+    var verticesFormatted = "";
+    for (var i = 0; i < vertices.length; i++) {
+        var coord = vertices[i].x + "%" + " " + vertices[i].y + "%, ";
+        verticesFormatted += coord;
+    }
+    verticesFormatted = verticesFormatted.slice(0, -2);
+    console.log(verticesFormatted);
+    elem.style("clip-path", "polygon(" + verticesFormatted + ")");
 }
 
 
@@ -281,7 +288,7 @@ function iniciarLoop() {
         isLooping = true;
         // Si se activa cuando ya haya acabado el video
         if (tiempo === duracion) {
-            video.play();
+            reanudarVideo();
         }
     } else {
         video.removeAttribute("loop");

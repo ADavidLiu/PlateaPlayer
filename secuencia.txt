@@ -1,0 +1,487 @@
+// Secuencia de elipses
+/*
+"shift": [
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 10,
+            "height": 10
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 11,
+            "height": 11
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 12,
+            "height": 12
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 13,
+            "height": 13
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 14,
+            "height": 14
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 15,
+            "height": 15
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 16,
+            "height": 16
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 17,
+            "height": 17
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 18,
+            "height": 18
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 19,
+            "height": 19
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 20,
+            "height": 20
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 19,
+            "height": 19
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 18,
+            "height": 18
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 17,
+            "height": 17
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 16,
+            "height": 16
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 15,
+            "height": 15
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 14,
+            "height": 14
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 13,
+            "height": 13
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 12,
+            "height": 12
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 11,
+            "height": 11
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 10,
+            "height": 10
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 11,
+            "height": 11
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 12,
+            "height": 12
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 13,
+            "height": 13
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 14,
+            "height": 14
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 15,
+            "height": 15
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 16,
+            "height": 16
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 17,
+            "height": 17
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 18,
+            "height": 18
+        }
+    },
+    {
+        "type": "ELLIPSE",
+        "geometry": {
+            "width": 19,
+            "height": 19
+        }
+    }
+],
+"transform": [
+    {
+        "type": "TRANSLATE",
+        "start_time": 1,
+        "duration": 0.03,
+        "translate": {
+            "x": 50,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.03,
+        "duration": 0.03,
+        "translate": {
+            "x": 51,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.06,
+        "duration": 0.03,
+        "translate": {
+            "x": 52,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.09,
+        "duration": 0.03,
+        "translate": {
+            "x": 53,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.12,
+        "duration": 0.03,
+        "translate": {
+            "x": 54,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.15,
+        "duration": 0.03,
+        "translate": {
+            "x": 55,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.18,
+        "duration": 0.03,
+        "translate": {
+            "x": 56,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.21,
+        "duration": 0.03,
+        "translate": {
+            "x": 57,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.25,
+        "duration": 0.03,
+        "translate": {
+            "x": 58,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.28,
+        "duration": 0.03,
+        "translate": {
+            "x": 59,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.31,
+        "duration": 0.03,
+        "translate": {
+            "x": 60,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.33,
+        "duration": 0.03,
+        "translate": {
+            "x": 61,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.36,
+        "duration": 0.03,
+        "translate": {
+            "x": 62,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.39,
+        "duration": 0.03,
+        "translate": {
+            "x": 63,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.42,
+        "duration": 0.03,
+        "translate": {
+            "x": 64,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.45,
+        "duration": 0.03,
+        "translate": {
+            "x": 65,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.48,
+        "duration": 0.03,
+        "translate": {
+            "x": 66,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.51,
+        "duration": 0.03,
+        "translate": {
+            "x": 67,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.54,
+        "duration": 0.03,
+        "translate": {
+            "x": 68,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.57,
+        "duration": 0.03,
+        "translate": {
+            "x": 69,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.60,
+        "duration": 0.03,
+        "translate": {
+            "x": 70,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.63,
+        "duration": 0.03,
+        "translate": {
+            "x": 71,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.66,
+        "duration": 0.03,
+        "translate": {
+            "x": 72,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.69,
+        "duration": 0.03,
+        "translate": {
+            "x": 73,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.72,
+        "duration": 0.03,
+        "translate": {
+            "x": 74,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.75,
+        "duration": 0.03,
+        "translate": {
+            "x": 75,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.78,
+        "duration": 0.03,
+        "translate": {
+            "x": 76,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.81,
+        "duration": 0.03,
+        "translate": {
+            "x": 77,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.84,
+        "duration": 0.03,
+        "translate": {
+            "x": 78,
+            "y": 50
+        }
+    },
+    {
+        "type": "TRANSLATE",
+        "start_time": 1.87,
+        "duration": 0.03,
+        "translate": {
+            "x": 79,
+            "y": 50
+        }
+    }
+]
+*/
