@@ -65,6 +65,7 @@ button {
     6. FILTROS
     7. SLIDERS
     8. MENSAJE CENTRAL
+    9. CONTENDOR DE ELEMENTOS INTERACTIVOS
 
 */
 /*------------- 1. CANVAS -------------*/
@@ -219,7 +220,7 @@ canvas {
 /*------------- 5. MENU -------------*/
 .menu {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 2.3rem;
   right: 4.6rem;
   color: #f2f2f2;
@@ -229,6 +230,8 @@ canvas {
   transition: opacity .25s; }
   .menu--visible {
     opacity: 1; }
+  .menu--active {
+    z-index: 2; }
   .menu__item {
     margin: 0 auto;
     text-align: center;
@@ -405,3 +408,11 @@ input[type=range]:focus::-ms-fill-upper {
     text-align: center;
     font-size: 3rem;
     color: #f2f2f2; }
+
+/*------------- 9. CONTENEDOR DE ELEMENTOS INTERACTIVOS -------------*/
+.interactivityContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }

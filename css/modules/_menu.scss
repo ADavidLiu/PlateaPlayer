@@ -1,6 +1,6 @@
 .menu {
     position: absolute;
-    z-index: 1;
+    z-index: 2;
     top: 2.3rem;
     right: 4.6rem;
     color: $white;
@@ -10,6 +10,9 @@
     transition: opacity .25s;
     &--visible {
         opacity: 1;
+    }
+    &--active {
+        z-index: 2;
     }
     &__item {
         margin: 0 auto;

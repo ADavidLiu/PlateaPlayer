@@ -423,7 +423,7 @@ function bindEvents() {
     // Controles del menú
     var btnFilters = select(".menu__item-icon--filters");
     var contentFilters = select(".menu__item-content--filters");
-
+    
     btnFilters.mouseClicked(function () {
         if (!filtersOpened) {
             contentFilters.addClass("menu__item-content--visible");

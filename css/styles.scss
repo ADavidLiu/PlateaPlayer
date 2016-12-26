@@ -16,6 +16,7 @@
     6. FILTROS
     7. SLIDERS
     8. MENSAJE CENTRAL
+    9. CONTENDOR DE ELEMENTOS INTERACTIVOS
 
 */
 
@@ -54,6 +55,12 @@
 
 @import "modules/_sliders.scss";
 
+
 /*------------- 8. MENSAJE CENTRAL -------------*/
 
 @import "modules/_mensaje";
+
+
+/*------------- 9. CONTENEDOR DE ELEMENTOS INTERACTIVOS -------------*/
+
+@import "modules/_interactivityContainer";
