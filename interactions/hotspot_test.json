@@ -2,12 +2,19 @@
     "interactions": [
         {
             "id": "00001",
-            type: {
+            "type": {
                 "event": "HOT_SPOT",
                 "data": {
                     "shift": [
                         {
-                            "type": "GEOMETRY",
+                            "type": "ELLIPSE",
+                            "geometry": {
+                                "width": 10,
+                                "height": 10
+                            }
+                        },
+                        {
+                            "type": "POLYGON",
                             "geometry": {
                                 
                             }
@@ -18,13 +25,25 @@
                             "type": "TRANSLATE",
                             "start_time": 1,
                             "duration": 5,
-                            "translate": {50, 50}
+                            "translate": {
+                                "x": 50,
+                                "y": 50
+                            }
+                        },
+                        {
+                            "type": "TRANSLATE",
+                            "start_time": 6,
+                            "duration": 2,
+                            "translate": {
+                                "x": 20,
+                                "y": 20
+                            }
                         }
                     ]
                 }
             },
             "show_time": 1,
-            "duration": 5,
+            "duration": 7,
             "isPaused": false
         }
     ]

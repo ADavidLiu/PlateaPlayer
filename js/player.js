@@ -47,32 +47,14 @@ Variables para las interacciones
 
 ------------------------------------*/
 
-var json,
-    numShifts,
-    interactions,
-    type,
-    data,
-    motion;
-
-var isEllipse = false,
-    isPolygon = false;
-
-var coordenadas,
-    interactions,
-    x = 0,
-    y = 0,
-    inicio = 0,
-    duracion = 0,
-    fin,
-    hasFin = false,
-    i = 0,
-    j = 0;
+var json = {},
+    interactions = {};
 
 
 
 /*------------------------------------
 
-Carga las interacciones desde el JSON
+Lectura del JSON con las interacciones
 
 ------------------------------------*/
 
@@ -85,12 +67,61 @@ function preload() {
 
 /*------------------------------------
 
-Configuración inicial y event binding
+Determinación de interacciones respectivas
 
 ------------------------------------*/
 
-function determinarInteracciones () {
-    console.log("Determinar interacciones");
+function determinarInteracciones() {
+    console.log(json);
+    interactions = json.interactions;
+    for (var i = 0; i < interactions.length; i++) {
+        // Se determina el tipo de interacción
+        var interaccion = interactions[i];
+        switch (interaccion.type.event) {
+            case "HOT_SPOT":
+                for (var j = 0; j < interaccion.type.data.shift.length; j++) {
+                    if (interaccion.type.data.shift[j].type === "ELLIPSE") {
+                        isEllipse(interaccion.type.data.shift[j], interaccion.type.data.transform[j]);
+                    } else {
+                        isPolygon(interaccion.type.data.shift[j], interaccion.type.data.transform[j]);
+                    }
+                }
+                break;
+            // AQUÍ IRÍAN LOS CASOS DE LOS OTROS TIPOS DE INTERACCIÓN
+        }
+    }
+}
+
+
+
+/*------------------------------------
+
+Control de ejecución de las interacciones
+
+------------------------------------*/
+
+function isEllipse(shift, transform) {
+    console.log("Is ellipse");
+    console.log(shift);
+    console.log(transform);
+}
+
+function isPolygon(shift, transform) {
+    console.log("Is polygon");
+    console.log(shift);
+    console.log(transform);
+}
+
+
+
+/*------------------------------------
+
+Funciones para transformar las interacciones
+
+------------------------------------*/
+
+function trasladar(coordOld, coordNew) {
+    console.log("Trasladado a las coordenadas " + "(" + coordNew.x + "," + coordNew.y + ")");
 }
 
 
@@ -118,109 +149,8 @@ function setup() {
     // Se inicia el video
     video.play();
 
-    // Pointer a los controles
-    controles = select(".video__controls");
-    menu = select(".menu");
-
-    // Controles de playback
-    btnStop = select(".video__control--stop");
-    btnStop.mouseClicked(detenerVideo);
-
-    btnPlay = select(".video__control--play");
-    btnPlay.mouseClicked(reanudarVideo);
-
-    btnPause = select(".video__control--pause");
-    btnPause.mouseClicked(pausarVideo);
-
-    btnSlower = select(".video__control--slower");
-    btnSlower.mouseClicked(disminuirVelocidad);
-
-    btnFaster = select(".video__control--faster");
-    btnFaster.mouseClicked(aumentarVelocidad);
-
-    btnLoop = select(".video__control--loop");
-    btnLoop.mouseClicked(iniciarLoop);
-
-
-    barraProgresoContainer = select(".barra-progreso");
-    barraProgresoContainer.mouseClicked(cambiarTiempo);
-
-
-    // Controles de volumen
-    sliderVolume = select(".video__control--volume");
-    sliderVolume.changed(cambiarVolumen);
-    sliderVolume.input(cambiarVolumen);
-
-    btnVolumeUp = select(".fa-volume-up");
-    btnVolumeOff = select(".fa-volume-off");
-    btnVolumeDown = select(".fa-volume-down");
-
-    // Silenciar el video
-    btnVolumeUp.mouseClicked(silenciarVideo);
-    btnVolumeDown.mouseClicked(silenciarVideo);
-    btnVolumeOff.mouseClicked(silenciarVideo);
-
-    // Fullscreen
-    btnFullscreen = select(".fa-expand");
-    btnNoFullscreen = select(".fa-compress");
-
-    btnFullscreen.mouseClicked(function () {
-        fullscreen(1);
-        cambiarIconos(btnNoFullscreen, btnFullscreen);
-    });
-
-    btnNoFullscreen.mouseClicked(function () {
-        fullscreen(0);
-        cambiarIconos(btnFullscreen, btnNoFullscreen);
-    });
-
-    // Controles del menú
-    var btnFilters = select(".menu__item-icon--filters");
-    var contentFilters = select(".menu__item-content--filters");
-
-    btnFilters.mouseClicked(function () {
-        if (!filtersOpened) {
-            contentFilters.addClass("menu__item-content--visible");
-            filtersOpened = true;
-        } else {
-            contentFilters.removeClass("menu__item-content--visible");
-            filtersOpened = false;
-        }
-    });
-
-    // Filtros
-    sliderBlur = select(".filters__slider--blur");
-    sliderBlur.input(cambiarFiltros);
-    sliderBlur.changed(cambiarFiltros);
-
-    sliderGrayscale = select(".filters__slider--grayscale");
-    sliderGrayscale.input(cambiarFiltros);
-    sliderGrayscale.changed(cambiarFiltros);
-
-    sliderSepia = select(".filters__slider--sepia");
-    sliderSepia.input(cambiarFiltros);
-    sliderSepia.changed(cambiarFiltros);
-
-    sliderInvert = select(".filters__slider--invert");
-    sliderInvert.input(cambiarFiltros);
-    sliderInvert.changed(cambiarFiltros);
-
-    // Mensaje central
-    mensaje = select(".mensaje");
-
-    // Mostrar controles on-hover
-    canvas.mouseOver(mostrarControles);
-    canvas.mouseOut(ocultarControles);
-    canvas.mouseMoved(mostrarControles);
-    video.mouseOver(mostrarControles);
-    video.mouseOut(ocultarControles);
-    video.mouseMoved(mostrarControles);
-    controles.mouseOver(mostrarControles);
-    controles.mouseOut(ocultarControles);
-    controles.mouseMoved(mostrarControles);
-    menu.mouseOver(mostrarControles);
-    menu.mouseOut(ocultarControles);
-    menu.mouseMoved(mostrarControles);
+    // Event binding
+    bindEvents();
 
 }
 
@@ -244,11 +174,6 @@ function draw() {
     tiempo = video.time();
     progreso = (100 / duracion) * tiempo + "%";
     barraProgreso.style("width", progreso);
-
-    // Se dibujan los elementos
-    if (isEllipse) {
-        crearEllipse(coordenadas, interactions[0].data.width, interactions[0].data.height, inicio, duracion);
-    }
 }
 
 
@@ -436,4 +361,110 @@ function ocultarControles() {
         controles.removeClass("video__controls--visible");
         menu.removeClass("menu--visible");
     }
+}
+
+function bindEvents() {
+    // Pointer a los controles
+    controles = select(".video__controls");
+    menu = select(".menu");
+
+    // Controles de playback
+    btnStop = select(".video__control--stop");
+    btnStop.mouseClicked(detenerVideo);
+
+    btnPlay = select(".video__control--play");
+    btnPlay.mouseClicked(reanudarVideo);
+
+    btnPause = select(".video__control--pause");
+    btnPause.mouseClicked(pausarVideo);
+
+    btnSlower = select(".video__control--slower");
+    btnSlower.mouseClicked(disminuirVelocidad);
+
+    btnFaster = select(".video__control--faster");
+    btnFaster.mouseClicked(aumentarVelocidad);
+
+    btnLoop = select(".video__control--loop");
+    btnLoop.mouseClicked(iniciarLoop);
+
+
+    barraProgresoContainer = select(".barra-progreso");
+    barraProgresoContainer.mouseClicked(cambiarTiempo);
+
+
+    // Controles de volumen
+    sliderVolume = select(".video__control--volume");
+    sliderVolume.changed(cambiarVolumen);
+    sliderVolume.input(cambiarVolumen);
+
+    btnVolumeUp = select(".fa-volume-up");
+    btnVolumeOff = select(".fa-volume-off");
+    btnVolumeDown = select(".fa-volume-down");
+
+    // Silenciar el video
+    btnVolumeUp.mouseClicked(silenciarVideo);
+    btnVolumeDown.mouseClicked(silenciarVideo);
+    btnVolumeOff.mouseClicked(silenciarVideo);
+
+    // Fullscreen
+    btnFullscreen = select(".fa-expand");
+    btnNoFullscreen = select(".fa-compress");
+
+    btnFullscreen.mouseClicked(function () {
+        fullscreen(1);
+        cambiarIconos(btnNoFullscreen, btnFullscreen);
+    });
+
+    btnNoFullscreen.mouseClicked(function () {
+        fullscreen(0);
+        cambiarIconos(btnFullscreen, btnNoFullscreen);
+    });
+
+    // Controles del menú
+    var btnFilters = select(".menu__item-icon--filters");
+    var contentFilters = select(".menu__item-content--filters");
+
+    btnFilters.mouseClicked(function () {
+        if (!filtersOpened) {
+            contentFilters.addClass("menu__item-content--visible");
+            filtersOpened = true;
+        } else {
+            contentFilters.removeClass("menu__item-content--visible");
+            filtersOpened = false;
+        }
+    });
+
+    // Filtros
+    sliderBlur = select(".filters__slider--blur");
+    sliderBlur.input(cambiarFiltros);
+    sliderBlur.changed(cambiarFiltros);
+
+    sliderGrayscale = select(".filters__slider--grayscale");
+    sliderGrayscale.input(cambiarFiltros);
+    sliderGrayscale.changed(cambiarFiltros);
+
+    sliderSepia = select(".filters__slider--sepia");
+    sliderSepia.input(cambiarFiltros);
+    sliderSepia.changed(cambiarFiltros);
+
+    sliderInvert = select(".filters__slider--invert");
+    sliderInvert.input(cambiarFiltros);
+    sliderInvert.changed(cambiarFiltros);
+
+    // Mensaje central
+    mensaje = select(".mensaje");
+
+    // Mostrar controles on-hover
+    canvas.mouseOver(mostrarControles);
+    canvas.mouseOut(ocultarControles);
+    canvas.mouseMoved(mostrarControles);
+    video.mouseOver(mostrarControles);
+    video.mouseOut(ocultarControles);
+    video.mouseMoved(mostrarControles);
+    controles.mouseOver(mostrarControles);
+    controles.mouseOut(ocultarControles);
+    controles.mouseMoved(mostrarControles);
+    menu.mouseOver(mostrarControles);
+    menu.mouseOut(ocultarControles);
+    menu.mouseMoved(mostrarControles);
 }
