@@ -1,31 +1,24 @@
+// NUEVO ESQUEMA HOTSPOT
+
 {
     "data": {
         "shift": [
             {
-                "type": "GEOMETRY",
-                "data": {
-                    "geometry": "ELLIPSE",
-                    "width": 50,
-                    "height": 50
-                },
-                "motion": [
-                    {
-                        "position": {
-                            "x": 10,
-                            "y": 30
-                        },
-                        "start_time": 5,
-                        "duration": 3
-                    },
-                    {
-                        "position": {
-                            "x": 10,
-                            "y": 20
-                        },
-                        "start_time": 8,
-                        "duration": 2
-                    }
-                ]
+                "type": "...", //(Obligatorio)
+                "geometry": {}, //(Opcional)
+                "video": {}, //(Opcional)
+                "imagen": {}, //(Opcional)
+                "web_content": {} //(Opcional)
+            }
+        ],
+        "transform": [
+            {
+                "type": "...", //(ROTATE, SCALE, TRANSLATE)
+                "start_time": 1,
+                "duration": 12,
+                "scale": {...}, // OPCIONAL
+                "rotation": {...}, // OPCIONAL
+                "translate": {...} // OPCIONAL
             }
         ]
     }

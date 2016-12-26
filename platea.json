@@ -1,0 +1,317 @@
+{
+    "$schema": "http://uao.edu.co/cpslab/project/platea/interaction_schema#",
+    "type": "object",
+    "title": "Root schema.",
+    "description": "Root JSON object.",
+    "properties": {
+        "interaction": {
+            "type": "object",
+            "title": "Interaction schema.",
+            "description": "Represent a video interaction.",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "title": "ID schema.",
+                    "description": "Interaction ID. Unique in the video",
+                    "default": "000000000",
+                    "pattern": "^[1-9][0-9]*$",
+                    "id": "id"
+                },
+                "type": {
+                    "type": "object",
+                    "title": "Type schema.",
+                    "description": "Define the interaction type.",
+                    "properties": {
+                        "event": {
+                            "type": "string",
+                            "title": "Event schema.",
+                            "description": "Explicit interaction type.",
+                            "default": "HOT_SPOT",
+                            "enum": [
+                                "HOT_SPOT",
+                                "WEB_CONTENT",
+                                "INDEX",
+                                "SENSE",
+                                "SOCIAL"
+                              ],
+                            "id": "event"
+                        },
+                        "data": {
+                            "type": "object",
+                            "title": "Data schema.",
+                            "description": "Represent the specific interaction data.",
+                            "properties": {
+                                ...
+                            },
+                            "id": "data"
+                        }
+                    },
+                    "id": "type",
+                    "required": [
+            "event",
+            "data"
+          ]
+                },
+                "start_time": {
+                    "type": "integer",
+                    "title": "Show_time schema.",
+                    "description": "Time in seconds for init the interaction.",
+                    "default": 0,
+                    "id": "start_time",
+                    "anyOf": [{
+                        "minimum": 0
+                    }, {
+                        "type": "integer"
+                    }, {
+                        "enum": ["VIDEO_START", "VIDEO_END", "VIDEO_PASED"]
+                    }]
+                },
+                "duration": {
+                    "type": "integer",
+                    "title": "Duration schema.",
+                    "description": "Duration in seconds for the interaction.",
+                    "default": 1,
+                    "id": "duration"
+                    "anyOf": [{
+                        "minimum": 1
+                    }, {
+                        "type": "integer"
+                    }, {
+                        "enum": ["VIDEO_END"]
+                    }]
+                },
+                "isPaused": {
+                    "type": "boolean",
+                    "title": "IsPaused schema.",
+                    "description": "Is the video is paused when the interaction start.",
+                    "default": true,
+                    "enum": [
+            false,
+            true
+          ],
+                    "id": "isPaused"
+                }
+            },
+            "id": "interaction",
+            "required": [
+        "id",
+        "type",
+        "start_time",
+        "duration"
+      ]
+        }
+    },
+    "id": "/",
+    "required": [
+    "interaction"
+  ]
+}
+
+/* WEB_CONTENT */
+
+{
+    "data": {
+        "src": "...",
+        "motion": [
+            {
+                "position": {
+                    "x": 4,
+                    "y": 6
+                },
+                "start_time": 10,
+                "duration": 5
+                }
+            ]
+    }
+}
+
+/* INDEX */
+
+{
+    "data": {
+        "items": [
+            {
+                "isCurrent": true,
+                "src": "...",
+                "start_time": 30,
+
+            },
+            {
+                "isCurrent": false,
+                "src": "...",
+                "start_time": 45,
+
+            }
+        ],
+        "activeOn": [
+            {
+                "start_time": 1,
+                "duration": 10
+            },
+            {
+                "start_time": 60,
+                "duration": VIDEO_END
+            }
+        ]
+    }
+}
+
+/* SENSE */
+
+{
+    "data": {
+        "type": "haptic",
+        "schema": {
+            "name": "body-suit",
+            "points": 4,
+            "intensity": [20, 30, 40, 50]
+        }
+    }
+}
+
+/* SOCIAL */
+
+{
+    "data": {
+        "network": "Facebook",
+        "action": "POST",
+        "content": {
+            "text": "...",
+            "media": "..."
+        }
+    }
+}
+
+
+
+
+"data": {
+    "type": "object",
+    "title": "Data schema.",
+    "description": "Represent the specific interaction data.",
+    "properties": {
+        "shift": {
+            "type": "array",
+            "title": "Shift schema.",
+            "description": "clickable object array.",
+            "items": {
+                "type": "object",
+                "title": "0 schema.",
+                "description": "An explanation about the purpose of this instance.",
+                "properties": {
+                    "geometry": {
+                        "type": "string",
+                        "title": "Geometry schema.",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": "ARC",
+                        "enum": [
+                             "ARC",
+                             "RECT",
+                             "TRIANGLE",
+                             "POLYGON"
+                        ],
+                        "id": "geometry"
+                    },
+                    "radius": {
+                        "type": "integer",
+                        "title": "Radius schema.",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": 10,
+                        "enum": [
+                          null,
+                          10
+                        ],
+                        "id": "radius"
+                    },
+                    "width": {
+                        "type": "integer",
+                        "title": "Width schema.",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": 10,
+                        "id": "width"
+                    },
+                    "high": {
+                        "type": "integer",
+                        "title": "High schema.",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": 10,
+                        "id": "high"
+                    }
+                },
+                "id": "0",
+            },
+            "id": "shift"
+        },
+        "motion": {
+            "type": "array",
+            "title": "Motion schema.",
+            "description": "An explanation about the purpose of this instance.",
+            "items": {
+                "type": "object",
+                "title": "0 schema.",
+                "description": "An explanation about the purpose of this instance.",
+                "properties": {
+                    "position": {
+                        "type": "object",
+                        "title": "Position schema.",
+                        "description": "An explanation about the purpose of this instance.",
+                        "properties": {
+                            "x": {
+                                "type": "integer",
+                                "title": "X schema.",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 1,
+                                "enum": [
+                              null,
+                              1
+                            ],
+                                "id": "x"
+                            },
+                            "y": {
+                                "type": "integer",
+                                "title": "Y schema.",
+                                "description": "An explanation about the purpose of this instance.",
+                                "default": 2,
+                                "enum": [
+                              null,
+                              2
+                            ],
+                                "id": "y"
+                            }
+                        },
+                        "id": "position",
+                        "required": [
+                          "x",
+                          "y"
+                        ]
+                    },
+                    "start_time": {
+                        "type": "integer",
+                        "title": "Show_time schema.",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": 0,
+                        "id": "start_time"
+                    },
+                    "duration": {
+                        "type": "integer",
+                        "title": "Duration schema.",
+                        "description": "An explanation about the purpose of this instance.",
+                        "default": 0,
+                        "id": "duration"
+                    }
+                },
+                "id": "0",
+                "required": [
+                      "position",
+                      "start_time",
+                      "duration"
+                    ]
+            },
+            "id": "motion"
+        }
+    },
+    "id": "data",
+    "required": [
+                "shift",
+                "motion"
+              ]

@@ -1,56 +1,59 @@
 // Variables
-var canvas;
-var video;
-var controles;
-var velocidadActual = 1;
-var isReproduciendo = true;
-var sliderVolume;
-var sliderVolumeContainer;
-var barraProgreso;
-var barraProgresoContainer;
-var tiempo;
-var duracion;
-var progreso;
-var anchoContenedor;
-var btnStop;
-var btnPlay;
-var btnPause;
-var btnSlower;
-var btnFaster;
-var isLooping = false;
-var btnVolumeUp;
-var btnVolumeOff;
-var btnVolumeDown;
-var btnVolumen;
-var isMuted;
-var volumenActual = 0.5;
-var volumenAnterior = 0.5;
-var menu;
-var filtersOpened = false;
-var sliderBlur;
-var sliderGrayscale;
-var sliderInvert;
-var mensaje;
-var btnFullscreen;
-var btnNoFullscreen;
+var canvas,
+    video,
+    controles,
+    velocidadActual = 1,
+    isReproduciendo = true,
+    sliderVolume,
+    sliderVolumeContainer,
+    barraProgreso,
+    barraProgresoContainer,
+    tiempo,
+    duracion,
+    progreso,
+    anchoContenedor,
+    btnStop,
+    btnPlay,
+    btnPause,
+    btnSlower,
+    btnFaster,
+    isLooping = false,
+    btnVolumeUp,
+    btnVolumeOff,
+    btnVolumeDown,
+    btnVolumen,
+    isMuted,
+    volumenActual = 0.5,
+    volumenAnterior = 0.5,
+    menu,
+    filtersOpened = false,
+    sliderBlur,
+    sliderGrayscale,
+    sliderInvert,
+    mensaje,
+    btnFullscreen,
+    btnNoFullscreen;
 
-var json;
-var interactions;
-var type;
-var data;
-var motion;
+var json,
+    numShifts,
+    interactions,
+    type,
+    data,
+    motion;
 
-var isEllipse = false;
-var isPolygon = false;
+var isEllipse = false,
+    isPolygon = false;
 
-var coordenadas;
-var interactions;
-var x = 0;
-var y = 0;
-var start_time;
-var duration;
-var fin;
-var hasFin = false;
+var coordenadas,
+    interactions,
+    x = 0,
+    y = 0,
+    inicio = 0,
+    duracion = 0,
+    fin,
+    hasFin = false,
+    i = 0,
+    j = 0;
 
 // Se cargan las interacciones desde un JSON
 function preload() {
@@ -224,11 +227,13 @@ function windowResized() {
 // Administra los eventos interactivos
 function determinarInteracciones() {
     // Propiedades generales
-    var numShifts = json.data.shift.length;
-
+    numShifts = json.data.shift.length;
     interactions = json.data.shift;
 
-    /*for (var i = 0; i < numShifts; i++) {
+    ejecutarInteracciones(numShifts);
+
+    /*
+    for (var i = 0; i < numShifts; i++) {
         var numMotions = interactions[i].motion.length;
         for (var j = 0; j < numMotions; j++) {
             coordenadas = interactions[i].motion[j].position;
@@ -251,8 +256,10 @@ function determinarInteracciones() {
                 break;
             }
         }
-    }*/
+    }
+    */
 
+    /*
     coordenadas = interactions[0].motion[0].position;
     type = interactions[0].type;
     inicio = interactions[0].motion[0].start_time;
@@ -272,10 +279,88 @@ function determinarInteracciones() {
         }
         break;
     }
+    */
+}
+
+function ejecutarInteracciones(numShifts) {
+    console.log(numShifts);
+
+    if (i < numShifts) {
+        console.log("i: " + i);
+        var numMotions = interactions[i].motion.length;
+        console.log("Entró al loop de shifts");
+        if (j < numMotions) {
+            console.log("j: " + j);
+            console.log("numMotions: " + numMotions);
+            console.log("Entró al loop de motions");
+
+            coordenadas = interactions[i].motion[j].position;
+            inicio = interactions[i].motion[j].start_time;
+            duracion = interactions[i].motion[j].duration;
+
+            type = interactions[i].type;
+
+            // Determina la acción
+            switch (type) {
+            case "GEOMETRY":
+                var geometria = interactions[i].data.geometry;
+                switch (geometria) {
+                case "ELLIPSE":
+                    isEllipse = true;
+                    break;
+                case "POLYGON":
+                    ispolygon = true;
+                    break;
+                }
+                break;
+            }
+            j++;
+        } else {
+            console.log("All motions checked");
+        }
+        i++;
+    } else {
+        console.log("All shifts checked");
+    }
+
+    /*for (i; i < numShifts; i++) {
+        var numMotions = interactions[i].motion.length;
+        console.log("Entró al loop de shifts");
+        console.log("j: " + j);
+        for (j; j < numMotions; j++) {
+            console.log("numMotions: " + numMotions);
+            console.log("Entró al loop de motions");
+            coordenadas = interactions[i].motion[j].position;
+            type = interactions[i].type;
+            inicio = interactions[i].motion[j].start_time;
+            duracion = interactions[i].motion[j].duration;
+
+            // Determina la acción
+            switch (type) {
+            case "GEOMETRY":
+                var geometria = interactions[i].data.geometry;
+                switch (geometria) {
+                case "ELLIPSE":
+                    isEllipse = true;
+                    break;
+                case "POLYGON":
+                    ispolygon = true;
+                    break;
+                }
+                break;
+            }
+        }
+    }*/
 }
 
 // Funciones para crear elementos
 function crearEllipse(coordenadas, ancho, alto, inicio, duracion) {
+    // Se determina el fin de la interacción en segundos
+    if (!hasFin) {
+        fin = inicio + duracion;
+        hasFin = true;
+    }
+
     // Se obtienen las coordenadas del objeto
     x = coordenadas.x;
     y = coordenadas.y;
@@ -291,26 +376,46 @@ function crearEllipse(coordenadas, ancho, alto, inicio, duracion) {
     noFill();
 
     // Dibuja y elimina luego de su duración
-    console.log("Time: " + video.time());
-    if (!hasFin) {
-        fin = inicio + duracion;
-        hasFin = true;
-    }
-    if (video.time() >= inicio && video.time() <= fin) {
-        console.log("Sí");
+    //console.log("Time: " + video.time());
+    /*if (video.time() >= inicio && video.time() <= fin) {
+        //console.log("Sí");
         ellipse(xPorcentaje, yPorcentaje, anchoPorcentaje, altoPorcentaje);
     } else if (video.time() > fin) {
         console.log("Fin");
         hasFin = false;
         isEllipse = false;
+        ejecutarInteracciones(numShifts);
         clear();
     } else {
-        console.log("No");
+        //console.log("No");
+        clear();
+    }*/
+
+
+
+
+
+    if (video.time() >= inicio && video.time() < fin) {
+        ellipse(xPorcentaje, yPorcentaje, anchoPorcentaje, altoPorcentaje);
+    } else {
         clear();
     }
+
+
+
+
+
 }
 
-// Funciones para controlar el player
+
+
+/*------------------------------------
+
+Funciones para controlar el player
+
+------------------------------------*/
+
+
 function cambiarFiltros() {
     var blur = "blur(" + sliderBlur.value() + "px)";
     var grayscale = "grayscale(" + sliderGrayscale.value() + "%)";
