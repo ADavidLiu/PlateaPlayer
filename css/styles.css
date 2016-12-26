@@ -56,18 +56,24 @@ button {
 
 /*------------- TABLE OF CONTENTS -------------*/
 /*
-
-    1. CANVAS
-    2. VIDEO
-    3. BARRA DE PROGRESO
-    4. BARRA DE VOLUMEN (TENTATIVO)
-    5. MENU
-    6. FILTROS
-    7. SLIDERS
-    8. MENSAJE CENTRAL
-    9. CONTENDOR DE ELEMENTOS INTERACTIVOS
+    A. PLAYER
+        1. CANVAS
+        2. VIDEO
+        3. BARRA DE PROGRESO
+        4. BARRA DE VOLUMEN (TENTATIVO)
+        5. MENU
+        6. FILTROS
+        7. SLIDERS
+        8. MENSAJE CENTRAL
+    B. INTERACTIONS
+        9. GEOMETRY
 
 */
+/*------------------------------------
+
+A. PLAYER
+
+------------------------------------*/
 /*------------- 1. CANVAS -------------*/
 canvas {
   position: fixed;
@@ -93,7 +99,7 @@ canvas {
 
 .video__controls {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -220,7 +226,7 @@ canvas {
 /*------------- 5. MENU -------------*/
 .menu {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   top: 2.3rem;
   right: 4.6rem;
   color: #f2f2f2;
@@ -409,10 +415,20 @@ input[type=range]:focus::-ms-fill-upper {
     font-size: 3rem;
     color: #f2f2f2; }
 
-/*------------- 9. CONTENEDOR DE ELEMENTOS INTERACTIVOS -------------*/
-.interactivityContainer {
+/*------------------------------------
+
+B. INTERACTIONS
+
+------------------------------------*/
+/*------------- 9. GEOMETRY -------------*/
+.interactive {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; }
+  z-index: 99999;
+  display: none;
+  cursor: pointer; }
+  .interactive--visible {
+    display: block; }
+  .interactive__geometry {
+    background-color: #4cddb0; }
+    .interactive__geometry--ellipse {
+      border-radius: 100%; }

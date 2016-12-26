@@ -1,0 +1,15 @@
+.interactive {
+    position: absolute;
+    z-index: 99999;
+    display: none;
+    cursor: pointer;
+    &--visible {
+        display: block;
+    }
+    &__geometry {
+        background-color: $accent;
+        &--ellipse {
+            border-radius: 100%;
+        }
+    }
+}

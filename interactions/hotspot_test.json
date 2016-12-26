@@ -14,9 +14,10 @@
                             }
                         },
                         {
-                            "type": "POLYGON",
+                            "type": "ELLIPSE",
                             "geometry": {
-                                
+                                "width": 20,
+                                "height": 5
                             }
                         }
                     ],

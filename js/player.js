@@ -59,8 +59,15 @@ Lectura del JSON con las interacciones
 ------------------------------------*/
 
 function preload() {
-    var path = "../interactions/hotspot_test.json";
-    json = loadJSON(path, determinarInteracciones);
+    // Se carga el video desde el sistema de archivos
+    barraProgreso = select(".barra-progreso__progreso");
+    video = createVideo("../videos/videoPrueba.mp4", function () {
+        duracion = video.duration();
+        // Se lee el JSON
+        var path = "../interactions/hotspot_test.json";
+        json = loadJSON(path, determinarInteracciones);
+    });
+    video.parent("videoContainer");
 }
 
 
@@ -101,15 +108,20 @@ Control de ejecución de las interacciones
 ------------------------------------*/
 
 function isEllipse(shift, transform) {
-    console.log("Is ellipse");
-    console.log(shift);
-    console.log(transform);
+    // Crea el elemento con un 'div' vacío
+    var elem = createDiv("");
+    elem.parent("videoContainer");
+    // Añade los estilos necesarios
+    elem.addClass("interactive interactive__geometry interactive__geometry--ellipse");
+    // Se dimensiona relativamente
+    elem.style("width", shift.geometry.width + "%");
+    elem.style("height", shift.geometry.height + "%");
+    // Se manejan los tiempos de aparición
+    aparecer(elem, transform);
 }
 
 function isPolygon(shift, transform) {
-    console.log("Is polygon");
-    console.log(shift);
-    console.log(transform);
+    
 }
 
 
@@ -119,6 +131,26 @@ function isPolygon(shift, transform) {
 Funciones para transformar las interacciones
 
 ------------------------------------*/
+
+function aparecer(elem, transform) {
+    // Posiciona el elemento
+    elem.style("top", transform.translate.y + "%");
+    elem.style("left", transform.translate.x + "%");
+    
+    // Muestra el elemento
+    var fin = transform.start_time + transform.duration;
+    var intervalo = setInterval(function() {
+        if (video.time() >= transform.start_time && video.time() < fin) {
+            if (!hasClass(elem, "interactive--visible")) {
+                elem.addClass("interactive--visible");
+            }
+        } else if (video.time() > fin) {
+            elem.remove();
+            clearInterval(intervalo);
+            console.log("INTERACCIÓN TERMINADA");
+        }
+    }, 500);
+}
 
 function trasladar(coordOld, coordNew) {
     console.log("Trasladado a las coordenadas " + "(" + coordNew.x + "," + coordNew.y + ")");
@@ -133,13 +165,6 @@ Configuración inicial y event binding
 ------------------------------------*/
 
 function setup() {
-    // Se carga el video desde el sistema de archivos
-    barraProgreso = select(".barra-progreso__progreso");
-    video = createVideo("../videos/videoPrueba.mp4", function () {
-        duracion = video.duration();
-    });
-    video.parent("videoContainer");
-
     // Se crea el canvas del tamaño del video
     var alto = select("video").height;
     var ancho = select("video").width;
@@ -151,7 +176,6 @@ function setup() {
 
     // Event binding
     bindEvents();
-
 }
 
 
