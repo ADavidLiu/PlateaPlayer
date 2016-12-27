@@ -42,6 +42,80 @@
                                     }
                                 ]
                             }
+                        },
+                        {
+                            "type": "POLY",
+                            "geometry": {
+                                "width": 40,
+                                "height": 60,
+                                "vertices": [
+                                    {
+                                        "x": 0,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 75
+                                    },
+                                    {
+                                        "x": 75,
+                                        "y": 75
+                                    },
+                                    {
+                                        "x": 75,
+                                        "y": 100
+                                    },
+                                    {
+                                        "x": 50,
+                                        "y": 75
+                                    },
+                                    {
+                                        "x": 0,
+                                        "y": 75
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "type": "POLY",
+                            "geometry": {
+                                "width": 40,
+                                "height": 60,
+                                "vertices": [
+                                    {
+                                        "x": 0,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 75
+                                    },
+                                    {
+                                        "x": 75,
+                                        "y": 75
+                                    },
+                                    {
+                                        "x": 75,
+                                        "y": 100
+                                    },
+                                    {
+                                        "x": 50,
+                                        "y": 75
+                                    },
+                                    {
+                                        "x": 0,
+                                        "y": 75
+                                    }
+                                ]
+                            }
                         }
                     ],
                     "transform": [
@@ -53,12 +127,36 @@
                                 "x": 5,
                                 "y": 30
                             }
+                        },
+                        {
+                            "type": "ROTATE",
+                            "start_time": 6,
+                            "duration": 5,
+                            "translate": {
+                                "x": 5,
+                                "y": 30
+                            },
+                            "rotate": {
+                                "deg": 90
+                            }
+                        },
+                        {
+                            "type": "SCALE",
+                            "start_time": 6,
+                            "duration": 5,
+                            "translate": {
+                                "x": 5,
+                                "y": 30
+                            },
+                            "scale": {
+                                "factor": 1.2
+                            }
                         }
                     ]
                 }
             },
             "show_time": 1,
-            "duration": 6,
+            "duration": 10,
             "isPaused": false
         },
         {

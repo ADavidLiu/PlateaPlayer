@@ -119,10 +119,20 @@ function crearGeometria(shift, transform, isPaused) {
     elem.style("width", shift.geometry.width + "%");
     elem.style("height", shift.geometry.height + "%");
     // Se manejan los tiempos de aparición
-    aparecer(elem, transform, isPaused);
+    mostrar(elem, transform, isPaused);
 }
 
-function aparecer(elem, transform, isPaused) {
+function formarPoligono(elem, vertices) {
+    var verticesFormatted = "";
+    for (var i = 0; i < vertices.length; i++) {
+        var coord = vertices[i].x + "%" + " " + vertices[i].y + "%, ";
+        verticesFormatted += coord;
+    }
+    verticesFormatted = verticesFormatted.slice(0, -2);
+    elem.style("clip-path", "polygon(" + verticesFormatted + ")");
+}
+
+function mostrar(elem, transform, isPaused) {
     // Posiciona el elemento
     elem.style("top", transform.translate.y + "%");
     elem.style("left", transform.translate.x + "%");
@@ -133,9 +143,23 @@ function aparecer(elem, transform, isPaused) {
         if (video.time() >= transform.start_time && video.time() < fin) {
             // Sólo se ejecuta una vez
             if (!hasClass(elem, "interactive--visible")) {
+                // Muestra el elemento
                 elem.addClass("interactive--visible");
+                // Pausa el video si así está configurada la interacción
                 if (isPaused) {
                     pausarVideo();
+                }
+                // Aplica las transformaciones distintas a posición
+                var transformacion = "";
+                switch (transform.type) {
+                    case "ROTATE":
+                        transformacion += "rotate(" + transform.rotate.deg + "deg) ";
+                        elem.style("transform", transformacion);
+                        break;
+                    case "SCALE":
+                        transformacion += "scale(" + transform.scale.factor + ") ";
+                        elem.style("transform", transformacion);
+                        break;
                 }
                 // Se elimina después de cumplida su duración
                 var timeout = setTimeout(function () {
@@ -149,18 +173,6 @@ function aparecer(elem, transform, isPaused) {
             }
         }
     }, 1); // Cada milisegundo
-}
-
-function formarPoligono(elem, vertices) {
-    console.log(vertices);
-    var verticesFormatted = "";
-    for (var i = 0; i < vertices.length; i++) {
-        var coord = vertices[i].x + "%" + " " + vertices[i].y + "%, ";
-        verticesFormatted += coord;
-    }
-    verticesFormatted = verticesFormatted.slice(0, -2);
-    console.log(verticesFormatted);
-    elem.style("clip-path", "polygon(" + verticesFormatted + ")");
 }
 
 
