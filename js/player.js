@@ -87,7 +87,18 @@ function determinarInteracciones() {
         switch (interaccion.type.event) {
             case "HOT_SPOT":
                 for (var j = 0; j < interaccion.type.data.shift.length; j++) {
-                    crearGeometria(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    switch(interaccion.type.data.shift[j].type) {
+                        case "ELLIPSE":
+                        case "POLY":
+                            crearGeometria(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                            break;
+                        case "IMAGE":
+                            crearImagen(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                            break;
+                        case "TEXT":
+                            crearTexto(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                            break;
+                    }
                 }
                 break;
             // AQUÍ IRÍAN LOS CASOS DE LOS OTROS TIPOS DE INTERACCIÓN
@@ -119,7 +130,7 @@ function crearGeometria(shift, transform, isPaused) {
     elem.style("width", shift.geometry.width + "%");
     elem.style("height", shift.geometry.height + "%");
     // Se manejan los tiempos de aparición
-    mostrar(elem, transform, isPaused);
+    mostrarElemento(elem, transform, isPaused);
 }
 
 function formarPoligono(elem, vertices) {
@@ -132,10 +143,9 @@ function formarPoligono(elem, vertices) {
     elem.style("clip-path", "polygon(" + verticesFormatted + ")");
 }
 
-function mostrar(elem, transform, isPaused) {
+function mostrarElemento(elem, transform, isPaused) {
     // Posiciona el elemento
-    elem.style("top", transform.translate.y + "%");
-    elem.style("left", transform.translate.x + "%");
+    posicionarElemento(elem, transform.translate.y, transform.translate.x);
     
     // Muestra el elemento
     var fin = transform.start_time + transform.duration;
@@ -149,7 +159,7 @@ function mostrar(elem, transform, isPaused) {
                 if (isPaused) {
                     pausarVideo();
                 }
-                // Aplica las transformaciones distintas a posición
+                // Aplica las transformaciones distintas a posición/traslación
                 var transformacion = "";
                 switch (transform.type) {
                     case "ROTATE":
@@ -175,6 +185,35 @@ function mostrar(elem, transform, isPaused) {
     }, 1); // Cada milisegundo
 }
 
+function posicionarElemento(elem, y, x) {
+    elem.style("top", y + "%");
+    elem.style("left", x + "%");
+}
+
+function crearImagen(shift, transform, isPaused) {
+    var img = createImg(shift.image.src, shift.image.alt);
+    img.parent("videoContainer");
+    img.addClass("interactive interactive__img");
+    img.style("width", shift.image.width + "%");
+    mostrarElemento(img, transform, isPaused);
+}
+
+function crearTexto(shift, transform, isPaused) {
+    // Se crea el contenedor y se aplican los estilos propios
+    var div = createDiv(shift.html);
+    div.style("font-family", shift.font.family);
+    div.style("font-size", shift.font.size + "rem");
+    div.style("color", shift.font.color);
+    div.style("text-decoration", shift.font.decoration);
+    div.style("font-weight", shift.font.weight);
+    div.style("background-color", shift.font.backgroundColor);
+    div.style("line-height", shift.font.lineHeight + "rem");
+    var padding = shift.font.padding[0] + "rem " + shift.font.padding[1] + "rem";
+    div.style("padding", padding);
+    div.parent("videoContainer");
+    div.addClass("interactive interactive__text");
+    mostrarElemento(div, transform, isPaused);
+}
 
 
 /*------------------------------------

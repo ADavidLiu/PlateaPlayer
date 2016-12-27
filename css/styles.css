@@ -66,7 +66,7 @@ button {
         7. SLIDERS
         8. MENSAJE CENTRAL
     B. INTERACTIONS
-        9. GEOMETRY
+        9. INTERACCIONES
 
 */
 /*------------------------------------
@@ -91,7 +91,8 @@ canvas {
   left: 0;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
-  transform: translateY(-50%); }
+  transform: translateY(-50%);
+  overflow: hidden; }
   .video__container video {
     width: 100vw;
     height: auto;
@@ -99,7 +100,7 @@ canvas {
 
 .video__controls {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -226,7 +227,7 @@ canvas {
 /*------------- 5. MENU -------------*/
 .menu {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   top: 2.3rem;
   right: 4.6rem;
   color: #f2f2f2;
@@ -423,7 +424,7 @@ B. INTERACTIONS
 /*------------- 9. INTERACCIONES -------------*/
 .interactive {
   position: absolute;
-  z-index: 99999;
+  z-index: 3;
   display: none;
   cursor: pointer; }
   .interactive--visible {
@@ -433,3 +434,11 @@ B. INTERACTIONS
     border: 0.3rem solid #4cddb0; }
   .interactive__geometry--poly {
     background-color: #4cddb0; }
+  .interactive__img {
+    height: auto; }
+  .interactive__text a,
+  .interactive__text a:link,
+  .interactive__text a:hover,
+  .interactive__text a:focus,
+  .interactive__text a:active {
+    color: inherit; }

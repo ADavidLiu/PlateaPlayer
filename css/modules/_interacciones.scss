@@ -1,6 +1,6 @@
 .interactive {
     position: absolute;
-    z-index: 99999;
+    z-index: 3;
     display: none;
     cursor: pointer;
     &--visible {
@@ -13,6 +13,18 @@
         }
         &--poly {
             background-color: $accent;
+        }
+    }
+    &__img {
+        height: auto;
+    }
+    &__text {
+        a,
+        a:link,
+        a:hover,
+        a:focus,
+        a:active {
+            color: inherit;
         }
     }
 }
