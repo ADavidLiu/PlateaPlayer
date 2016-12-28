@@ -31,6 +31,8 @@ var canvas,
     volumenActual = 0.5,
     volumenAnterior = 0.5,
     menu,
+    btnFilters,
+    contentFilters,
     filtersOpened = false,
     sliderBlur,
     sliderGrayscale,
@@ -47,8 +49,8 @@ Variables para las interacciones
 
 ------------------------------------*/
 
-var json = {},
-    interactions = {};
+var json,
+    interactions;
 
 
 
@@ -202,12 +204,12 @@ function crearTexto(shift, transform, isPaused) {
     // Se crea el contenedor y se aplican los estilos propios
     var div = createDiv(shift.html);
     div.style("font-family", shift.font.family);
-    div.style("font-size", shift.font.size + "rem");
+    div.style("font-size", shift.font.size + "vw");
     div.style("color", shift.font.color);
     div.style("text-decoration", shift.font.decoration);
     div.style("font-weight", shift.font.weight);
     div.style("background-color", shift.font.backgroundColor);
-    div.style("line-height", shift.font.lineHeight + "rem");
+    div.style("line-height", shift.font.lineHeight + "vw");
     var padding = shift.font.padding[0] + "rem " + shift.font.padding[1] + "rem";
     div.style("padding", padding);
     div.parent("videoContainer");
@@ -245,7 +247,7 @@ Loop de ejecución
 ------------------------------------*/
 
 function draw() {
-    // Control a través del mismo video
+    // Control de reproducción a través del mismo video
     if (!isReproduciendo) {
         canvas.mouseClicked(reanudarVideo);
     } else {
@@ -503,8 +505,8 @@ function bindEvents() {
     });
 
     // Controles del menú
-    var btnFilters = select(".menu__item-icon--filters");
-    var contentFilters = select(".menu__item-content--filters");
+    btnFilters = select(".menu__item-icon--filters");
+    contentFilters = select(".menu__item-content--filters");
     
     btnFilters.mouseClicked(function () {
         if (!filtersOpened) {

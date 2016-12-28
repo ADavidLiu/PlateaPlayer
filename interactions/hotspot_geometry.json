@@ -1334,7 +1334,7 @@
                             "html": "Wow much bold. Such red. No link :(",
                             "font": {
                                 "family": "Courier",
-                                "size": 2,
+                                "size": 3,
                                 "color": "red",
                                 "decoration": "none",
                                 "weight": "700",

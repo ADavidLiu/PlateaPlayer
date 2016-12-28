@@ -8,17 +8,13 @@
     max-width: 415px;
     opacity: 0;
     transition: opacity .25s;
+    pointer-events: none;
     &--visible {
         opacity: 1;
     }
-    &--active {
-        z-index: 2;
-    }
     &__item {
-        margin: 0 auto;
-        text-align: center;
-        width: 100%;
         &-icon {
+            pointer-events: all;
             background-color: $black;
             display: inline-block;
             height: 2.3rem;
@@ -37,6 +33,7 @@
             }
         }
         &-content {
+            pointer-events: all
             display: inline-block;
             text-align: left;
             width: 100%;
@@ -47,12 +44,10 @@
             right: 0;
             opacity: 0;
             transition: all .25s;
-            pointer-events: none;
             visibility: hidden;
             &--visible {
                 opacity: 1;
                 right: 15px;
-                pointer-events: all;
                 visibility: visible;
             }
         }

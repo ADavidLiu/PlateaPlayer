@@ -234,16 +234,14 @@ canvas {
   width: 80%;
   max-width: 415px;
   opacity: 0;
-  transition: opacity .25s; }
+  transition: opacity .25s;
+  pointer-events: none; }
   .menu--visible {
     opacity: 1; }
-  .menu--active {
-    z-index: 2; }
   .menu__item {
-    margin: 0 auto;
-    text-align: center;
-    width: 100%; }
+    pointer-events: all; }
     .menu__item-icon {
+      pointer-events: all;
       background-color: rgba(64, 64, 64, 0.5);
       display: inline-block;
       height: 2.3rem;
@@ -262,6 +260,7 @@ canvas {
         transform: translate(-50%, -50%);
         font-size: 1rem; }
     .menu__item-content {
+      pointer-events: all;
       display: inline-block;
       text-align: left;
       width: 100%;
@@ -272,12 +271,10 @@ canvas {
       right: 0;
       opacity: 0;
       transition: all .25s;
-      pointer-events: none;
       visibility: hidden; }
       .menu__item-content--visible {
         opacity: 1;
         right: 15px;
-        pointer-events: all;
         visibility: visible; }
 
 /*------------- 6. FILTROS -------------*/
