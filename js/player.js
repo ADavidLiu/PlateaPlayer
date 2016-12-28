@@ -100,6 +100,9 @@ function determinarInteracciones() {
                         case "TEXT":
                             crearTexto(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
                             break;
+                        case "WEB_CONTENT":
+                            crearIframe(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                            break;
                     }
                 }
                 break;
@@ -215,6 +218,17 @@ function crearTexto(shift, transform, isPaused) {
     div.parent("videoContainer");
     div.addClass("interactive interactive__text");
     mostrarElemento(div, transform, isPaused);
+}
+
+function crearIframe(shift, transform, isPaused) {
+    // Se crea el iFrame
+    var iframe = createElement("iframe", "");
+    iframe.parent("videoContainer");
+    iframe.attribute("src", shift.src);
+    iframe.style("width", shift.width + "%");
+    iframe.style("height", shift.height + "%");
+    iframe.addClass("interactive interactive__iframe");
+    mostrarElemento(iframe, transform, isPaused);
 }
 
 

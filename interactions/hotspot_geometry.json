@@ -1310,7 +1310,7 @@
             "isPaused": false
         },
         {
-            "id": "00004",
+            "id": "00005",
             "type": {
                 "event": "HOT_SPOT",
                 "data": {
@@ -1360,7 +1360,7 @@
                             "duration": 5,
                             "translate": {
                                 "x": 20,
-                                "y": 30
+                                "y": 35
                             },
                             "rotate": {
                                 "deg": -25
@@ -1372,6 +1372,36 @@
             "show_time": 3,
             "duration": 8,
             "isPaused": false
+        },
+        {
+            "id": "00006",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "shift": [
+                        {
+                            "type": "WEB_CONTENT",
+                            "src": "http://www.andresliu.xyz/",
+                            "width": 80,
+                            "height": 80
+                        }
+                    ],
+                    "transform": [
+                        {
+                            "type": "TRANSLATE",
+                            "start_time": 12,
+                            "duration": 15,
+                            "translate": {
+                                "x": 10,
+                                "y": 5
+                            }
+                        }
+                    ]
+                }
+            },
+            "show_time": 12,
+            "duration": 15,
+            "isPaused": true
         }
     ]
 }
