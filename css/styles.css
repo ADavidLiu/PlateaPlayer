@@ -164,7 +164,7 @@ canvas {
 
 /*------------- 3. BARRA DE PROGRESO -------------*/
 .barra-progreso {
-  width: 100%;
+  width: 100% !important;
   height: 5px !important;
   background-color: rgba(64, 64, 64, 0.5);
   position: absolute;
