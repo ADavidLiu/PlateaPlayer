@@ -269,9 +269,7 @@ function draw() {
     }
 
     // Barra de progreso
-    tiempo = video.time();
-    progreso = (100 / duracion) * tiempo + "%";
-    barraProgreso.style("width", progreso);
+    actualizarProgreso();
 }
 
 
@@ -411,6 +409,7 @@ function cambiarVolumen() {
 }
 
 function cambiarTiempo() {
+    /*
     console.log("Mouse X: " + mouseX);
     //var nuevoTiempo = (100/duracion) * (mouseX/duracion);
     console.log(duracion);
@@ -422,6 +421,17 @@ function cambiarTiempo() {
     console.log("Nuevo tiempo: " + nuevoTiempo);
     video.time(nuevoTiempo);
     nuevoTiempo = 0;
+    */
+    
+    var nuevoTiempo = duracion * (barraProgresoContainer.value() / 100);
+	video.time(nuevoTiempo);
+}
+
+function actualizarProgreso() {
+    tiempo = video.time();
+    progreso = (100 / duracion) * tiempo;
+    /*barraProgreso.style("width", progreso);*/
+    barraProgresoContainer.value(progreso);
 }
 
 function cambiarIconos(elem1, elem2) {
@@ -486,9 +496,11 @@ function bindEvents() {
     btnLoop.mouseClicked(iniciarLoop);
 
 
+    /*barraProgresoContainer = select(".barra-progreso");
+    barraProgresoContainer.mouseClicked(cambiarTiempo);*/
+    
     barraProgresoContainer = select(".barra-progreso");
-    barraProgresoContainer.mouseClicked(cambiarTiempo);
-
+    barraProgresoContainer.input(cambiarTiempo);
 
     // Controles de volumen
     sliderVolume = select(".video__control--volume");
