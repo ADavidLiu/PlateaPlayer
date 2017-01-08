@@ -6,6 +6,7 @@ Variables para el player
 
 var canvas,
     video,
+    videoNativo,
     controles,
     velocidadActual = 1,
     isReproduciendo = true,
@@ -65,6 +66,12 @@ function preload() {
     barraProgreso = select(".barra-progreso__progreso");
     video = createVideo("../videos/videoPrueba.mp4", function () {
         duracion = video.duration();
+        video.attribute("id", "video");
+        videoNativo = document.getElementById("video");
+        // Al terminar el video
+        videoNativo.onended = function () {
+            finalizarVideo();
+        }
         // Se lee el JSON
         var path = "../interactions/hotspot_geometry.json";
         json = loadJSON(path, determinarInteracciones);
@@ -82,30 +89,31 @@ Determinación de interacciones respectivas
 
 function determinarInteracciones() {
     //console.log(json);
+    console.log("Determinar interacciones");
     interactions = json.interactions;
     for (var i = 0; i < interactions.length; i++) {
         // Se determina el tipo de interacción
         var interaccion = interactions[i];
         switch (interaccion.type.event) {
-            case "HOT_SPOT":
-                for (var j = 0; j < interaccion.type.data.shift.length; j++) {
-                    switch(interaccion.type.data.shift[j].type) {
-                        case "ELLIPSE":
-                        case "POLY":
-                            crearGeometria(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
-                            break;
-                        case "IMAGE":
-                            crearImagen(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
-                            break;
-                        case "TEXT":
-                            crearTexto(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
-                            break;
-                        case "WEB_CONTENT":
-                            crearIframe(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
-                            break;
-                    }
+        case "HOT_SPOT":
+            for (var j = 0; j < interaccion.type.data.shift.length; j++) {
+                switch (interaccion.type.data.shift[j].type) {
+                case "ELLIPSE":
+                case "POLY":
+                    crearGeometria(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    break;
+                case "IMAGE":
+                    crearImagen(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    break;
+                case "TEXT":
+                    crearTexto(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    break;
+                case "WEB_CONTENT":
+                    crearIframe(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    break;
                 }
-                break;
+            }
+            break;
             // AQUÍ IRÍAN LOS CASOS DE LOS OTROS TIPOS DE INTERACCIÓN
         }
     }
@@ -151,10 +159,10 @@ function formarPoligono(elem, vertices) {
 function mostrarElemento(elem, transform, isPaused) {
     // Posiciona el elemento
     posicionarElemento(elem, transform.translate.y, transform.translate.x);
-    
+
     // Muestra el elemento
     var fin = transform.start_time + transform.duration;
-    var intervalo = setInterval(function() {
+    var intervalo = setInterval(function () {
         if (video.time() >= transform.start_time && video.time() < fin) {
             // Sólo se ejecuta una vez
             if (!hasClass(elem, "interactive--visible")) {
@@ -167,14 +175,14 @@ function mostrarElemento(elem, transform, isPaused) {
                 // Aplica las transformaciones distintas a posición/traslación
                 var transformacion = "";
                 switch (transform.type) {
-                    case "ROTATE":
-                        transformacion += "rotate(" + transform.rotate.deg + "deg) ";
-                        elem.style("transform", transformacion);
-                        break;
-                    case "SCALE":
-                        transformacion += "scale(" + transform.scale.factor + ") ";
-                        elem.style("transform", transformacion);
-                        break;
+                case "ROTATE":
+                    transformacion += "rotate(" + transform.rotate.deg + "deg) ";
+                    elem.style("transform", transformacion);
+                    break;
+                case "SCALE":
+                    transformacion += "scale(" + transform.scale.factor + ") ";
+                    elem.style("transform", transformacion);
+                    break;
                 }
                 // Se elimina después de cumplida su duración
                 var timeout = setTimeout(function () {
@@ -270,6 +278,11 @@ function draw() {
 
     // Barra de progreso
     actualizarProgreso();
+    
+    // Reinicia las interacciones si está en loop
+    if (isLooping && video.time() === 0) {
+        reiniciarInteracciones();
+    }
 }
 
 
@@ -316,6 +329,9 @@ function detenerVideo() {
 }
 
 function reanudarVideo() {
+    if (video.time() === 0) {
+        reiniciarInteracciones();
+    }
     video.play();
     isReproduciendo = true;
     cambiarIconos(btnPause, btnPlay);
@@ -346,13 +362,23 @@ function silenciarVideo() {
     //console.log(volumenActual);
 }
 
+function reiniciarInteracciones() {
+    var interacciones = selectAll(".interactive");
+    if (interacciones != undefined || interacciones != null) {
+        for (var i = 0; i < interacciones.length; i++) {
+            interacciones[i].remove();
+        }
+    }
+    determinarInteracciones();
+}
+
 function iniciarLoop() {
     if (!isLooping) {
         video.attribute("loop", true);
         btnLoop.addClass("active");
         isLooping = true;
         // Si se activa cuando ya haya acabado el video
-        if (tiempo === duracion) {
+        if (tiempo === duracion || tiempo === 0) {
             reanudarVideo();
         }
     } else {
@@ -409,28 +435,14 @@ function cambiarVolumen() {
 }
 
 function cambiarTiempo() {
-    /*
-    console.log("Mouse X: " + mouseX);
-    //var nuevoTiempo = (100/duracion) * (mouseX/duracion);
-    console.log(duracion);
-    var anchoTotal = barraProgresoContainer.style("width").split("px")[0];
-    var anchoProgreso = barraProgreso.style("width").split("px")[0] / duracion;
-    console.log("Ancho total: " + anchoTotal);
-    console.log("Ancho progreso: " + anchoProgreso);
-    var nuevoTiempo = duracion * (mouseX / 100);
-    console.log("Nuevo tiempo: " + nuevoTiempo);
-    video.time(nuevoTiempo);
-    nuevoTiempo = 0;
-    */
-    
     var nuevoTiempo = duracion * (barraProgresoContainer.value() / 100);
-	video.time(nuevoTiempo);
+    video.time(nuevoTiempo);
+    reiniciarInteracciones();
 }
 
 function actualizarProgreso() {
     tiempo = video.time();
     progreso = (100 / duracion) * tiempo;
-    /*barraProgreso.style("width", progreso);*/
     barraProgresoContainer.value(progreso);
 }
 
@@ -498,7 +510,7 @@ function bindEvents() {
 
     /*barraProgresoContainer = select(".barra-progreso");
     barraProgresoContainer.mouseClicked(cambiarTiempo);*/
-    
+
     barraProgresoContainer = select(".barra-progreso");
     barraProgresoContainer.input(cambiarTiempo);
 
@@ -533,7 +545,7 @@ function bindEvents() {
     // Controles del menú
     btnFilters = select(".menu__item-icon--filters");
     contentFilters = select(".menu__item-content--filters");
-    
+
     btnFilters.mouseClicked(function () {
         if (!filtersOpened) {
             contentFilters.addClass("menu__item-content--visible");
@@ -577,4 +589,10 @@ function bindEvents() {
     menu.mouseOver(mostrarControles);
     menu.mouseOut(ocultarControles);
     menu.mouseMoved(mostrarControles);
+}
+
+function finalizarVideo() {
+    if (!isLooping) {
+        detenerVideo();
+    }
 }
