@@ -591,6 +591,18 @@ function bindEvents() {
     menu.mouseMoved(mostrarControles);
 }
 
+function keyReleased() {
+    // Si se presiona spacebar
+    if (keyCode == 32) {
+        if (!isReproduciendo) {
+            reanudarVideo();
+        } else {
+            pausarVideo();
+        }
+    }
+    return false;
+}
+
 function finalizarVideo() {
     if (!isLooping) {
         detenerVideo();
