@@ -16,8 +16,9 @@
         6. FILTROS
         7. SLIDERS
         8. MENSAJE CENTRAL
+        9. INFORMACIÓN
     B. INTERACTIONS
-        9. INTERACCIONES
+        10. INTERACCIONES
 
 */
 
@@ -68,12 +69,17 @@ A. PLAYER
 @import "modules/_mensaje.scss";
 
 
+/*------------- 9. INFORMACIÓN -------------*/
+
+@import "modules/_informacion.scss";
+
+
 /*------------------------------------
 
 B. INTERACTIONS
 
 ------------------------------------*/
 
-/*------------- 9. INTERACCIONES -------------*/
+/*------------- 10. INTERACCIONES -------------*/
 
 @import "modules/_interacciones.scss";

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*------------- BASE IMPORT -------------*/
 html,
 body {
@@ -65,8 +66,9 @@ button {
         6. FILTROS
         7. SLIDERS
         8. MENSAJE CENTRAL
+        9. INFORMACIÓN
     B. INTERACTIONS
-        9. INTERACCIONES
+        10. INTERACCIONES
 
 */
 /*------------------------------------
@@ -411,12 +413,33 @@ input[type=range]:focus::-ms-fill-upper {
     font-size: 3rem;
     color: #f2f2f2; }
 
+/*------------- 9. INFORMACIÓN -------------*/
+.informacion {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 10rem;
+  width: 100%;
+  text-align: left;
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  padding: 2.3rem 1rem 0 2.3rem; }
+  .informacion__titulo {
+    font-size: 2rem;
+    font-family: "Helvetica", Arial, sans-serif;
+    color: #4cddb0;
+    opacity: 0;
+    transition: opacity .25s; }
+    .informacion__titulo--visible {
+      opacity: 1; }
+
 /*------------------------------------
 
 B. INTERACTIONS
 
 ------------------------------------*/
-/*------------- 9. INTERACCIONES -------------*/
+/*------------- 10. INTERACCIONES -------------*/
 .interactive {
   position: absolute;
   z-index: 3;

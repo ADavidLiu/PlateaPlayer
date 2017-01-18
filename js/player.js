@@ -40,7 +40,8 @@ var canvas,
     sliderInvert,
     mensaje,
     btnFullscreen,
-    btnNoFullscreen;
+    btnNoFullscreen,
+    label;
 
 
 
@@ -65,14 +66,17 @@ function preload() {
     // Se carga el video desde el sistema de archivos
     barraProgreso = select(".barra-progreso__progreso");
     video = createVideo("../videos/videoPrueba.mp4", function () {
+        var src = video.elt.currentSrc;
+        var titulo = src.substring(src.lastIndexOf("."), src.lastIndexOf("/") + 1);
+        cambiarTitulo(titulo);
         duracion = video.duration();
         video.attribute("id", "video");
         videoNativo = document.getElementById("video");
         // Al terminar el video
         videoNativo.onended = function () {
-            finalizarVideo();
-        }
-        // Se lee el JSON
+                finalizarVideo();
+            }
+            // Se lee el JSON
         var path = "../interactions/hotspot_geometry.json";
         json = loadJSON(path, determinarInteracciones);
     });
@@ -187,7 +191,9 @@ function mostrarElemento(elem, transform, isPaused) {
                 // Se elimina después de cumplida su duración
                 var timeout = setTimeout(function () {
                     elem.remove();
-                    reanudarVideo();
+                    if (isPaused) {
+                        reanudarVideo();
+                    }
                     clearTimeout(timeout);
                     console.log("INTERACCIÓN TERMINADA");
                 }, transform.duration * 1000);
@@ -260,6 +266,10 @@ function setup() {
     bindEvents();
 }
 
+function cambiarTitulo(titulo) {
+    label.html(titulo);
+}
+
 
 
 /*------------------------------------
@@ -278,7 +288,7 @@ function draw() {
 
     // Barra de progreso
     actualizarProgreso();
-    
+
     // Reinicia las interacciones si está en loop
     if (isLooping && video.time() === 0) {
         reiniciarInteracciones();
@@ -471,8 +481,9 @@ function mostrarControles() {
     if (!hasClass(controles, "video__controls--visible") && !hasClass(menu, "menu--visible")) {
         controles.addClass("video__controls--visible");
         menu.addClass("menu--visible");
+        label.addClass("informacion__titulo--visible");
         // Oculta los controles después de 4 segundos si no se mueve el mouse
-        setTimeout(ocultarControles, 4000);
+        var hideControls = setTimeout(ocultarControles, 4000);
     }
 }
 
@@ -480,6 +491,7 @@ function ocultarControles() {
     if (hasClass(controles, "video__controls--visible") && hasClass(menu, "menu--visible")) {
         controles.removeClass("video__controls--visible");
         menu.removeClass("menu--visible");
+        label.removeClass("informacion__titulo--visible");
     }
 }
 
@@ -487,6 +499,7 @@ function bindEvents() {
     // Pointer a los controles
     controles = select(".video__controls");
     menu = select(".menu");
+    label = select(".informacion__titulo");
 
     // Controles de playback
     btnStop = select(".video__control--stop");
@@ -596,8 +609,10 @@ function keyReleased() {
     if (keyCode == 32) {
         if (!isReproduciendo) {
             reanudarVideo();
+            ocultarControles();
         } else {
             pausarVideo();
+            mostrarControles(); 
         }
     }
     return false;

@@ -1,0 +1,22 @@
+.informacion {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10rem;
+    width: 100%;
+    text-align: left;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    padding: 2.3rem 1rem 0 2.3rem;
+    &__titulo {
+        font-size: 2rem;
+        font-family: "Helvetica", Arial, sans-serif;
+        color: $accent;
+        opacity: 0;
+        transition: opacity .25s;
+        &--visible {
+            opacity: 1;
+        }
+    }
+}
