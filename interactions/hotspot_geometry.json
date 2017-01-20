@@ -1402,6 +1402,36 @@
             "show_time": 12,
             "duration": 15,
             "isPaused": true
+        },
+        {
+            "id": "00007",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "shift": [
+                        {
+                            "type": "VIDEO",
+                            "src": "../videos/videoPrueba.mp4",
+                            "width": 50,
+                            "height": 50
+                        }
+                    ],
+                    "transform": [
+                        {
+                            "type": "TRANSLATE",
+                            "start_time": 8,
+                            "duration": 4,
+                            "translate": {
+                                "x": 30,
+                                "y": 25
+                            }
+                        }
+                    ]
+                }
+            },
+            "show_time": 8,
+            "duration": 4,
+            "isPaused": true
         }
     ]
 }

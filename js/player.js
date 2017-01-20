@@ -115,6 +115,9 @@ function determinarInteracciones() {
                 case "WEB_CONTENT":
                     crearIframe(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
                     break;
+                case "VIDEO":
+                    crearVideo(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    break;
                 }
             }
             break;
@@ -176,17 +179,21 @@ function mostrarElemento(elem, transform, isPaused) {
                 if (isPaused) {
                     pausarVideo();
                 }
+                // Si es un video, se reproduce
+                if (hasClass(elem, "interactive__video")) {
+                    elem.play();
+                }
                 // Aplica las transformaciones distintas a posición/traslación
                 var transformacion = "";
                 switch (transform.type) {
-                case "ROTATE":
-                    transformacion += "rotate(" + transform.rotate.deg + "deg) ";
-                    elem.style("transform", transformacion);
-                    break;
-                case "SCALE":
-                    transformacion += "scale(" + transform.scale.factor + ") ";
-                    elem.style("transform", transformacion);
-                    break;
+                    case "ROTATE":
+                        transformacion += "rotate(" + transform.rotate.deg + "deg) ";
+                        elem.style("transform", transformacion);
+                        break;
+                    case "SCALE":
+                        transformacion += "scale(" + transform.scale.factor + ") ";
+                        elem.style("transform", transformacion);
+                        break;
                 }
                 // Se elimina después de cumplida su duración
                 var timeout = setTimeout(function () {
@@ -196,7 +203,7 @@ function mostrarElemento(elem, transform, isPaused) {
                     }
                     clearTimeout(timeout);
                     console.log("INTERACCIÓN TERMINADA");
-                }, transform.duration * 1000);
+                }, transform.duration * 1000); // Se convierte a segundos
             } else {
                 clearInterval(intervalo);
             }
@@ -243,6 +250,14 @@ function crearIframe(shift, transform, isPaused) {
     iframe.style("height", shift.height + "%");
     iframe.addClass("interactive interactive__iframe");
     mostrarElemento(iframe, transform, isPaused);
+}
+
+function crearVideo(shift, transform, isPaused) {
+    var newVideo = createVideo(shift.src);
+    newVideo.addClass("interactive interactive__video");
+    newVideo.style("width", shift.width + "%");
+    newVideo.style("height", shift.height + "%");
+    mostrarElemento(newVideo, transform, isPaused);
 }
 
 
@@ -612,7 +627,7 @@ function keyReleased() {
             ocultarControles();
         } else {
             pausarVideo();
-            mostrarControles(); 
+            mostrarControles();
         }
     }
     return false;
