@@ -286,17 +286,15 @@ Funciones propias de "acción" para las interacciones
 
 function asignarAccion(elem, data) {
     var accion = data.action;
-    switch (accion) {
-    case "GOTO":
+    if (accion === "GOTO") {
         var target = data.target;
-        bindClick(elem, target);
-        break;
-    case "PLAY":
-
+        bindClick(elem, target, accion);
+    } else {
+        bindClick(elem, null, accion);
     }
 }
 
-function bindClick(elem, target) {
+function bindClick(elem, target, accion) {
     elem.mouseClicked(function () {
         if (target) {
             if (typeof target === "string") {
@@ -306,6 +304,14 @@ function bindClick(elem, target) {
             }
         } else {
             // Lógica para acciones que no tengan "target"
+            switch (accion) {
+            case "PLAY":
+                reanudarVideo();
+                break;
+            case "PAUSE":
+                pausarVideo();
+                break;
+            }
         }
     });
 }

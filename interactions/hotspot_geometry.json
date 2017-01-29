@@ -192,6 +192,7 @@
             "type": {
                 "event": "HOT_SPOT",
                 "data": {
+                    "action": "PLAY",
                     "shift": [
                         {
                             "type": "WEB_CONTENT",
@@ -222,6 +223,7 @@
             "type": {
                 "event": "HOT_SPOT",
                 "data": {
+                    "action": "PAUSE",
                     "shift": [
                         {
                             "type": "VIDEO",
@@ -245,7 +247,7 @@
             },
             "show_time": 8,
             "duration": 4,
-            "isPaused": true
+            "isPaused": false
         }
     ]
 }
