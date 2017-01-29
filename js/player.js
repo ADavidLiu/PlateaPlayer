@@ -104,19 +104,29 @@ function determinarInteracciones() {
                 switch (interaccion.type.data.shift[j].type) {
                 case "ELLIPSE":
                 case "POLY":
-                    crearGeometria(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+                        crearGeometria(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
+                    }
                     break;
                 case "IMAGE":
-                    crearImagen(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+                        crearImagen(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
+                    }
                     break;
                 case "TEXT":
-                    crearTexto(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+                        crearTexto(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
+                    }
                     break;
                 case "WEB_CONTENT":
-                    crearIframe(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+                        crearIframe(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
+                    }
                     break;
                 case "VIDEO":
-                    crearVideo(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+                        crearVideo(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
+                    }
                     break;
                 }
             }
@@ -127,14 +137,13 @@ function determinarInteracciones() {
 }
 
 
-
 /*------------------------------------
 
 Funciones para transformar las interacciones
 
 ------------------------------------*/
 
-function crearGeometria(shift, transform, isPaused) {
+function crearGeometria(data, shift, transform, isPaused) {
     // Crea el elemento con un 'div' vacío
     var elem = createDiv("");
     elem.parent("videoContainer");
@@ -151,6 +160,7 @@ function crearGeometria(shift, transform, isPaused) {
     elem.style("height", shift.geometry.height + "%");
     // Se manejan los tiempos de aparición
     mostrarElemento(elem, transform, isPaused);
+    asignarAccion(elem, data);
 }
 
 function formarPoligono(elem, vertices) {
@@ -186,14 +196,14 @@ function mostrarElemento(elem, transform, isPaused) {
                 // Aplica las transformaciones distintas a posición/traslación
                 var transformacion = "";
                 switch (transform.type) {
-                    case "ROTATE":
-                        transformacion += "rotate(" + transform.rotate.deg + "deg) ";
-                        elem.style("transform", transformacion);
-                        break;
-                    case "SCALE":
-                        transformacion += "scale(" + transform.scale.factor + ") ";
-                        elem.style("transform", transformacion);
-                        break;
+                case "ROTATE":
+                    transformacion += "rotate(" + transform.rotate.deg + "deg) ";
+                    elem.style("transform", transformacion);
+                    break;
+                case "SCALE":
+                    transformacion += "scale(" + transform.scale.factor + ") ";
+                    elem.style("transform", transformacion);
+                    break;
                 }
                 // Se elimina después de cumplida su duración
                 var timeout = setTimeout(function () {
@@ -219,15 +229,16 @@ function posicionarElemento(elem, y, x) {
     elem.style("left", x + "%");
 }
 
-function crearImagen(shift, transform, isPaused) {
+function crearImagen(data, shift, transform, isPaused) {
     var img = createImg(shift.image.src, shift.image.alt);
     img.parent("videoContainer");
     img.addClass("interactive interactive__img");
     img.style("width", shift.image.width + "%");
     mostrarElemento(img, transform, isPaused);
+    asignarAccion(img, data);
 }
 
-function crearTexto(shift, transform, isPaused) {
+function crearTexto(data, shift, transform, isPaused) {
     // Se crea el contenedor y se aplican los estilos propios
     var div = createDiv(shift.html);
     div.style("font-family", shift.font.family);
@@ -242,9 +253,10 @@ function crearTexto(shift, transform, isPaused) {
     div.parent("videoContainer");
     div.addClass("interactive interactive__text");
     mostrarElemento(div, transform, isPaused);
+    asignarAccion(div, data);
 }
 
-function crearIframe(shift, transform, isPaused) {
+function crearIframe(data, shift, transform, isPaused) {
     // Se crea el iFrame
     var iframe = createElement("iframe", "");
     iframe.parent("videoContainer");
@@ -253,14 +265,63 @@ function crearIframe(shift, transform, isPaused) {
     iframe.style("height", shift.height + "%");
     iframe.addClass("interactive interactive__iframe");
     mostrarElemento(iframe, transform, isPaused);
+    asignarAccion(iframe, data);
 }
 
-function crearVideo(shift, transform, isPaused) {
+function crearVideo(data, shift, transform, isPaused) {
     var newVideo = createVideo(shift.src);
     newVideo.addClass("interactive interactive__video");
     newVideo.style("width", shift.width + "%");
     newVideo.style("height", shift.height + "%");
     mostrarElemento(newVideo, transform, isPaused);
+    asignarAccion(newVideo, data);
+}
+
+
+/*------------------------------------
+
+Funciones propias de "acción" para las interacciones
+
+------------------------------------*/
+
+function asignarAccion(elem, data) {
+    var accion = data.action;
+    switch (accion) {
+    case "GOTO":
+        var target = data.target;
+        bindClick(elem, target);
+        break;
+    case "PLAY":
+
+    }
+}
+
+function bindClick(elem, target) {
+    elem.mouseClicked(function () {
+        if (target) {
+            if (typeof target === "string") {
+                abrirURL(target);
+            } else {
+                goto(target);
+            }
+        } else {
+            // Lógica para acciones que no tengan "target"
+        }
+    });
+}
+
+function abrirURL(target) {
+    var tab = window.open(target, "_blank");
+    if (tab) {
+        tab.focus();
+    } else {
+        alert("Por favor active las ventanas emergentes");
+    }
+}
+
+function goto(nuevoTiempo) {
+    video.time(nuevoTiempo);
+    reiniciarInteracciones();
 }
 
 

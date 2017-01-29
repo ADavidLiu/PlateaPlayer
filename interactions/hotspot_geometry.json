@@ -5,6 +5,7 @@
             "type": {
                 "event": "HOT_SPOT",
                 "data": {
+                    "action": "PAUSE",
                     "shift": [
                         {
                             "type": "POLY",
@@ -41,116 +42,42 @@
                                         "y": 75
                                     }
                                 ]
-                            }
-                        },
-                        {
-                            "type": "POLY",
-                            "geometry": {
-                                "width": 40,
-                                "height": 60,
-                                "vertices": [
-                                    {
-                                        "x": 0,
-                                        "y": 0
-                                    },
-                                    {
-                                        "x": 100,
-                                        "y": 0
-                                    },
-                                    {
-                                        "x": 100,
-                                        "y": 75
-                                    },
-                                    {
-                                        "x": 75,
-                                        "y": 75
-                                    },
-                                    {
-                                        "x": 75,
-                                        "y": 100
-                                    },
-                                    {
-                                        "x": 50,
-                                        "y": 75
-                                    },
-                                    {
-                                        "x": 0,
-                                        "y": 75
-                                    }
-                                ]
-                            }
-                        },
-                        {
-                            "type": "POLY",
-                            "geometry": {
-                                "width": 40,
-                                "height": 60,
-                                "vertices": [
-                                    {
-                                        "x": 0,
-                                        "y": 0
-                                    },
-                                    {
-                                        "x": 100,
-                                        "y": 0
-                                    },
-                                    {
-                                        "x": 100,
-                                        "y": 75
-                                    },
-                                    {
-                                        "x": 75,
-                                        "y": 75
-                                    },
-                                    {
-                                        "x": 75,
-                                        "y": 100
-                                    },
-                                    {
-                                        "x": 50,
-                                        "y": 75
-                                    },
-                                    {
-                                        "x": 0,
-                                        "y": 75
-                                    }
-                                ]
-                            }
-                        }
-                    ],
-                    "transform": [
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1,
-                            "duration": 5,
-                            "translate": {
-                                "x": 5,
-                                "y": 30
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 6,
-                            "duration": 5,
-                            "translate": {
-                                "x": 5,
-                                "y": 30
                             },
-                            "rotate": {
-                                "deg": 90
-                            }
-                        },
-                        {
-                            "type": "SCALE",
-                            "start_time": 6,
-                            "duration": 5,
-                            "translate": {
-                                "x": 5,
-                                "y": 30
-                            },
-                            "scale": {
-                                "factor": 1.2
-                            }
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 1,
+                                    "duration": 5,
+                                    "translate": {
+                                        "x": 5,
+                                        "y": 30
+                                    }
+                                },
+                                {
+                                    "type": "ROTATE",
+                                    "start_time": 6,
+                                    "duration": 5,
+                                    "translate": {
+                                        "x": 5,
+                                        "y": 30
+                                    },
+                                    "rotate": {
+                                        "deg": 90
+                                    }
+                                },
+                                {
+                                    "type": "SCALE",
+                                    "start_time": 6,
+                                    "duration": 5,
+                                    "translate": {
+                                        "x": 5,
+                                        "y": 30
+                                    },
+                                    "scale": {
+                                        "factor": 1.2
+                                    }
+                                }
+                            ]
                         }
                     ]
                 }
@@ -164,1149 +91,32 @@
             "type": {
                 "event": "HOT_SPOT",
                 "data": {
+                    "action": "GOTO",
+                    "target": "http://www.uao.edu.co/",
                     "shift": [
                         {
                             "type": "ELLIPSE",
                             "geometry": {
                                 "width": 23,
                                 "height": 40
-                            }
-                        }
-                    ],
-                    "transform": [
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1,
-                            "duration": 5,
-                            "translate": {
-                                "x": 70,
-                                "y": 10
-                            }
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 1,
+                                    "duration": 5,
+                                    "translate": {
+                                        "x": 70,
+                                        "y": 10
+                                    }
+                                }
+                            ]
                         }
                     ]
                 }
             },
             "show_time": 1,
             "duration": 6,
-            "isPaused": false
-        },
-        {
-            "id": "00003",
-            "type": {
-                "event": "HOT_SPOT",
-                "data": {
-                    "shift": [
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 10,
-                                "height": 10
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 11,
-                                "height": 11
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 12,
-                                "height": 12
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 13,
-                                "height": 13
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 14,
-                                "height": 14
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 15,
-                                "height": 15
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 16,
-                                "height": 16
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 17,
-                                "height": 17
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 18,
-                                "height": 18
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 19,
-                                "height": 19
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 20,
-                                "height": 20
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 19,
-                                "height": 19
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 18,
-                                "height": 18
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 17,
-                                "height": 17
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 16,
-                                "height": 16
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 15,
-                                "height": 15
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 14,
-                                "height": 14
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 13,
-                                "height": 13
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 12,
-                                "height": 12
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 11,
-                                "height": 11
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 10,
-                                "height": 10
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 11,
-                                "height": 11
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 12,
-                                "height": 12
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 13,
-                                "height": 13
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 14,
-                                "height": 14
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 15,
-                                "height": 15
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 16,
-                                "height": 16
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 17,
-                                "height": 17
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 18,
-                                "height": 18
-                            }
-    },
-                        {
-                            "type": "ELLIPSE",
-                            "geometry": {
-                                "width": 19,
-                                "height": 19
-                            }
-    }
-],
-                    "transform": [
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.03,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 51,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.06,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 52,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.09,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 53,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.12,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 54,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.15,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 55,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.18,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 56,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.21,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 57,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.25,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 58,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.28,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 59,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.31,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 60,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.33,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 61,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.36,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 62,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.39,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 63,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.42,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 64,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.45,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 65,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.48,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 66,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.51,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 67,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.54,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 68,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.57,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 69,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.60,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 70,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.63,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 71,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.66,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 72,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.69,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 73,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.72,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 74,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.75,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 75,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.78,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 76,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.81,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 77,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.84,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 78,
-                                "y": 50
-                            }
-    },
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 1.87,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 79,
-                                "y": 50
-                            }
-    }
-]
-                }
-            },
-            "show_time": 1,
-            "duration": 6,
-            "isPaused": false
-        },
-        {
-            "id": "00004",
-            "type": {
-                "event": "HOT_SPOT",
-                "data": {
-                    "shift": [
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "https://files.graphiq.com/stories/t2/tiny_cat_12573_8950.jpg",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        },
-                        {
-                            "type": "IMAGE",
-                            "image": {
-                                "src": "http://ericsteinborn.com/github-for-cats/img/forcats.png",
-                                "alt": "Cat yawning",
-                                "width": 20
-                            }
-                        }
-                    ],
-                    "transform": [
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 3,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 50
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.03,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 51
-                            },
-                            "rotate": {
-                                "deg": 1
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.06,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 52
-                            },
-                            "rotate": {
-                                "deg": 2
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.09,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 53
-                            },
-                            "rotate": {
-                                "deg": 3
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.12,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 54
-                            },
-                            "rotate": {
-                                "deg": 4
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.15,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 55
-                            },
-                            "rotate": {
-                                "deg": 5
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.18,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 56
-                            },
-                            "rotate": {
-                                "deg": 6
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.21,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 57
-                            },
-                            "rotate": {
-                                "deg": 7
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.24,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 58
-                            },
-                            "rotate": {
-                                "deg": 8
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.27,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 59
-                            },
-                            "rotate": {
-                                "deg": 9
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.3,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 60
-                            },
-                            "rotate": {
-                                "deg": 10
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.33,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 61
-                            },
-                            "rotate": {
-                                "deg": 11
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.36,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 62
-                            },
-                            "rotate": {
-                                "deg": 12
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.39,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 63
-                            },
-                            "rotate": {
-                                "deg": 13
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.42,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 64
-                            },
-                            "rotate": {
-                                "deg": 14
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.45,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 65
-                            },
-                            "rotate": {
-                                "deg": 15
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.48,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 66
-                            },
-                            "rotate": {
-                                "deg": 16
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.51,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 67
-                            },
-                            "rotate": {
-                                "deg": 17
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.54,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 68
-                            },
-                            "rotate": {
-                                "deg": 18
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.57,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 69
-                            },
-                            "rotate": {
-                                "deg": 19
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.6,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 70
-                            },
-                            "rotate": {
-                                "deg": 20
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.63,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 71
-                            },
-                            "rotate": {
-                                "deg": 21
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.66,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 72
-                            },
-                            "rotate": {
-                                "deg": 22
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.69,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 73
-                            },
-                            "rotate": {
-                                "deg": 23
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.72,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 74
-                            },
-                            "rotate": {
-                                "deg": 24
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.75,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 75
-                            },
-                            "rotate": {
-                                "deg": 25
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.78,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 76
-                            },
-                            "rotate": {
-                                "deg": 26
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.81,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 77
-                            },
-                            "rotate": {
-                                "deg": 27
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.84,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 78
-                            },
-                            "rotate": {
-                                "deg": 28
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.87,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 79
-                            },
-                            "rotate": {
-                                "deg": 29
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3.9,
-                            "duration": 0.03,
-                            "translate": {
-                                "x": 50,
-                                "y": 80
-                            },
-                            "rotate": {
-                                "deg": 30
-                            }
-                        }
-                    ]
-                }
-            },
-            "show_time": 3,
-            "duration": 10,
             "isPaused": false
         },
         {
@@ -1314,6 +124,8 @@
             "type": {
                 "event": "HOT_SPOT",
                 "data": {
+                    "action": "GOTO",
+                    "target": 10.5,
                     "shift": [
                         {
                             "type": "TEXT",
@@ -1327,7 +139,18 @@
                                 "backgroundColor": "#4cddb0",
                                 "lineHeight": 3,
                                 "padding": [0.6, 1]
-                            }
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 0,
+                                    "duration": 3,
+                                    "translate": {
+                                        "x": 35,
+                                        "y": 10
+                                    }
+                                }
+                            ]
                         },
                         {
                             "type": "TEXT",
@@ -1341,30 +164,21 @@
                                 "backgroundColor": "#500000",
                                 "lineHeight": 2,
                                 "padding": [0.6, 1]
-                            }
-                        }
-                    ],
-                    "transform": [
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 0,
-                            "duration": 3,
-                            "translate": {
-                                "x": 35,
-                                "y": 10
-                            }
-                        },
-                        {
-                            "type": "ROTATE",
-                            "start_time": 3,
-                            "duration": 5,
-                            "translate": {
-                                "x": 20,
-                                "y": 35
                             },
-                            "rotate": {
-                                "deg": -25
-                            }
+                            "transform": [
+                                {
+                                    "type": "ROTATE",
+                                    "start_time": 3,
+                                    "duration": 5,
+                                    "translate": {
+                                        "x": 20,
+                                        "y": 35
+                                    },
+                                    "rotate": {
+                                        "deg": -25
+                                    }
+                                }
+                            ]
                         }
                     ]
                 }
@@ -1381,20 +195,20 @@
                     "shift": [
                         {
                             "type": "WEB_CONTENT",
-                            "src": "http://www.andresliu.xyz/",
+                            "src": "http://www.uao.edu.co/",
                             "width": 80,
-                            "height": 80
-                        }
-                    ],
-                    "transform": [
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 12,
-                            "duration": 15,
-                            "translate": {
-                                "x": 10,
-                                "y": 5
-                            }
+                            "height": 80,
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 12,
+                                    "duration": 15,
+                                    "translate": {
+                                        "x": 10,
+                                        "y": 5
+                                    }
+                                }
+                            ]
                         }
                     ]
                 }
@@ -1413,18 +227,18 @@
                             "type": "VIDEO",
                             "src": "../videos/videoPrueba.mp4",
                             "width": 50,
-                            "height": 50
-                        }
-                    ],
-                    "transform": [
-                        {
-                            "type": "TRANSLATE",
-                            "start_time": 8,
-                            "duration": 4,
-                            "translate": {
-                                "x": 30,
-                                "y": 25
-                            }
+                            "height": 50,
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 8,
+                                    "duration": 4,
+                                    "translate": {
+                                        "x": 30,
+                                        "y": 25
+                                    }
+                                }
+                            ]
                         }
                     ]
                 }
