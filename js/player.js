@@ -105,27 +105,27 @@ function determinarInteracciones() {
                 case "ELLIPSE":
                 case "POLY":
                     for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
-                        crearGeometria(interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[j], interaccion.isPaused);
+                        crearGeometria(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
                     }
                     break;
                 case "IMAGE":
                     for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
-                        crearImagen(interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[j], interaccion.isPaused);
+                        crearImagen(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
                     }
                     break;
                 case "TEXT":
                     for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
-                        crearTexto(interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
+                        crearTexto(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
                     }
                     break;
                 case "WEB_CONTENT":
                     for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
-                        crearIframe(interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[j], interaccion.isPaused);
+                        crearIframe(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
                     }
                     break;
                 case "VIDEO":
                     for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
-                        crearVideo(interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[j], interaccion.isPaused);
+                        crearVideo(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
                     }
                     break;
                 }
@@ -137,14 +137,13 @@ function determinarInteracciones() {
 }
 
 
-
 /*------------------------------------
 
 Funciones para transformar las interacciones
 
 ------------------------------------*/
 
-function crearGeometria(shift, transform, isPaused) {
+function crearGeometria(data, shift, transform, isPaused) {
     // Crea el elemento con un 'div' vacío
     var elem = createDiv("");
     elem.parent("videoContainer");
@@ -160,7 +159,7 @@ function crearGeometria(shift, transform, isPaused) {
     elem.style("width", shift.geometry.width + "%");
     elem.style("height", shift.geometry.height + "%");
     // Se manejan los tiempos de aparición
-    mostrarElemento(elem, transform, isPaused);
+    mostrarElemento(elem, data, transform, isPaused);
 }
 
 function formarPoligono(elem, vertices) {
@@ -173,7 +172,7 @@ function formarPoligono(elem, vertices) {
     elem.style("clip-path", "polygon(" + verticesFormatted + ")");
 }
 
-function mostrarElemento(elem, transform, isPaused) {
+function mostrarElemento(elem, data, transform, isPaused) {
     // Posiciona el elemento
     posicionarElemento(elem, transform.translate.y, transform.translate.x);
 
@@ -229,15 +228,15 @@ function posicionarElemento(elem, y, x) {
     elem.style("left", x + "%");
 }
 
-function crearImagen(shift, transform, isPaused) {
+function crearImagen(data, shift, transform, isPaused) {
     var img = createImg(shift.image.src, shift.image.alt);
     img.parent("videoContainer");
     img.addClass("interactive interactive__img");
     img.style("width", shift.image.width + "%");
-    mostrarElemento(img, transform, isPaused);
+    mostrarElemento(img, data, transform, isPaused);
 }
 
-function crearTexto(shift, transform, isPaused) {
+function crearTexto(data, shift, transform, isPaused) {
     // Se crea el contenedor y se aplican los estilos propios
     var div = createDiv(shift.html);
     div.style("font-family", shift.font.family);
@@ -251,10 +250,10 @@ function crearTexto(shift, transform, isPaused) {
     div.style("padding", padding);
     div.parent("videoContainer");
     div.addClass("interactive interactive__text");
-    mostrarElemento(div, transform, isPaused);
+    mostrarElemento(div, data, transform, isPaused);
 }
 
-function crearIframe(shift, transform, isPaused) {
+function crearIframe(data, shift, transform, isPaused) {
     // Se crea el iFrame
     var iframe = createElement("iframe", "");
     iframe.parent("videoContainer");
@@ -262,15 +261,27 @@ function crearIframe(shift, transform, isPaused) {
     iframe.style("width", shift.width + "%");
     iframe.style("height", shift.height + "%");
     iframe.addClass("interactive interactive__iframe");
-    mostrarElemento(iframe, transform, isPaused);
+    mostrarElemento(iframe, data, transform, isPaused);
 }
 
-function crearVideo(shift, transform, isPaused) {
+function crearVideo(data, shift, transform, isPaused) {
     var newVideo = createVideo(shift.src);
     newVideo.addClass("interactive interactive__video");
     newVideo.style("width", shift.width + "%");
     newVideo.style("height", shift.height + "%");
-    mostrarElemento(newVideo, transform, isPaused);
+    mostrarElemento(newVideo, data, transform, isPaused);
+}
+
+
+/*------------------------------------
+
+Funciones propias de "acción" para las interacciones
+
+------------------------------------*/
+
+function goto(nuevoTiempo) {
+    video.time(nuevoTiempo);
+    reiniciarInteracciones();
 }
 
 

@@ -5,6 +5,7 @@
             "type": {
                 "event": "HOT_SPOT",
                 "data": {
+                    "action": "PAUSE",
                     "shift": [
                         {
                             "type": "POLY",
@@ -90,6 +91,7 @@
             "type": {
                 "event": "HOT_SPOT",
                 "data": {
+                    "action": "PLAY",
                     "shift": [
                         {
                             "type": "ELLIPSE",
@@ -121,6 +123,8 @@
             "type": {
                 "event": "HOT_SPOT",
                 "data": {
+                    "action": "GOTO",
+                    "target": 10.5,
                     "shift": [
                         {
                             "type": "TEXT",
