@@ -201,6 +201,9 @@ function mostrarElemento(elem, transform, isPaused) {
                     if (isPaused) {
                         reanudarVideo();
                     }
+                    if (hasClass(elem, "interactive__video")) {
+                        elem.stop();
+                    }
                     clearTimeout(timeout);
                     console.log("INTERACCIÓN TERMINADA");
                 }, transform.duration * 1000); // Se convierte a segundos
