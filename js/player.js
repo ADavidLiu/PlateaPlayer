@@ -104,19 +104,29 @@ function determinarInteracciones() {
                 switch (interaccion.type.data.shift[j].type) {
                 case "ELLIPSE":
                 case "POLY":
-                    crearGeometria(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+                        crearGeometria(interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[j], interaccion.isPaused);
+                    }
                     break;
                 case "IMAGE":
-                    crearImagen(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+                        crearImagen(interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[j], interaccion.isPaused);
+                    }
                     break;
                 case "TEXT":
-                    crearTexto(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+                        crearTexto(interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
+                    }
                     break;
                 case "WEB_CONTENT":
-                    crearIframe(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+                        crearIframe(interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[j], interaccion.isPaused);
+                    }
                     break;
                 case "VIDEO":
-                    crearVideo(interaccion.type.data.shift[j], interaccion.type.data.transform[j], interaccion.isPaused);
+                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+                        crearVideo(interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[j], interaccion.isPaused);
+                    }
                     break;
                 }
             }
