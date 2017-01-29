@@ -91,7 +91,8 @@
             "type": {
                 "event": "HOT_SPOT",
                 "data": {
-                    "action": "PLAY",
+                    "action": "GOTO",
+                    "target": "http://www.uao.edu.co/",
                     "shift": [
                         {
                             "type": "ELLIPSE",
@@ -194,7 +195,7 @@
                     "shift": [
                         {
                             "type": "WEB_CONTENT",
-                            "src": "http://www.andresliu.xyz/",
+                            "src": "http://www.uao.edu.co/",
                             "width": 80,
                             "height": 80,
                             "transform": [
