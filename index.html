@@ -29,29 +29,39 @@
         <!-- Fin del mensaje central -->
 
         <!-- Contenedor del menu de video -->
-        <div class="menu">
-            <div class="menu__item-icon menu__item-icon--filters">
-                <i class="fa fa-magic" aria-hidden="true"></i>
+        <div class="menu" id="menu">
+            <div class="menu__item menu__item--lista">
+                <div class="menu__item-icon menu__item-icon--filters">
+                    <i class="fa fa-magic" aria-hidden="true"></i>
+                </div>
+                <div class="menu__item-content menu__item-content--filters">
+                    <ul class="filters">
+                        <li class="clearfix">
+                            <label>Blur</label>
+                            <input type="range" value="0" min="0" max="100" step="1" class="filters__slider filters__slider--blur">
+                        </li>
+                        <li class="clearfix">
+                            <label>Grayscale</label>
+                            <input type="range" value="0" min="0" max="100" step="1" class="filters__slider filters__slider--grayscale">
+                        </li>
+                        <li class="clearfix">
+                            <label>Sepia</label>
+                            <input type="range" value="0" min="0" max="100" step="1" class="filters__slider filters__slider--sepia">
+                        </li>
+                        <li class="clearfix">
+                            <label>Invert</label>
+                            <input type="range" value="0" min="0" max="100" step="1" class="filters__slider filters__slider--invert">
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="menu__item-content menu__item-content--filters">
-                <ul class="filters">
-                    <li class="clearfix">
-                        <label>Blur</label>
-                        <input type="range" value="0" min="0" max="100" step="1" class="filters__slider filters__slider--blur">
-                    </li>
-                    <li class="clearfix">
-                        <label>Grayscale</label>
-                        <input type="range" value="0" min="0" max="100" step="1" class="filters__slider filters__slider--grayscale">
-                    </li>
-                    <li class="clearfix">
-                        <label>Sepia</label>
-                        <input type="range" value="0" min="0" max="100" step="1" class="filters__slider filters__slider--sepia">
-                    </li>
-                    <li class="clearfix">
-                        <label>Invert</label>
-                        <input type="range" value="0" min="0" max="100" step="1" class="filters__slider filters__slider--invert">
-                    </li>
-                </ul>
+            <div class="menu__item menu__item--hidden menu__item--index">
+                <div class="menu__item-icon menu__item-icon--index">
+                    <i class="fa fa-list-ul" aria-hidden="true"></i>
+                </div>
+                <div class="menu__item-content menu__item-content--index">
+                    <ul class="index" id="indexLista"></ul>
+                </div>
             </div>
         </div>
         <!-- Contenedor del menu de video -->
@@ -63,11 +73,11 @@
             <!--<div class="barra-progreso">
                 <div class="barra-progreso__progreso"></div>
             </div>-->
-            
-            
+
+
             <input type="range" class="barra-progreso" min="0" max="100" step="0.05">
-            
-            
+
+
             <!-- Fin barra de progreso -->
 
             <!-- Controles de playback -->

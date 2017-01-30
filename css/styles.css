@@ -229,7 +229,7 @@ canvas {
 /*------------- 5. MENU -------------*/
 .menu {
   position: absolute;
-  z-index: 4;
+  z-index: 999;
   top: 2.3rem;
   right: 4.6rem;
   color: #f2f2f2;
@@ -240,42 +240,51 @@ canvas {
   pointer-events: none; }
   .menu--visible {
     opacity: 1; }
-  .menu__item-icon {
-    pointer-events: all;
-    background-color: rgba(64, 64, 64, 0.5);
-    display: inline-block;
-    height: 2.3rem;
-    width: 2.3rem;
+  .menu__item {
     position: absolute;
-    top: 0;
-    right: -2.3rem;
-    cursor: pointer;
-    border-radius: 2px; }
-    .menu__item-icon i {
+    width: 100%; }
+    .menu__item + .menu__item {
+      margin-top: 3rem; }
+      .menu__item + .menu__item .menu__item-icon + .menu__item + .menu__item .menu__item-icon {
+        margin-top: 3rem; }
+    .menu__item--hidden {
+      display: none; }
+    .menu__item-icon {
+      pointer-events: all;
+      background-color: rgba(64, 64, 64, 0.5);
+      display: inline-block;
+      height: 2.3rem;
+      width: 2.3rem;
       position: absolute;
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      font-size: 1rem; }
-  .menu__item-content {
-    pointer-events: all;
-    display: inline-block;
-    text-align: left;
-    width: 100%;
-    background-color: rgba(64, 64, 64, 0.5);
-    padding: 15px;
-    border-radius: 2px;
-    position: relative;
-    right: 0;
-    opacity: 0;
-    transition: all .25s;
-    visibility: hidden; }
-    .menu__item-content--visible {
-      opacity: 1;
-      right: 15px;
-      visibility: visible; }
+      top: 0;
+      right: -2.3rem;
+      cursor: pointer;
+      border-radius: 2px; }
+      .menu__item-icon i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        font-size: 1rem; }
+    .menu__item-content {
+      pointer-events: all;
+      display: inline-block;
+      text-align: left;
+      width: 100%;
+      background-color: rgba(64, 64, 64, 0.5);
+      padding: 15px;
+      border-radius: 2px;
+      position: relative;
+      right: 0;
+      opacity: 0;
+      transition: all .25s;
+      visibility: hidden; }
+      .menu__item-content--visible {
+        opacity: 1;
+        right: 15px;
+        visibility: visible; }
 
 /*------------- 6. FILTROS -------------*/
 .filters li + li {
@@ -468,8 +477,11 @@ B. INTERACTIONS
     .interactive__iframe:hover {
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
   .interactive__video {
-    z-index: 5;
+    z-index: 3;
     background-color: #000000;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); }
     .interactive__video:hover {
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
+  .interactive__index-item {
+    cursor: pointer;
+    position: static; }

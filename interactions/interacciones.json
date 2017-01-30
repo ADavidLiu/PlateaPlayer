@@ -190,12 +190,11 @@
         {
             "id": "00006",
             "type": {
-                "event": "HOT_SPOT",
+                "event": "WEB_CONTENT",
                 "data": {
                     "action": "PLAY",
                     "shift": [
                         {
-                            "type": "WEB_CONTENT",
                             "src": "http://www.uao.edu.co/",
                             "width": 80,
                             "height": 80,
@@ -234,7 +233,7 @@
                                 {
                                     "type": "TRANSLATE",
                                     "start_time": 8,
-                                    "duration": 4,
+                                    "duration": 3,
                                     "translate": {
                                         "x": 30,
                                         "y": 25
@@ -246,7 +245,66 @@
                 }
             },
             "show_time": 8,
-            "duration": 4,
+            "duration": 3,
+            "isPaused": false
+        },
+        {
+            "id": "00007",
+            "type": {
+                "event": "INDEX",
+                "data": {
+                    "action": "GOTO",
+                    "shift": [
+                        {
+                            "label": "Link dinámico interno",
+                            "font": {
+                                "family": "Arial",
+                                "size": 1,
+                                "color": "#ffffff",
+                                "decoration": "none",
+                                "weight": "400",
+                                "backgroundColor": "transparent",
+                                "lineHeight": 1.5,
+                                "padding": [0, 0]
+                            },
+                            "transform": [
+                                {
+                                    "target": 3.5,
+                                    "start_time": 5,
+                                    "duration": 5
+                                },
+                                {
+                                    "target": 15,
+                                    "start_time": 10,
+                                    "duration": 5
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Siguiente video",
+                            "font": {
+                                "family": "Arial",
+                                "size": 1,
+                                "color": "#ffffff",
+                                "decoration": "none",
+                                "weight": "400",
+                                "backgroundColor": "transparent",
+                                "lineHeight": 1.5,
+                                "padding": [0, 0]
+                            },
+                            "transform": [
+                                {
+                                    "target": "../videos/video2.mp4",
+                                    "start_time": 5,
+                                    "duration": 10
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 5,
+            "duration": 10,
             "isPaused": false
         }
     ]

@@ -41,7 +41,11 @@ var canvas,
     mensaje,
     btnFullscreen,
     btnNoFullscreen,
-    label;
+    label,
+    menuIndex,
+    btnIndex,
+    contentIndex,
+    indexOpened;
 
 
 
@@ -77,7 +81,7 @@ function preload() {
                 finalizarVideo();
             }
             // Se lee el JSON
-        var path = "../interactions/hotspot_geometry.json";
+        var path = "../interactions/interacciones.json";
         json = loadJSON(path, determinarInteracciones);
     });
     video.parent("videoContainer");
@@ -95,43 +99,40 @@ function determinarInteracciones() {
     //console.log(json);
     console.log("Determinar interacciones");
     interactions = json.interactions;
+    // Se determina el tipo de interacción
     for (var i = 0; i < interactions.length; i++) {
-        // Se determina el tipo de interacción
         var interaccion = interactions[i];
-        switch (interaccion.type.event) {
-        case "HOT_SPOT":
-            for (var j = 0; j < interaccion.type.data.shift.length; j++) {
-                switch (interaccion.type.data.shift[j].type) {
-                case "ELLIPSE":
-                case "POLY":
-                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+        for (var j = 0; j < interaccion.type.data.shift.length; j++) {
+            for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+                switch (interaccion.type.event) {
+                case "HOT_SPOT":
+                    switch (interaccion.type.data.shift[j].type) {
+                    case "ELLIPSE":
+                    case "POLY":
                         crearGeometria(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
-                    }
-                    break;
-                case "IMAGE":
-                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+                        break;
+                    case "IMAGE":
                         crearImagen(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
-                    }
-                    break;
-                case "TEXT":
-                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
+                        break;
+                    case "TEXT":
                         crearTexto(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
+                        break;
+                    case "WEB_CONTENT":
+                        crearIframe(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
+                        break;
+                    case "VIDEO":
+                        crearVideo(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
+                        break;
                     }
                     break;
                 case "WEB_CONTENT":
-                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
-                        crearIframe(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
-                    }
+                    crearIframe(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
                     break;
-                case "VIDEO":
-                    for (var k = 0; k < interaccion.type.data.shift[j].transform.length; k++) {
-                        crearVideo(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
-                    }
+                case "INDEX":
+                    crearIndex(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k]);
                     break;
                 }
             }
-            break;
-            // AQUÍ IRÍAN LOS CASOS DE LOS OTROS TIPOS DE INTERACCIÓN
         }
     }
 }
@@ -174,13 +175,19 @@ function formarPoligono(elem, vertices) {
 }
 
 function mostrarElemento(elem, transform, isPaused) {
-    // Posiciona el elemento
-    posicionarElemento(elem, transform.translate.y, transform.translate.x);
+    // Posiciona el elemento si no el elemento no es un index
+    if (!hasClass(elem, "interactive__index-item")) {
+        posicionarElemento(elem, transform.translate.y, transform.translate.x);
+    }
 
     // Muestra el elemento
     var fin = transform.start_time + transform.duration;
     var intervalo = setInterval(function () {
         if (video.time() >= transform.start_time && video.time() < fin) {
+            // Si es un elemento index, muestra el botón
+            if (hasClass(elem, "interactive__index-item")) {
+                menuIndex.removeClass("menu__item--hidden");
+            }
             // Sólo se ejecuta una vez
             if (!hasClass(elem, "interactive--visible")) {
                 // Muestra el elemento
@@ -207,12 +214,19 @@ function mostrarElemento(elem, transform, isPaused) {
                 }
                 // Se elimina después de cumplida su duración
                 var timeout = setTimeout(function () {
+                    // Elimina el elemento del DOM
                     elem.remove();
+                    // Si pausó el video, lo reanuda
                     if (isPaused) {
                         reanudarVideo();
                     }
+                    // Si el elemento es un video, lo detiene
                     if (hasClass(elem, "interactive__video")) {
                         elem.stop();
+                    }
+                    // Si es un index, oculta el botón
+                    if (hasClass(elem, "interactive__index-item")) {
+                        menuIndex.addClass("menu__item--hidden");
                     }
                     clearTimeout(timeout);
                     console.log("INTERACCIÓN TERMINADA");
@@ -235,7 +249,7 @@ function crearImagen(data, shift, transform, isPaused) {
     img.addClass("interactive interactive__img");
     img.style("width", shift.image.width + "%");
     mostrarElemento(img, transform, isPaused);
-    asignarAccion(img, data);
+    asignarAccion(img, data, transform);
 }
 
 function crearTexto(data, shift, transform, isPaused) {
@@ -253,7 +267,7 @@ function crearTexto(data, shift, transform, isPaused) {
     div.parent("videoContainer");
     div.addClass("interactive interactive__text");
     mostrarElemento(div, transform, isPaused);
-    asignarAccion(div, data);
+    asignarAccion(div, data, transform);
 }
 
 function crearIframe(data, shift, transform, isPaused) {
@@ -265,7 +279,7 @@ function crearIframe(data, shift, transform, isPaused) {
     iframe.style("height", shift.height + "%");
     iframe.addClass("interactive interactive__iframe");
     mostrarElemento(iframe, transform, isPaused);
-    asignarAccion(iframe, data);
+    asignarAccion(iframe, data, transform);
 }
 
 function crearVideo(data, shift, transform, isPaused) {
@@ -274,7 +288,30 @@ function crearVideo(data, shift, transform, isPaused) {
     newVideo.style("width", shift.width + "%");
     newVideo.style("height", shift.height + "%");
     mostrarElemento(newVideo, transform, isPaused);
-    asignarAccion(newVideo, data);
+    asignarAccion(newVideo, data, transform);
+}
+
+function crearIndex(data, shift, transform) {
+    var label = shift.label;
+    var item = createElement("li", label);
+    item.parent("indexLista");
+    item.addClass("interactive interactive__index-item");
+    mostrarElemento(item, transform, false);
+    asignarAccion(item, data, transform);
+}
+
+function eliminarInteracciones() {
+    var interacciones = selectAll(".interactive");
+    if (interacciones != undefined || interacciones != null) {
+        for (var i = 0; i < interacciones.length; i++) {
+            interacciones[i].remove();
+        }
+    }
+}
+
+function reiniciarInteracciones() {
+    eliminarInteracciones();
+    determinarInteracciones();
 }
 
 
@@ -284,10 +321,14 @@ Funciones propias de "acción" para las interacciones
 
 ------------------------------------*/
 
-function asignarAccion(elem, data) {
+function asignarAccion(elem, data, transform) {
     var accion = data.action;
     if (accion === "GOTO") {
-        var target = data.target;
+        if (!hasClass(elem, "interactive__index-item")) {
+            var target = data.target;
+        } else {
+            var target = transform.target;
+        }
         bindClick(elem, target, accion);
     } else {
         bindClick(elem, null, accion);
@@ -298,8 +339,15 @@ function bindClick(elem, target, accion) {
     elem.mouseClicked(function () {
         if (target) {
             if (typeof target === "string") {
-                abrirURL(target);
+                if (hasClass(elem, "interactive__index-item")) {
+                    console.log("cambiarVideo()");
+                    cambiarVideo(target);
+                } else {
+                    console.log("abrirURL()");
+                    abrirURL(target);
+                }
             } else {
+                console.log("goto()");
                 goto(target);
             }
         } else {
@@ -314,6 +362,13 @@ function bindClick(elem, target, accion) {
             }
         }
     });
+}
+
+function cambiarVideo(target) {
+    video.src = target;
+    video.time(0);
+    eliminarInteracciones();
+    video.play();
 }
 
 function abrirURL(target) {
@@ -455,16 +510,6 @@ function silenciarVideo() {
         isMuted = false;
     }
     //console.log(volumenActual);
-}
-
-function reiniciarInteracciones() {
-    var interacciones = selectAll(".interactive");
-    if (interacciones != undefined || interacciones != null) {
-        for (var i = 0; i < interacciones.length; i++) {
-            interacciones[i].remove();
-        }
-    }
-    determinarInteracciones();
 }
 
 function iniciarLoop() {
@@ -651,6 +696,21 @@ function bindEvents() {
         } else {
             contentFilters.removeClass("menu__item-content--visible");
             filtersOpened = false;
+        }
+    });
+    
+    // Index del video
+    btnIndex = select(".menu__item-icon--index");
+    contentIndex = select(".menu__item-content--index");
+    menuIndex = select(".menu__item--index");
+    
+    btnIndex.mouseClicked(function () {
+        if (!indexOpened) {
+            contentIndex.addClass("menu__item-content--visible");
+            indexOpened = true;
+        } else {
+            contentIndex.removeClass("menu__item-content--visible");
+            indexOpened = false;
         }
     });
 
