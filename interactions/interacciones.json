@@ -192,7 +192,7 @@
             "type": {
                 "event": "WEB_CONTENT",
                 "data": {
-                    "action": "PLAY",
+                    "action": "NONE",
                     "shift": [
                         {
                             "src": "http://www.uao.edu.co/",
@@ -222,7 +222,7 @@
             "type": {
                 "event": "HOT_SPOT",
                 "data": {
-                    "action": "PAUSE",
+                    "action": "PLAY",
                     "shift": [
                         {
                             "type": "VIDEO",
@@ -246,7 +246,7 @@
             },
             "show_time": 8,
             "duration": 3,
-            "isPaused": false
+            "isPaused": true
         },
         {
             "id": "00007",
@@ -256,40 +256,52 @@
                     "action": "GOTO",
                     "shift": [
                         {
-                            "label": "Link dinámico interno",
+                            "label": "Ir a 0:0:15",
                             "font": {
                                 "family": "Arial",
-                                "size": 1,
+                                "size": 1.5,
                                 "color": "#ffffff",
                                 "decoration": "none",
                                 "weight": "400",
                                 "backgroundColor": "transparent",
-                                "lineHeight": 1.5,
                                 "padding": [0, 0]
                             },
                             "transform": [
                                 {
-                                    "target": 3.5,
-                                    "start_time": 5,
-                                    "duration": 5
-                                },
-                                {
                                     "target": 15,
-                                    "start_time": 10,
-                                    "duration": 5
+                                    "start_time": 1,
+                                    "duration": 10
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Ir a 0:0:20",
+                            "font": {
+                                "family": "Arial",
+                                "size": 1.5,
+                                "color": "#ffffff",
+                                "decoration": "none",
+                                "weight": "300",
+                                "backgroundColor": "green",
+                                "padding": [1, 1]
+                            },
+                            "transform": [
+                                {
+                                    "target": 20,
+                                    "start_time": 1,
+                                    "duration": 20
                                 }
                             ]
                         },
                         {
                             "label": "Siguiente video",
                             "font": {
-                                "family": "Arial",
-                                "size": 1,
-                                "color": "#ffffff",
-                                "decoration": "none",
-                                "weight": "400",
+                                "family": "Times New Roman",
+                                "size": 2,
+                                "color": "#e5d620",
+                                "decoration": "underline",
+                                "weight": "700",
                                 "backgroundColor": "transparent",
-                                "lineHeight": 1.5,
                                 "padding": [0, 0]
                             },
                             "transform": [
@@ -304,7 +316,7 @@
                 }
             },
             "show_time": 5,
-            "duration": 10,
+            "duration": 15,
             "isPaused": false
         }
     ]
