@@ -1,0 +1,69 @@
+/******************************************************************
+
+REMOVER TODOS LOS COMENTARIOS ANTES DE EMPLEAR ESTE ESQUEMA
+
+******************************************************************/
+
+{
+    "interactions": [
+        {
+            "id": "00001", // Identificador
+            "type": {
+                "event": "SENSE", // Evento de tipo "sensorial"
+                "data": {
+                    "action": "EXTERNAL", // Acción externa al reproductor/video
+                    "shift": [
+                        {
+                            // Características propias del elemento/objeto generador del evento
+                            "trigger": "ARDUINO",
+                            "connection": {
+                                // Características propias de la conexión empleada
+                                "type": "SERIAL",
+                                "data": {
+                                    "COM": "COM3"
+                                    /*
+                                        .,
+                                        .,
+                                        .
+                                    */
+                                }
+                            },
+                            // Características propias de cada interacción del evento
+                            "transform": [
+                                {
+                                    "actuator": {
+                                        "value": 300,
+                                        // Características específicas del actuador
+                                        /*
+                                            .,
+                                            .,
+                                            .
+                                        */
+                                    },
+                                    "start_time": 10,
+                                    "duration": 5
+                                },
+                                {
+                                    "actuator": {
+                                        "value": 100,
+                                        // Características específicas del actuador
+                                        /*
+                                            .,
+                                            .,
+                                            .
+                                        */
+                                    },
+                                    "start_time": 15,
+                                    "duration": 5
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 10,
+            "duration": 10,
+            "isPaused": false
+        }
+    ]
+}
