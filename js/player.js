@@ -143,7 +143,7 @@ function determinarInteracciones() {
             }
         }
     } else {
-        alert("JSON no cargado");
+        console.log("JSON no cargado");
     }
 }
 
