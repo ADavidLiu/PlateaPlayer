@@ -138,6 +138,9 @@ function determinarInteracciones() {
                     case "INDEX":
                         crearIndex(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k]);
                         break;
+                    case "SENSE":
+                        crearSense(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k]);
+                        break;
                     }
                 }
             }
@@ -195,6 +198,7 @@ function mostrarElemento(elem, transform, isPaused) {
     var intervalo = setInterval(function () {
         // Se agrega al array global
         intervalos.push(intervalo);
+        // Si está en su rango de "aparición"
         if (video.time() >= transform.start_time && video.time() < fin) {
             // Si es un elemento index, muestra el botón
             if (hasClass(elem, "interactive__index-item")) {
@@ -305,6 +309,11 @@ function crearIndex(data, shift, transform) {
     item.addClass("interactive interactive__index-item");
     mostrarElemento(item, transform, false);
     asignarAccion(item, data, transform);
+}
+
+function crearSense(data, shift, transform) {
+    // AQUÍ VA EL CÓDIGO PARA INTERACCIONES TIPO SENSE
+    
 }
 
 function styleText(elem, shift) {
