@@ -70,6 +70,8 @@ Lectura del JSON con las interacciones
 ------------------------------------*/
 
 function preload() {
+    // Se crea la estructura HTML contenedora
+    crearEstructura();
     // Se carga el video desde el sistema de archivos
     barraProgreso = select(".barra-progreso__progreso");
     video = createVideo("../videos/videoPrueba.mp4", function () {
@@ -462,6 +464,224 @@ function setup() {
 
 function cambiarTitulo(titulo) {
     label.html(titulo);
+}
+
+function crearEstructura() {
+    // Crea los contenedores principales
+    var videoContainer = createDiv("");
+    var informacion = createDiv("");
+    var mensaje = createDiv("");
+    var menu = createDiv("");
+    var videoControls = createDiv("");
+    
+    // Crea el contenedor padre
+    videoContainer.addClass("video__container");
+    videoContainer.attribute("id", "videoContainer");
+    
+    // Crea la información superior
+    informacion.parent(videoContainer);
+    informacion.addClass("informacion");
+    var informacionTitulo = createElement("h1", "");
+    informacionTitulo.parent(informacion);
+    informacionTitulo.addClass("informacion__titulo");
+    
+    // Crea el mensaje central
+    mensaje.parent(videoContainer);
+    mensaje.addClass("mensaje");
+    mensaje.attribute("id", "mensajeContainer");
+    
+    // Crea el menú lateral
+    menu.parent(videoContainer);
+    menu.addClass("menu");
+    menu.attribute("menu");
+    
+    // Crea el menú de filtros
+    var menuItemLista = createDiv("");
+    menuItemLista.parent(menu);
+    menuItemLista.addClass("menu__item menu__item--lista");
+    var menuItemIconLista = createDiv("");
+    menuItemIconLista.parent(menuItemLista);
+    menuItemIconLista.addClass("menu__item-icon menu__item-icon--filters");
+    var menuItemIconListaI = createElement("i", "");
+    menuItemIconListaI.parent(menuItemIconLista);
+    menuItemIconListaI.addClass("fa fa-magic");
+    var menuItemContentLista = createDiv("");
+    menuItemContentLista.parent(menuItemLista);
+    menuItemContentLista.addClass("menu__item-content menu__item-content--filters");
+    var filters = createElement("ul", "");
+    filters.parent(menuItemContentLista);
+    filters.addClass("filters");
+    
+    var filtersBlur = createElement("li", "");
+    filtersBlur.parent(filters);
+    filtersBlur.addClass("clearfix");
+    var filtersBlurLabel = createElement("label", "Blur");
+    filtersBlurLabel.parent(filtersBlur);
+    var filtersBlurSlider = createElement("input", "");
+    filtersBlurSlider.parent(filtersBlur);
+    filtersBlurSlider.addClass("filters__slider filters__slider--blur");
+    filtersBlurSlider.attribute("type", "range");
+    filtersBlurSlider.attribute("value", "0");
+    filtersBlurSlider.attribute("min", "0");
+    filtersBlurSlider.attribute("max", "100");
+    filtersBlurSlider.attribute("step", "1");
+    
+    var filtersGrayscale = createElement("li", "");
+    filtersGrayscale.parent(filters);
+    filtersGrayscale.addClass("clearfix");
+    var filtersGrayscaleLabel = createElement("label", "Grayscale");
+    filtersGrayscaleLabel.parent(filtersGrayscale);
+    var filtersGrayscaleSlider = createElement("input", "");
+    filtersGrayscaleSlider.parent(filtersGrayscale);
+    filtersGrayscaleSlider.addClass("filters__slider filters__slider--grayscale");
+    filtersGrayscaleSlider.attribute("type", "range");
+    filtersGrayscaleSlider.attribute("value", "0");
+    filtersGrayscaleSlider.attribute("min", "0");
+    filtersGrayscaleSlider.attribute("max", "100");
+    filtersGrayscaleSlider.attribute("step", "1");
+    
+    var filtersSepia = createElement("li", "");
+    filtersSepia.parent(filters);
+    filtersSepia.addClass("clearfix");
+    var filtersSepiaLabel = createElement("label", "Sepia");
+    filtersSepiaLabel.parent(filtersSepia);
+    var filtersSepiaSlider = createElement("input", "");
+    filtersSepiaSlider.parent(filtersSepia);
+    filtersSepiaSlider.addClass("filters__slider filters__slider--sepia");
+    filtersSepiaSlider.attribute("type", "range");
+    filtersSepiaSlider.attribute("value", "0");
+    filtersSepiaSlider.attribute("min", "0");
+    filtersSepiaSlider.attribute("max", "100");
+    filtersSepiaSlider.attribute("step", "1");
+    
+    var filtersInvert = createElement("li", "");
+    filtersInvert.parent(filters);
+    filtersInvert.addClass("clearfix");
+    var filtersInvertLabel = createElement("label", "Invert");
+    filtersInvertLabel.parent(filtersInvert);
+    var filtersInvertSlider = createElement("input", "");
+    filtersInvertSlider.parent(filtersInvert);
+    filtersInvertSlider.addClass("filters__slider filters__slider--invert");
+    filtersInvertSlider.attribute("type", "range");
+    filtersInvertSlider.attribute("value", "0");
+    filtersInvertSlider.attribute("min", "0");
+    filtersInvertSlider.attribute("max", "100");
+    filtersInvertSlider.attribute("step", "1");
+    
+    // Crea el menú de Index
+    var menuItemIndex = createDiv("");
+    menuItemIndex.parent(menu);
+    menuItemIndex.addClass("menu__item menu__item--hidden menu__item--index");
+    var menuItemIconIndex = createDiv("");
+    menuItemIconIndex.parent(menuItemIndex);
+    menuItemIconIndex.addClass("menu__item-icon menu__item-icon--index");
+    var menuItemIconIndexI = createElement("i", "");
+    menuItemIconIndexI.parent(menuItemIconIndex);
+    menuItemIconIndexI.addClass("fa fa-list-ul");
+    var menuItemContentIndex = createDiv("");
+    menuItemContentIndex.parent(menuItemIndex);
+    menuItemContentIndex.addClass("menu__item-content menu__item-content--index");
+    var indexLista = createElement("ul", "");
+    indexLista.parent(menuItemContentIndex);
+    indexLista.addClass("index");
+    indexLista.attribute("id", "indexLista");
+    
+    // Crea los controles del player
+    videoControls.parent(videoContainer);
+    videoControls.addClass("video__controls");
+    
+    // Crea la barra de progreso
+    var barraProgreso = createElement("input", "");
+    barraProgreso.parent(videoControls);
+    barraProgreso.addClass("barra-progreso");
+    barraProgreso.attribute("type", "range");
+    barraProgreso.attribute("min", "0");
+    barraProgreso.attribute("max", "100");
+    barraProgreso.attribute("step", "0.05");
+    
+    // Crea los controles
+    var videoControlsContent = createElement("ul", "");
+    videoControlsContent.parent(videoControls);
+    videoControlsContent.addClass("list-inline video__controls-content");
+    
+    // Crea el control del volumen
+    var videoControlsVolumen = createElement("li", "");
+    videoControlsVolumen.parent(videoControlsContent);
+    videoControlsVolumen.addClass("video__control video__control--volume-wrapper");
+    var videoControlsVolumenUp = createElement("i", "");
+    videoControlsVolumenUp.parent(videoControlsVolumen);
+    videoControlsVolumenUp.addClass("fa fa-volume-up");
+    var videoControlsVolumenOff = createElement("i", "");
+    videoControlsVolumenOff.parent(videoControlsVolumen);
+    videoControlsVolumenOff.addClass("fa fa-volume-off hidden");
+    var videoControlsVolumenDown = createElement("i", "");
+    videoControlsVolumenDown.parent(videoControlsVolumen);
+    videoControlsVolumenDown.addClass("fa fa-volume-down hidden");
+    var videoControlsVolumenSlider = createElement("input", "");
+    videoControlsVolumenSlider.parent(videoControlsVolumen);
+    videoControlsVolumenSlider.addClass("video__control video__control--volume");
+    videoControlsVolumenSlider.attribute("type", "range");
+    videoControlsVolumenSlider.attribute("min", "0.0");
+    videoControlsVolumenSlider.attribute("max", "1.0");
+    videoControlsVolumenSlider.attribute("step", "0.01");
+    videoControlsVolumenSlider.attribute("value", "0.5");
+    
+    // Crea los controles de playback
+    var videoControlsPlayback = createElement("ul", "");
+    videoControlsPlayback.parent(videoControlsContent);
+    videoControlsPlayback.addClass("video__control video__control--playback");
+    
+    var videoControlsPlaybackFull = createElement("li", "");
+    videoControlsPlaybackFull.parent(videoControlsPlayback);
+    videoControlsPlaybackFull.addClass("video__control video__control--fullscreen");
+    var videoControlsPlaybackFullExpand = createElement("i", "");
+    videoControlsPlaybackFullExpand.parent(videoControlsPlaybackFull);
+    videoControlsPlaybackFullExpand.addClass("fa fa-expand");
+    var videoControlsPlaybackFullCompress = createElement("i", "");
+    videoControlsPlaybackFullCompress.parent(videoControlsPlaybackFull);
+    videoControlsPlaybackFullCompress.addClass("fa fa-compress hidden");
+    
+    var videoControlsPlaybackLoop = createElement("li", "");
+    videoControlsPlaybackLoop.parent(videoControlsPlayback);
+    videoControlsPlaybackLoop.addClass("video__control video__control--loop");
+    var videoControlsPlaybackLoopRepeat = createElement("i", "");
+    videoControlsPlaybackLoopRepeat.parent(videoControlsPlaybackLoop);
+    videoControlsPlaybackLoopRepeat.addClass("fa fa-repeat");
+    
+    var videoControlsPlaybackStop = createElement("li", "");
+    videoControlsPlaybackStop.parent(videoControlsPlayback);
+    videoControlsPlaybackStop.addClass("video__control video__control--stop");
+    var videoControlsPlaybackStopIcon = createElement("i", "");
+    videoControlsPlaybackStopIcon.parent(videoControlsPlaybackStop);
+    videoControlsPlaybackStopIcon.addClass("fa fa-stop");
+    
+    var videoControlsPlaybackSlower = createElement("li", "");
+    videoControlsPlaybackSlower.parent(videoControlsPlayback);
+    videoControlsPlaybackSlower.addClass("video__control video__control--slower");
+    var videoControlsPlaybackSlowerIcon = createElement("i", "");
+    videoControlsPlaybackSlowerIcon.parent(videoControlsPlaybackSlower);
+    videoControlsPlaybackSlowerIcon.addClass("fa fa-step-backward");
+    
+    var videoControlsPlaybackPlay = createElement("li", "");
+    videoControlsPlaybackPlay.parent(videoControlsPlayback);
+    videoControlsPlaybackPlay.addClass("video__control video__control--play video__control--playing hidden");
+    var videoControlsPlaybackPlayIcon = createElement("i", "");
+    videoControlsPlaybackPlayIcon.parent(videoControlsPlaybackPlay);
+    videoControlsPlaybackPlayIcon.addClass("fa fa-play");
+    
+    var videoControlsPlaybackPause = createElement("li", "");
+    videoControlsPlaybackPause.parent(videoControlsPlayback);
+    videoControlsPlaybackPause.addClass("video__control video__control--pause video__control--playing");
+    var videoControlsPlaybackPauseIcon = createElement("i", "");
+    videoControlsPlaybackPauseIcon.parent(videoControlsPlaybackPause);
+    videoControlsPlaybackPauseIcon.addClass("fa fa-pause");
+    
+    var videoControlsPlaybackFaster = createElement("li", "");
+    videoControlsPlaybackFaster.parent(videoControlsPlayback);
+    videoControlsPlaybackFaster.addClass("video__control video__control--faster");
+    var videoControlsPlaybackFasterIcon = createElement("i", "");
+    videoControlsPlaybackFasterIcon.parent(videoControlsPlaybackFaster);
+    videoControlsPlaybackFasterIcon.addClass("fa fa-step-forward");
 }
 
 

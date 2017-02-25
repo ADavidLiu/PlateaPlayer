@@ -21,11 +21,11 @@ REMOVER TODOS LOS COMENTARIOS ANTES DE EMPLEAR ESTE ESQUEMA
                                 "type": "SERIAL",
                                 "data": {
                                     "COM": "COM3"
-                                    /*
-                                        .,
-                                        .,
-                                        .
-                                    */
+                                        /*
+                                            .,
+                                            .,
+                                            .
+                                        */
                                 }
                             },
                             // Características propias de cada interacción del evento
