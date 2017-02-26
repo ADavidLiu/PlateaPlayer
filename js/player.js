@@ -812,7 +812,7 @@ var PlateaPlayer = function (p5, contenedor) {
     }
 
     function mostrarMensaje(texto) {
-        var nuevoMensaje = createP(texto.toString() + "x");
+        var nuevoMensaje = p5.createP(texto.toString() + "x");
         nuevoMensaje.parent("mensajeContainer");
         nuevoMensaje.addClass("mensaje__texto");
         mensaje.addClass("mensaje--visible");
