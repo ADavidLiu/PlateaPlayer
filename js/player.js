@@ -1,4 +1,4 @@
-var PlateaPlayer = function (p5, contenedor) {
+var PlateaPlayer = function (p5, opciones) {
 
     /*------------------------------------
 
@@ -51,6 +51,16 @@ var PlateaPlayer = function (p5, contenedor) {
         indexLista,
         intervalos = [],
         timeouts = [];
+    
+    
+    
+    /*------------------------------------
+
+    Variables de las opciones configuradas por el usuario
+
+    ------------------------------------*/
+
+    var opc = opciones;
 
 
 
@@ -76,7 +86,7 @@ var PlateaPlayer = function (p5, contenedor) {
         crearEstructura();
         // Se carga el video desde el sistema de archivos
         barraProgreso = p5.select(".barra-progreso__progreso");
-        video = p5.createVideo("../videos/videoPrueba.mp4", function () {
+        video = p5.createVideo(opc.path, function () {
             var src = video.elt.currentSrc;
             var titulo = src.substring(src.lastIndexOf("."), src.lastIndexOf("/") + 1);
             cambiarTitulo(titulo);
@@ -480,8 +490,8 @@ var PlateaPlayer = function (p5, contenedor) {
         var videoControls = p5.createDiv("");
 
         // Crea el contenedor padre si está definido
-        if (contenedor) {
-            videoContainer.parent(contenedor);
+        if (opc.contenedor) {
+            videoContainer.parent(opc.contenedor);
         }
         
         videoContainer.addClass("video__container");
@@ -1067,8 +1077,10 @@ var PlateaPlayer = function (p5, contenedor) {
     return {
         reiniciarInteracciones: reiniciarInteracciones,
         eliminarInteracciones: eliminarInteracciones,
+        eliminarTimeEvents: eliminarTimeEvents,
         pausarVideo: pausarVideo,
-        reanudarVideo: reanudarVideo
+        reanudarVideo: reanudarVideo,
+        silenciarVideo: silenciarVideo
     }
 
 }

@@ -26,8 +26,13 @@
     <!-- Instanciación de P5.js y PlateaPlayer -->
     <script>
         var p5 = new p5(PlateaPlayer);
+        // Opciones de configuración
+        var opciones = {
+            path: "../videos/videoPrueba.mp4",
+            contenedor: "main"
+        }
         // "main" hace referencia al id del contendor opcional para el player
-        var plateaPlayer = new PlateaPlayer(p5, "main");
+        var plateaPlayer = new PlateaPlayer(p5, opciones);
 
         // Ejemplo de utilización de la API de PlateaPlayer
         var btnStop = document.getElementById("btnStop");
