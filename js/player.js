@@ -972,12 +972,12 @@ var PlateaPlayer = function (p5, opciones) {
         btnNoFullscreen = p5.select(".fa-compress");
 
         btnFullscreen.mouseClicked(function () {
-            fullscreen(1);
+            p5.fullscreen(1);
             cambiarIconos(btnNoFullscreen, btnFullscreen);
         });
 
         btnNoFullscreen.mouseClicked(function () {
-            fullscreen(0);
+            p5.fullscreen(0);
             cambiarIconos(btnFullscreen, btnNoFullscreen);
         });
 
