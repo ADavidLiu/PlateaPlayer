@@ -32,10 +32,6 @@ button {
   button:focus {
     outline: none; }
 
-::-moz-selection {
-  background-color: #4cddb0;
-  color: #f2f2f2; }
-
 ::selection {
   background-color: #4cddb0;
   color: #f2f2f2; }
@@ -82,8 +78,6 @@ canvas {
   z-index: 1;
   top: 50%;
   left: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%); }
 
 /*------------- 2. VIDEO -------------*/
@@ -91,8 +85,6 @@ canvas {
   position: fixed;
   top: 50%;
   left: 0;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   overflow: hidden; }
   .video__container video {
@@ -120,8 +112,6 @@ canvas {
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
   .video__controls li {
     cursor: pointer; }
@@ -138,11 +128,7 @@ canvas {
   .video__control--playback {
     width: 30%;
     max-width: 150px;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
     justify-content: space-between; }
   .video__control--volume-wrapper {
     float: left;
@@ -159,8 +145,6 @@ canvas {
       position: absolute;
       top: 50%;
       right: -120px;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
       transform: translateY(-50%);
       border-radius: 2px; }
 
@@ -186,8 +170,6 @@ canvas {
       background-color: #f2f2f2;
       top: 50%;
       right: -5px;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
       transform: translateY(-50%);
       cursor: pointer;
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.8); }
@@ -201,8 +183,6 @@ canvas {
   position: absolute;
   top: 50%;
   right: -90px;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   border-radius: 2px; }
   .barra-volumen__volumen {
@@ -216,8 +196,6 @@ canvas {
       position: absolute;
       top: 50%;
       right: -5px;
-      -webkit-transform: translateY(-50%);
-      -ms-transform: translateY(-50%);
       transform: translateY(-50%);
       width: 10px;
       height: 10px;
@@ -264,8 +242,6 @@ canvas {
         position: absolute;
         top: 50%;
         left: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
         font-size: 1rem; }
     .menu__item-content {
@@ -402,8 +378,6 @@ input[type=range]:focus::-ms-fill-upper {
   z-index: 999;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(0.7);
-  -ms-transform: translate(-50%, -50%) scale(0.7);
   transform: translate(-50%, -50%) scale(0.7);
   width: auto;
   border-radius: 2px;
@@ -414,8 +388,6 @@ input[type=range]:focus::-ms-fill-upper {
   transition: all .25s; }
   .mensaje--visible {
     opacity: 1;
-    -webkit-transform: translate(-50%, -50%) scale(1);
-    -ms-transform: translate(-50%, -50%) scale(1);
     transform: translate(-50%, -50%) scale(1); }
   .mensaje__texto {
     text-align: center;

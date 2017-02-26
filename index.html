@@ -6,17 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PlateaPlayer</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.5/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/addons/p5.dom.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <!-- Funcionalidad del player -->
-    <script src="js/player.js"></script>
+    <!-- Se incluyen los estilos base -->
+    <link rel="stylesheet" href="css/PlateaPlayer.css">
 </head>
 
 <body>
 
-    
+    <!-- Contenedor de ejemplo -->
+    <div id="main"></div>
+    <!-- Botón para mostrar el funcionamiento de la API -->
+    <button class="btn btn-danger" id="btnStop">PAUSAR VIDEO</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.5/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/addons/p5.dom.min.js"></script>
+    <!-- Funcionalidad del player -->
+    <script src="js/player.js"></script>
+
+    <!-- Instanciación de P5.js y PlateaPlayer -->
+    <script>
+        var p5 = new p5(PlateaPlayer);
+        // "main" hace referencia al id del contendor opcional para el player
+        var plateaPlayer = new PlateaPlayer(p5, "main");
+
+        // Ejemplo de utilización de la API de PlateaPlayer
+        var btnStop = document.getElementById("btnStop");
+        btnStop.onclick = function () {
+            plateaPlayer.pausarVideo();
+        }
+    </script>
 
 </body>
 
