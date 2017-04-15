@@ -74,21 +74,26 @@ A. PLAYER
 ------------------------------------*/
 /*------------- 1. CANVAS -------------*/
 canvas {
-  position: fixed;
+  position: absolute;
   z-index: 1;
   top: 50%;
   left: 0;
   transform: translateY(-50%); }
 
 /*------------- 2. VIDEO -------------*/
+.video__wrapper {
+  position: relative;
+  height: 100%; }
+
 .video__container {
-  position: fixed;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
+  /*position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);*/
+  position: relative;
   overflow: hidden; }
   .video__container video {
-    width: 100vw;
+    width: 100%;
     height: auto;
     max-height: 100vh; }
 

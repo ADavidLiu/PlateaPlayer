@@ -97,9 +97,9 @@ var PlateaPlayer = function (p5, opciones) {
             videoNativo.onended = function () {
                     finalizarVideo();
                 }
-                // Se lee el JSON después de que se cargue el video
-            var pathInicial = "../interactions/interacciones.json";
-            cargarJSON(pathInicial);
+            // Se lee el JSON después de que se cargue el video
+            var pathJSON = "../interactions/interacciones.json";
+            cargarJSON(pathJSON);
         });
         video.parent("videoContainer");
     }
@@ -492,6 +492,8 @@ var PlateaPlayer = function (p5, opciones) {
         // Crea el contenedor padre si está definido
         if (opc.contenedor) {
             videoContainer.parent(opc.contenedor);
+            var wrapper = p5.select("#" + opc.contenedor);
+            wrapper.addClass("video__wrapper");
         }
         
         videoContainer.addClass("video__container");
