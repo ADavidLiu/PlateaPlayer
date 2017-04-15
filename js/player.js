@@ -98,7 +98,7 @@ var PlateaPlayer = function (p5, opciones) {
                     finalizarVideo();
                 }
             // Se lee el JSON después de que se cargue el video
-            var pathJSON = "../interactions/interacciones.json";
+            var pathJSON = opc.pathJSON;
             cargarJSON(pathJSON);
         });
         video.parent("videoContainer");
