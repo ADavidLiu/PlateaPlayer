@@ -90,7 +90,8 @@ canvas {
         left: 0;
         transform: translateY(-50%);*/
   position: relative;
-  overflow: hidden; }
+  overflow: hidden;
+  background-color: #000000; }
   .video__container video {
     width: 100%;
     height: auto;
