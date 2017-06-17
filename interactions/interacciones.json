@@ -233,7 +233,7 @@
                                 {
                                     "type": "TRANSLATE",
                                     "start_time": 8,
-                                    "duration": 3,
+                                    "duration": 10,
                                     "translate": {
                                         "x": 30,
                                         "y": 25

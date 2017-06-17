@@ -203,7 +203,7 @@ var PlateaPlayer = function (p5, opciones) {
     }
 
     function mostrarElemento(elem, transform, isPaused) {
-        // Posiciona el elemento si no el elemento no es un index
+        // Posiciona el elemento si no es un index
         if (!hasClass(elem, "interactive__index-item")) {
             posicionarElemento(elem, transform.translate.y, transform.translate.x);
         }
@@ -309,6 +309,7 @@ var PlateaPlayer = function (p5, opciones) {
 
     function crearVideo(data, shift, transform, isPaused) {
         var newVideo = p5.createVideo(shift.src);
+        newVideo.parent("videoContainer");
         newVideo.addClass("interactive interactive__video");
         newVideo.style("width", shift.width + "%");
         newVideo.style("height", shift.height + "%");
