@@ -1,0 +1,335 @@
+{
+    "interactions": [
+        {
+            "id": "00001",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "PAUSE",
+                    "shift": [
+                        {
+                            "type": "POLY",
+                            "geometry": {
+                                "width": 40,
+                                "height": 60,
+                                "vertices": [
+                                    {
+                                        "x": 50,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 61,
+                                        "y": 35
+                                    },
+                                    {
+                                        "x": 98,
+                                        "y": 35
+                                    },
+                                    {
+                                        "x": 68,
+                                        "y": 75
+                                    },
+                                    {
+                                        "x": 79,
+                                        "y": 91
+                                    },
+                                    {
+                                        "x": 50,
+                                        "y": 70
+                                    },
+                                    {
+                                        "x": 21,
+                                        "y": 91
+                                    },
+                                    {
+                                        "x": 32,
+                                        "y": 57
+                                    },
+                                    {
+                                        "x": 2,
+                                        "y": 35
+                                    },
+                                    {
+                                        "x": 39,
+                                        "y": 35
+                                    }
+                                ]
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 1,
+                                    "duration": 5,
+                                    "translate": {
+                                        "x": 5,
+                                        "y": 30
+                                    }
+                                },
+                                {
+                                    "type": "ROTATE",
+                                    "start_time": 6,
+                                    "duration": 5,
+                                    "translate": {
+                                        "x": 5,
+                                        "y": 30
+                                    },
+                                    "rotate": {
+                                        "deg": 90
+                                    }
+                                },
+                                {
+                                    "type": "SCALE",
+                                    "start_time": 6,
+                                    "duration": 5,
+                                    "translate": {
+                                        "x": 5,
+                                        "y": 30
+                                    },
+                                    "scale": {
+                                        "factor": 1.2
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 1,
+            "duration": 10,
+            "isPaused": false
+        },
+        {
+            "id": "00002",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "GOTO",
+                    "target": "http://www.uao.edu.co/",
+                    "shift": [
+                        {
+                            "type": "ELLIPSE",
+                            "geometry": {
+                                "width": 23,
+                                "height": 40
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 1,
+                                    "duration": 5,
+                                    "translate": {
+                                        "x": 70,
+                                        "y": 10
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 1,
+            "duration": 6,
+            "isPaused": false
+        },
+        {
+            "id": "00005",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "GOTO",
+                    "target": 10.5,
+                    "shift": [
+                        {
+                            "type": "TEXT",
+                            "html": "<a href='https://www.youtube.com/watch?v=O1KW3ZkLtuo' target='_blank'>Cats meow meow!</a>",
+                            "font": {
+                                "family": "Arial",
+                                "size": 3,
+                                "color": "#ffffff",
+                                "decoration": "underline",
+                                "weight": "300",
+                                "backgroundColor": "#4cddb0",
+                                "lineHeight": 3,
+                                "padding": [0.6, 1]
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 0,
+                                    "duration": 3,
+                                    "translate": {
+                                        "x": 35,
+                                        "y": 10
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "type": "TEXT",
+                            "html": "Wow much bold. Such red. No link :(",
+                            "font": {
+                                "family": "Courier",
+                                "size": 3,
+                                "color": "red",
+                                "decoration": "none",
+                                "weight": "700",
+                                "backgroundColor": "#500000",
+                                "lineHeight": 2,
+                                "padding": [0.6, 1]
+                            },
+                            "transform": [
+                                {
+                                    "type": "ROTATE",
+                                    "start_time": 3,
+                                    "duration": 5,
+                                    "translate": {
+                                        "x": 20,
+                                        "y": 35
+                                    },
+                                    "rotate": {
+                                        "deg": -25
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 3,
+            "duration": 8,
+            "isPaused": false
+        },
+        {
+            "id": "00006",
+            "type": {
+                "event": "WEB_CONTENT",
+                "data": {
+                    "action": "NONE",
+                    "shift": [
+                        {
+                            "src": "http://www.uao.edu.co/",
+                            "width": 80,
+                            "height": 80,
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 12,
+                                    "duration": 15,
+                                    "translate": {
+                                        "x": 10,
+                                        "y": 5
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 12,
+            "duration": 15,
+            "isPaused": true
+        },
+        {
+            "id": "00007",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "PLAY",
+                    "shift": [
+                        {
+                            "type": "VIDEO",
+                            "src": "../videos/videoPrueba.mp4",
+                            "width": 50,
+                            "height": 50,
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 8,
+                                    "duration": 10,
+                                    "translate": {
+                                        "x": 30,
+                                        "y": 25
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 8,
+            "duration": 3,
+            "isPaused": true
+        },
+        {
+            "id": "00007",
+            "type": {
+                "event": "INDEX",
+                "data": {
+                    "action": "GOTO",
+                    "shift": [
+                        {
+                            "label": "Ir a 0:0:15",
+                            "font": {
+                                "family": "Arial",
+                                "size": 1.5,
+                                "color": "#ffffff",
+                                "decoration": "none",
+                                "weight": "400",
+                                "backgroundColor": "transparent",
+                                "padding": [0, 0]
+                            },
+                            "transform": [
+                                {
+                                    "target": 15,
+                                    "start_time": 1,
+                                    "duration": 10
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Ir a 0:0:20",
+                            "font": {
+                                "family": "Arial",
+                                "size": 1.5,
+                                "color": "#ffffff",
+                                "decoration": "none",
+                                "weight": "300",
+                                "backgroundColor": "green",
+                                "padding": [1, 1]
+                            },
+                            "transform": [
+                                {
+                                    "target": 20,
+                                    "start_time": 1,
+                                    "duration": 20
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Siguiente video",
+                            "font": {
+                                "family": "Times New Roman",
+                                "size": 2,
+                                "color": "#e5d620",
+                                "decoration": "underline",
+                                "weight": "700",
+                                "backgroundColor": "transparent",
+                                "padding": [0, 0]
+                            },
+                            "transform": [
+                                {
+                                    "target": "../videos/video2.mp4",
+                                    "start_time": 5,
+                                    "duration": 10
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 5,
+            "duration": 15,
+            "isPaused": false
+        }
+    ]
+}

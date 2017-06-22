@@ -96,10 +96,14 @@ var PlateaPlayer = function (p5, opciones) {
             // Al terminar el video
             videoNativo.onended = function () {
                     finalizarVideo();
-                }
+            }
             // Se lee el JSON después de que se cargue el video
-            var pathJSON = opc.pathJSON;
-            cargarJSON(pathJSON);
+            /*var pathJSON = opc.pathJSON;
+            cargarJSON(pathJSON);*/
+            var jsonString = window.atob(opc.json);
+            json = JSON.parse(jsonString);
+            console.log(jsonString);
+            determinarInteracciones();
         });
         video.parent("videoContainer");
     }
