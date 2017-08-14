@@ -76,7 +76,7 @@
                     "action": "EXTERNAL",
                     "shift": {
                         "deviceID": 1,
-                        "power": 3
+                        "degrees": 20
                     }
                 }
             }
