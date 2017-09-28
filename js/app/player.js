@@ -1,4 +1,45 @@
-var PlateaPlayer = function (p5, opciones, socket) {
+var express = require("express");
+var app = express();
+var server = require('http').Server(app);
+
+server.listen(3000);
+app.use(express.static(__dirname + '/app'));
+app.get('/', function (req,res) {
+    res.sendFile(__dirname + '/index.html');
+});
+
+var PlateaPlayer = function (p5, opciones) {
+    
+    /*------------------------------------
+
+    Crea el servidor para ejecutar las interacciones SENSE
+
+    ------------------------------------*/
+
+    function iniciarServidor() {
+        var express = require("express");
+        var app = express();
+        var server = require('http').Server(app);
+
+        server.listen(3000);
+        app.use(express.static(__dirname + '../'));
+        app.get('/', function (req,res) {
+            res.sendFile(__dirname + '/index.html');
+        });
+
+        function iniciarSense() {
+            var five = require("johnny-five");
+            var board = new five.Board();
+            board.on("ready", function() {
+                var led = new five.Led(13);
+                led.blink(500);
+            });
+        }
+
+        iniciarSense();
+    }
+
+    iniciarServidor();
     
 
     /*------------------------------------
@@ -99,8 +140,8 @@ var PlateaPlayer = function (p5, opciones, socket) {
                     finalizarVideo();
             }
             // Se lee el JSON después de que se cargue el video
-            var pathJSON = opc.pathJSON;
-            cargarJSON(pathJSON);
+            /*var pathJSON = opc.pathJSON;
+            cargarJSON(pathJSON);*/
             var jsonString = window.atob(opc.json);
             json = JSON.parse(jsonString);
             console.log(jsonString);
@@ -333,12 +374,8 @@ var PlateaPlayer = function (p5, opciones, socket) {
     }
 
     function crearSense(data, shift, transform) {
-        var datos = {
-            data: data,
-            shift: shift,
-            transform: transform
-        };
-        socket.emit("sense", datos);
+        
+
     }
 
     function styleText(elem, shift) {
@@ -1092,7 +1129,8 @@ var PlateaPlayer = function (p5, opciones, socket) {
         eliminarTimeEvents: eliminarTimeEvents,
         pausarVideo: pausarVideo,
         reanudarVideo: reanudarVideo,
-        silenciarVideo: silenciarVideo
+        silenciarVideo: silenciarVideo,
+        iniciarServidor: iniciarServidor
     }
 
 }

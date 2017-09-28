@@ -1,0 +1,118 @@
+{
+    "interactions": [
+        {
+            "id": "0001",
+            "show_time": 1,
+            "duration": 5,
+            "isPaused": false,
+            "type": {
+                "event": "SENSE",
+                "data": {
+                    "action": "EXTERNAL",
+                    "shift": [
+                        {
+                            "type": "WIND",
+                            "transform": [
+                                {
+                                    "deviceID": 1,
+                                    "power": 5
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "0002",
+            "show_time": 10,
+            "duration": 5,
+            "isPaused": false,
+            "type": {
+                "event": "SENSE",
+                "data": {
+                    "action": "EXTERNAL",
+                    "shift": [
+                        {
+                            "type": "WATER",
+                            "transform": [
+                                {
+                                    "state": 1
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "0003",
+            "show_time": 10,
+            "duration": 5,
+            "isPaused": false,
+            "type": {
+                "event": "SENSE",
+                "data": {
+                    "action": "EXTERNAL",
+                    "shift": [
+                        {
+                            "type": "LIGHT",
+                            "transform": [
+                                {
+                                    "deviceID": 1,
+                                    "power": 5,
+                                    "color": [255, 34, 0]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "0004",
+            "show_time": 10,
+            "duration": 5,
+            "isPaused": false,
+            "type": {
+                "event": "SENSE",
+                "data": {
+                    "action": "EXTERNAL",
+                    "shift": [
+                        {
+                            "type": "SMOKE",
+                            "transform": [
+                                {
+                                    "deviceID": 2,
+                                    "power": 5
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "id": "0005",
+            "show_time": 10,
+            "duration": 5,
+            "isPaused": false,
+            "type": {
+                "event": "SENSE",
+                "data": {
+                    "action": "EXTERNAL",
+                    "shift": [
+                        {
+                            "type": "TEMP",
+                            "transform": [
+                                {
+                                    "state": 1
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "plateaplayer",
+  "version": "1.0.0",
+  "description": "Reproductor para videos interactivos",
+  "main": "js/player.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node js/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ADavidLiu/PlateaPlayer.git"
+  },
+  "author": "Andrés David Liu Fong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ADavidLiu/PlateaPlayer/issues"
+  },
+  "homepage": "https://github.com/ADavidLiu/PlateaPlayer#readme",
+  "dependencies": {
+    "express": "^4.15.5",
+    "johnny-five": "^0.11.6",
+    "socket.io": "^2.0.3"
+  }
+}
