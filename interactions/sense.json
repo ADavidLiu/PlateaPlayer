@@ -15,7 +15,9 @@
                             "transform": [
                                 {
                                     "deviceID": 1,
-                                    "power": 5
+                                    "power": 5,
+                                    "start_time": 0,
+                                    "duration": 5
                                 }
                             ]
                         }
@@ -37,7 +39,9 @@
                             "type": "WATER",
                             "transform": [
                                 {
-                                    "state": 1
+                                    "state": 1,
+                                    "start_time": 0,
+                                    "duration": 0
                                 }
                             ]
                         }
@@ -61,7 +65,9 @@
                                 {
                                     "deviceID": 1,
                                     "power": 5,
-                                    "color": [255, 34, 0]
+                                    "color": [255, 34, 0],
+                                    "start_time": 11,
+                                    "duration": 5
                                 }
                             ]
                         }
@@ -84,7 +90,9 @@
                             "transform": [
                                 {
                                     "deviceID": 2,
-                                    "power": 5
+                                    "power": 5,
+                                    "start_time": 0,
+                                    "duration": 0
                                 }
                             ]
                         }
@@ -106,7 +114,9 @@
                             "type": "TEMP",
                             "transform": [
                                 {
-                                    "state": 1
+                                    "state": 1,
+                                    "start_time": 17,
+                                    "duration": 5
                                 }
                             ]
                         }

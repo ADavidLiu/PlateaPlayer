@@ -110,6 +110,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
     }
 
     function cargarJSON(path) {
+        // Determinar interacciones una vez cargue el JSON
         json = p5.loadJSON(path, determinarInteracciones);
     }
 
@@ -158,7 +159,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
                             crearIndex(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k]);
                             break;
                         case "SENSE":
-                            crearSense(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k]);
+                            crearSense(interaccion);
                             break;
                         }
                     }
@@ -332,13 +333,9 @@ var PlateaPlayer = function (p5, opciones, socket) {
         asignarAccion(item, data, transform);
     }
 
-    function crearSense(data, shift, transform) {
-        var datos = {
-            data: data,
-            shift: shift,
-            transform: transform
-        };
-        socket.emit("sense", datos);
+    function crearSense(interaccion) {
+        // Envía la información de la interacción al servidor conectado al arduino
+        socket.emit("sense", interaccion);
     }
 
     function styleText(elem, shift) {
@@ -729,10 +726,15 @@ var PlateaPlayer = function (p5, opciones, socket) {
             canvas.mouseClicked(reanudarVideo);
         } else {
             canvas.mouseClicked(pausarVideo);
+
+            // Envia el tiempo actual de reproducción
+            socket.emit("video", video.time());
         }
 
         // Barra de progreso
         actualizarProgreso();
+
+        //console.log(video.time());
 
         // Reinicia las interacciones si está en loop
         if (isLooping && video.time() === 0) {
@@ -917,9 +919,11 @@ var PlateaPlayer = function (p5, opciones, socket) {
             controles.addClass("video__controls--visible");
             menu.addClass("menu--visible");
             label.addClass("informacion__titulo--visible");
+            p5.cursor();
             // Oculta los controles después de 4 segundos si no se mueve el mouse
             var hideControls = setTimeout(function () {
                 ocultarControles();
+                p5.noCursor();
                 clearTimeout(hideControls);
             }, 4000);
         }
