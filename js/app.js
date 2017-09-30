@@ -16,76 +16,90 @@ server.listen(3000);
 var tiempoActual = 0;
 
 
+
+
 /*------------------------------------
 
-    Funciones para cada acción
+    Declaración de pines
 
 ------------------------------------*/
 
-function crearViento(transform) {
-    var fin = transform.start_time + transform.duration;
-    if (tiempoActual >= transform.start_time && tiempoActual < fin) {
-        console.log("SÍ VIENTO");
-        encenderLED(13);
-    } else {
-        console.log("NO VIENTO");
-        apagarLED(13);
-    }
-}
+var pinPeltier;
+var pinAgua;
+var pinHumo;
 
-function crearAgua(transform) {
-    var fin = transform.start_time + transform.duration;
-    if (tiempoActual > transform.start_time && tiempoActual < fin) {
-        console.log("SÍ AGUA");
-        encenderLED(13);
-    } else {
-        console.log("NO AGUA");
-        apagarLED(13);
-    }
-}
 
-function crearLuz(transform) {
-    var fin = transform.start_time + transform.duration;
-    if (tiempoActual > transform.start_time && tiempoActual < fin) {
-        console.log("SÍ LUZ");
-        encenderLED(13);
-    } else {
-        console.log("NO LUZ");
-        apagarLED(13);
-    }
-}
 
-function crearHumo(transform) {
-    var fin = transform.start_time + transform.duration;
-    if (tiempoActual > transform.start_time && tiempoActual < fin) {
-        console.log("SÍ HUMO");
-        encenderLED(13);
-    } else {
-        console.log("NO HUMO");
-        apagarLED(13);
-    }
-}
+/*------------------------------------
 
-function crearTemp(transform) {
-    var fin = transform.start_time + transform.duration;
-    if (tiempoActual > transform.start_time && tiempoActual < fin) {
-        console.log("SÍ TEMP");
-        encenderLED(13);
-    } else {
-        console.log("NO TEMP");
-        apagarLED(13);
-    }
-}
+    Configuración de Johnny Five
 
-function encenderLED(pin) {
-    var led = new five.Led(pin);
-    led.on();
-}
+------------------------------------*/
 
-function apagarLED(pin) {
-    var led = new five.Led(pin);
-    led.off();
-}
+var board = new five.Board();
+
+var interacciones = [];
+
+board.on("ready", function() {
+
+    /*------------------------------------
+
+    Inicialización de pines
+
+    ------------------------------------*/
+
+    // TEMP
+    var numPinPeltier = 51;
+    pinPeltier = new five.Pin({
+        pin: numPinPeltier,
+        mode: 1
+    });
+
+    // AGUA
+    var numPinAgua = 26;
+    pinAgua = new five.Pin({
+        pin: numPinAgua,
+        mode: 1
+    });
+
+    // HUMO
+    var numPinHumo = 35;
+    pinHumo = new five.Pin({
+        pin: numPinHumo,
+        mode: 1
+    });
+
+
+
+    /*------------------------------------
+
+    Conexión con el Player
+
+    ------------------------------------*/
+
+    io.on("connect", function (socket) {
+        console.log("PlateaPlayer conectado!");
+
+        // Lee la información de interacciones desde el JSON (Sólo se ejecuta una vez por interacción)
+        socket.on("sense", function (datos) {
+            var string = JSON.stringify(datos);
+            var sense = JSON.parse(string);
+            interacciones.push(sense);
+            console.log("INTERACCIONES RECIBIDAS");
+            determinarInteracciones(interacciones, tiempoActual);
+            setInterval(function () {
+                console.log("TIEMPO ACTUAL: " + tiempoActual);
+                determinarInteracciones(interacciones, tiempoActual);
+            }, 1000);
+            // Devuelve el tiempo del video y ejecuta las interacciones sólo cuando se esté reproduciendo
+            socket.on("video", function (time) {
+                tiempoActual = time;
+                //console.log(tiempoActual);
+            });
+        });
+    });
+
+});
 
 
 
@@ -127,40 +141,71 @@ function determinarInteracciones(interacciones, tiempoActual) {
 
 /*------------------------------------
 
-    Configuración de Johnny Five
+    Funciones para cada acción
 
 ------------------------------------*/
 
-var board = new five.Board();
+function crearViento(transform) {
+    var fin = transform.start_time + transform.duration;
+    if (tiempoActual >= transform.start_time && tiempoActual < fin) {
+        console.log("SÍ VIENTO");
 
-var interacciones = [];
+    } else {
+        console.log("NO VIENTO");
 
-board.on("ready", function() {
+    }
+}
 
-    /*------------------------------------
+function crearAgua(transform) {
+    var fin = transform.start_time + transform.duration;
+    if (tiempoActual > transform.start_time && tiempoActual < fin) {
+        console.log("SÍ AGUA");
+        pinAgua.high();
+    } else {
+        console.log("NO AGUA");
+        pinAgua.low();
+    }
+}
 
-    Conexión con el Player
+function crearLuz(transform) {
+    var fin = transform.start_time + transform.duration;
+    if (tiempoActual > transform.start_time && tiempoActual < fin) {
+        console.log("SÍ LUZ");
 
-    ------------------------------------*/
+    } else {
+        console.log("NO LUZ");
 
-    io.on("connect", function (socket) {
-        console.log("PlateaPlayer conectado!");
+    }
+}
 
-        // Lee la información de interacciones desde el JSON (Sólo se ejecuta una vez por interacción)
-        socket.on("sense", function (datos) {
-            var string = JSON.stringify(datos);
-            var sense = JSON.parse(string);
-            interacciones.push(sense);
-            determinarInteracciones(interacciones, tiempoActual);
-            setInterval(function () {
-                console.log("TIEMPO ACTUAL: " + tiempoActual);
-                determinarInteracciones(interacciones, tiempoActual);
-            }, 1000);
-            // Devuelve el tiempo del video y ejecuta las interacciones sólo cuando se esté reproduciendo
-            socket.on("video", function (time) {
-                tiempoActual = time;
-            });
-        });
-    });
+function crearHumo(transform) {
+    var fin = transform.start_time + transform.duration;
+    if (tiempoActual > transform.start_time && tiempoActual < fin) {
+        console.log("SÍ HUMO");
+        pinHumo.high();
+    } else {
+        console.log("NO HUMO");
+        pinHumo.low();
+    }
+}
 
-});
+function crearTemp(transform) {
+    var fin = transform.start_time + transform.duration;
+    if (tiempoActual > transform.start_time && tiempoActual < fin) {
+        console.log("SÍ TEMP");
+        //pinPeltier.high();
+    } else {
+        console.log("NO TEMP");
+        //pinPeltier.low();
+    }
+}
+
+function encenderLED(pin) {
+    var led = new five.Led(pin);
+    led.on();
+}
+
+function apagarLED(pin) {
+    var led = new five.Led(pin);
+    led.off();
+}
