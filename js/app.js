@@ -50,24 +50,15 @@ board.on("ready", function() {
 
     // TEMP
     var numPinPeltier = 51;
-    pinPeltier = new five.Pin({
-        pin: numPinPeltier,
-        mode: 1
-    });
+    pinPeltier = new five.Pin(numPinPeltier);
 
     // AGUA
-    var numPinAgua = 26;
-    pinAgua = new five.Pin({
-        pin: numPinAgua,
-        mode: 1
-    });
+    var numPinAgua = 52;
+    pinAgua = new five.Pin(numPinAgua);
 
     // HUMO
-    var numPinHumo = 35;
-    pinHumo = new five.Pin({
-        pin: numPinHumo,
-        mode: 1
-    });
+    var numPinHumo = 32;
+    pinHumo = new five.Pin(numPinHumo);
 
 
 
@@ -80,23 +71,29 @@ board.on("ready", function() {
     io.on("connect", function (socket) {
         console.log("PlateaPlayer conectado!");
 
-        // Lee la información de interacciones desde el JSON (Sólo se ejecuta una vez por interacción)
+        // Lee la información de interacciones desde el JSON (una vez por cada interacción)
         socket.on("sense", function (datos) {
+            console.log("SENSE RECIBIDO");
             var string = JSON.stringify(datos);
             var sense = JSON.parse(string);
             interacciones.push(sense);
-            console.log("INTERACCIONES RECIBIDAS");
-            determinarInteracciones(interacciones, tiempoActual);
-            setInterval(function () {
-                console.log("TIEMPO ACTUAL: " + tiempoActual);
-                determinarInteracciones(interacciones, tiempoActual);
-            }, 1000);
-            // Devuelve el tiempo del video y ejecuta las interacciones sólo cuando se esté reproduciendo
-            socket.on("video", function (time) {
-                tiempoActual = time;
-                //console.log(tiempoActual);
-            });
         });
+
+        // Actualiza el tiempo del video
+        socket.on("video", function (time) {
+            tiempoActual = time;
+        });
+
+        // Imprime el tiempo actual cada segundo
+        setInterval(function () {
+            console.log("TIEMPO ACTUAL: " + tiempoActual);
+        }, 1000);
+
+        // Después de haber recibido todas las interacciones
+        setTimeout(function () {
+            console.log("DETERMINAR INTERACCIONES");
+            determinarInteracciones(interacciones);
+        }, 500);
     });
 
 });
@@ -109,7 +106,7 @@ board.on("ready", function() {
 
 ------------------------------------*/
 
-function determinarInteracciones(interacciones, tiempoActual) {
+function determinarInteracciones(interacciones) {
     for (var i = 0; i < interacciones.length; i++) {
         var interaccion = interacciones[i];
         for (var j = 0; j < interaccion.type.data.shift.length; j++) {
@@ -117,19 +114,19 @@ function determinarInteracciones(interacciones, tiempoActual) {
             for (var k = 0; k < shift.transform.length; k++) {
                 switch (shift.type) {
                     case "WIND":
-                        crearViento(shift.transform[k], tiempoActual);
+                        crearViento(shift.transform[k]);
                         break;
                     case "WATER":
-                        crearAgua(shift.transform[k], tiempoActual);
+                        crearAgua(shift.transform[k]);
                         break;
                     case "LIGHT":
-                        crearLuz(shift.transform[k], tiempoActual);
+                        crearLuz(shift.transform[k]);
                         break;
                     case "TEMP":
-                        crearTemp(shift.transform[k], tiempoActual);
+                        crearTemp(shift.transform[k]);
                         break;
                     case "SMOKE":
-                        crearHumo(shift.transform[k], tiempoActual);
+                        crearHumo(shift.transform[k]);
                         break;
                 }
             }
@@ -147,57 +144,79 @@ function determinarInteracciones(interacciones, tiempoActual) {
 
 function crearViento(transform) {
     var fin = transform.start_time + transform.duration;
-    if (tiempoActual >= transform.start_time && tiempoActual < fin) {
-        console.log("SÍ VIENTO");
+    var intervalo = setInterval(function () {
+        if (tiempoActual >= transform.start_time && tiempoActual < fin) {
+            console.log("SÍ VIENTO");
 
-    } else {
-        console.log("NO VIENTO");
+            var timeout = setTimeout(function () {
 
-    }
+                clearTimeout(timeout);
+                clearInterval(intervalo);
+            }, transform.duration * 1000);
+        }
+    }, 1000);
 }
 
 function crearAgua(transform) {
     var fin = transform.start_time + transform.duration;
-    if (tiempoActual > transform.start_time && tiempoActual < fin) {
-        console.log("SÍ AGUA");
-        pinAgua.high();
-    } else {
-        console.log("NO AGUA");
-        pinAgua.low();
-    }
+    var intervalo = setInterval(function () {
+        if (tiempoActual > transform.start_time && tiempoActual < fin) {
+            console.log("SÍ AGUA");
+            pinAgua.high();
+            encenderLED(13);
+            var timeout = setTimeout(function () {
+                pinAgua.low();
+                apagarLED(13);
+                clearTimeout(timeout);
+                clearInterval(intervalo);
+            }, transform.duration * 1000);
+        }
+    }, 1000);
 }
 
 function crearLuz(transform) {
     var fin = transform.start_time + transform.duration;
-    if (tiempoActual > transform.start_time && tiempoActual < fin) {
-        console.log("SÍ LUZ");
+    var intervalo = setInterval(function () {
+        if (tiempoActual > transform.start_time && tiempoActual < fin) {
+            console.log("SÍ LUZ");
 
-    } else {
-        console.log("NO LUZ");
+            var timeout = setTimeout(function () {
 
-    }
+                clearTimeout(timeout);
+                clearInterval(intervalo);
+            }, transform.duration * 1000);
+        }
+    }, 1000);
 }
 
 function crearHumo(transform) {
     var fin = transform.start_time + transform.duration;
-    if (tiempoActual > transform.start_time && tiempoActual < fin) {
-        console.log("SÍ HUMO");
-        pinHumo.high();
-    } else {
-        console.log("NO HUMO");
-        pinHumo.low();
-    }
+    var intervalo = setInterval(function () {
+        if (tiempoActual > transform.start_time && tiempoActual < fin) {
+            console.log("SÍ HUMO");
+            pinHumo.high();
+            var timeout = setTimeout(function () {
+                pinHumo.low();
+                clearTimeout(timeout);
+                clearInterval(intervalo);
+            }, transform.duration * 1000);
+        }
+    }, 1000);
 }
 
 function crearTemp(transform) {
     var fin = transform.start_time + transform.duration;
-    if (tiempoActual > transform.start_time && tiempoActual < fin) {
-        console.log("SÍ TEMP");
-        //pinPeltier.high();
-    } else {
-        console.log("NO TEMP");
-        //pinPeltier.low();
-    }
+    var intervalo = setInterval(function () {
+        if (tiempoActual > transform.start_time && tiempoActual < fin) {
+            console.log("SÍ TEMP");
+            //pinPeltier.high();
+            var timeout = setTimeout(function () {
+                //pinPeltier.low();
+                clearTimeout(timeout);
+                clearInterval(intervalo);
+            }, transform.duration * 1000);
+        }
+    }, 1000);
 }
 
 function encenderLED(pin) {

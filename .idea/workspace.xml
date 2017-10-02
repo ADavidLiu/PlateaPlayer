@@ -22,7 +22,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
+            <state relative-caret-position="470">
               <caret line="38" column="34" lean-forward="false" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
               <folding />
             </state>
@@ -32,19 +32,20 @@
       <file leaf-file-name="player.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/player.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="721" column="0" lean-forward="true" selection-start-line="721" selection-start-column="0" selection-end-line="721" selection-end-column="0" />
+            <state relative-caret-position="7">
+              <caret line="171" column="0" lean-forward="true" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
               <folding>
                 <element signature="e#1673#2744#0" expanded="false" />
+                <element signature="n#!!block;n#cargarJSON#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#crearGeometria#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#formarPoligono#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+                <element signature="e#7956#8040#0" expanded="false" />
                 <element signature="n#!!block;n#posicionarElemento#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#crearImagen#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#crearTexto#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#crearIframe#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#crearVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#crearIndex#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
-                <element signature="n#!!block;n#crearSense#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#styleText#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#eliminarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
                 <element signature="n#!!block;n#reiniciarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
@@ -86,11 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="813">
-              <caret line="184" column="8" lean-forward="false" selection-start-line="184" selection-start-column="8" selection-end-line="184" selection-end-column="8" />
+            <state relative-caret-position="73">
+              <caret line="153" column="5" lean-forward="true" selection-start-line="153" selection-start-column="5" selection-end-line="153" selection-end-column="5" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -98,11 +99,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sense.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sense.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/interactions/sense.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="55">
-              <caret line="41" column="49" lean-forward="false" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+            <state relative-caret-position="-292">
+              <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -135,8 +136,8 @@
         <option value="$PROJECT_DIR$/interactions/sense-new.json" />
         <option value="$PROJECT_DIR$/js/player.js" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/app.js" />
         <option value="$PROJECT_DIR$/interactions/sense.json" />
+        <option value="$PROJECT_DIR$/js/app.js" />
       </list>
     </option>
   </component>
@@ -180,6 +181,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -202,7 +204,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -245,14 +246,17 @@
       <workItem from="1506648731052" duration="9391000" />
       <workItem from="1506699497213" duration="8153000" />
       <workItem from="1506789306908" duration="3438000" />
+      <workItem from="1506803693012" duration="1510000" />
+      <workItem from="1506877932153" duration="14896000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31432000" />
+    <option name="totallyTimeSpent" value="47838000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="401" y="22" width="1279" height="973" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22337043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -260,7 +264,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958034" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3667426" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35079727" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -280,7 +284,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32958034" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3667426" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35079727" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22337043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -305,11 +309,175 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="45" column="21" lean-forward="false" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13699">
+          <caret line="721" column="0" lean-forward="false" selection-start-line="721" selection-start-column="0" selection-end-line="721" selection-end-column="0" />
+          <folding>
+            <element signature="e#1673#2744#0" expanded="false" />
+            <element signature="n#!!block;n#cargarJSON#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearGeometria#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#formarPoligono#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#7956#8040#0" expanded="false" />
+            <element signature="n#!!block;n#posicionarElemento#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearImagen#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearTexto#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearIframe#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearIndex#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#styleText#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#eliminarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#reiniciarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#asignarAccion#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#bindClick#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#cambiarVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#abrirURL#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#goto#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#checkIndexContent#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#eliminarTimeEvents#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#17020#17358#0" expanded="false" />
+            <element signature="n#!!block;n#cambiarTitulo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearEstructura#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#29187#29758#0" expanded="false" />
+            <element signature="e#29938#30053#0" expanded="false" />
+            <element signature="n#!!block;n#cambiarFiltros#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#escalarCanvas#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#detenerVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#reanudarVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#pausarVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#silenciarVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#iniciarLoop#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#mostrarMensaje#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#disminuirVelocidad#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#aumentarVelocidad#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#cambiarVolumen#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#cambiarTiempo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#actualizarProgreso#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#cambiarIconos#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#hasClass#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#mostrarControles#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#ocultarControles#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#bindEvents#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#40286#40599#0" expanded="false" />
+            <element signature="n#!!block;n#finalizarVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#40914#41190#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/interactions/sense.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="779">
+          <caret line="41" column="49" lean-forward="false" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3420">
+          <caret line="184" column="8" lean-forward="false" selection-start-line="184" selection-start-column="8" selection-end-line="184" selection-end-column="8" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13699">
+          <caret line="721" column="0" lean-forward="true" selection-start-line="721" selection-start-column="0" selection-end-line="721" selection-end-column="0" />
+          <folding>
+            <element signature="e#1673#2744#0" expanded="false" />
+            <element signature="n#!!block;n#cargarJSON#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearGeometria#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#formarPoligono#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#7956#8040#0" expanded="false" />
+            <element signature="n#!!block;n#posicionarElemento#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearImagen#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearTexto#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearIframe#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearIndex#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#styleText#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#eliminarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#reiniciarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#asignarAccion#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#bindClick#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#cambiarVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#abrirURL#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#goto#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#checkIndexContent#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#eliminarTimeEvents#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#17020#17358#0" expanded="false" />
+            <element signature="n#!!block;n#cambiarTitulo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#crearEstructura#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#29187#29758#0" expanded="false" />
+            <element signature="e#29938#30053#0" expanded="false" />
+            <element signature="n#!!block;n#cambiarFiltros#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#escalarCanvas#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#detenerVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#reanudarVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#pausarVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#silenciarVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#iniciarLoop#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#mostrarMensaje#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#disminuirVelocidad#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#aumentarVelocidad#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#cambiarVolumen#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#cambiarTiempo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#actualizarProgreso#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#cambiarIconos#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#hasClass#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#mostrarControles#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#ocultarControles#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="n#!!block;n#bindEvents#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#40286#40599#0" expanded="false" />
+            <element signature="n#!!block;n#finalizarVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#40914#41190#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3420">
+          <caret line="184" column="8" lean-forward="false" selection-start-line="184" selection-start-column="8" selection-end-line="184" selection-end-column="8" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/interactions/sense.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="779">
+          <caret line="41" column="49" lean-forward="false" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -324,15 +492,16 @@
           <caret line="722" column="26" lean-forward="false" selection-start-line="722" selection-start-column="26" selection-end-line="722" selection-end-column="26" />
           <folding>
             <element signature="e#1673#2744#0" expanded="false" />
+            <element signature="n#!!block;n#cargarJSON#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearGeometria#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#formarPoligono#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#7956#8040#0" expanded="false" />
             <element signature="n#!!block;n#posicionarElemento#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearImagen#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearTexto#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearIframe#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearIndex#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#crearSense#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#styleText#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#eliminarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#reiniciarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
@@ -403,15 +572,16 @@
           <caret line="722" column="26" lean-forward="false" selection-start-line="722" selection-start-column="26" selection-end-line="722" selection-end-column="26" />
           <folding>
             <element signature="e#1673#2744#0" expanded="false" />
+            <element signature="n#!!block;n#cargarJSON#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearGeometria#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#formarPoligono#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#7956#8040#0" expanded="false" />
             <element signature="n#!!block;n#posicionarElemento#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearImagen#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearTexto#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearIframe#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearIndex#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#crearSense#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#styleText#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#eliminarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#reiniciarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
@@ -476,15 +646,16 @@
           <caret line="738" column="5" lean-forward="true" selection-start-line="738" selection-start-column="5" selection-end-line="738" selection-end-column="5" />
           <folding>
             <element signature="e#1673#2744#0" expanded="false" />
+            <element signature="n#!!block;n#cargarJSON#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearGeometria#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#formarPoligono#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#7956#8040#0" expanded="false" />
             <element signature="n#!!block;n#posicionarElemento#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearImagen#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearTexto#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearIframe#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearIndex#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#crearSense#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#styleText#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#eliminarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#reiniciarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
@@ -557,15 +728,16 @@
           <caret line="278" column="0" lean-forward="false" selection-start-line="278" selection-start-column="0" selection-end-line="282" selection-end-column="0" />
           <folding>
             <element signature="e#1673#2744#0" expanded="false" />
+            <element signature="n#!!block;n#cargarJSON#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearGeometria#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#formarPoligono#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#7956#8040#0" expanded="false" />
             <element signature="n#!!block;n#posicionarElemento#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearImagen#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearTexto#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearIframe#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearIndex#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#crearSense#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#styleText#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#eliminarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#reiniciarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
@@ -620,15 +792,16 @@
           <caret line="131" column="24" lean-forward="false" selection-start-line="131" selection-start-column="24" selection-end-line="131" selection-end-column="24" />
           <folding>
             <element signature="e#1673#2744#0" expanded="false" />
+            <element signature="n#!!block;n#cargarJSON#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearGeometria#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#formarPoligono#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#7956#8040#0" expanded="false" />
             <element signature="n#!!block;n#posicionarElemento#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearImagen#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearTexto#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearIframe#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearIndex#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#crearSense#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#styleText#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#eliminarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#reiniciarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
@@ -699,34 +872,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/interactions/interacciones.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="102" column="42" lean-forward="true" selection-start-line="102" selection-start-column="42" selection-end-line="102" selection-end-column="42" />
+        <state relative-caret-position="144">
+          <caret line="257" column="25" lean-forward="true" selection-start-line="257" selection-start-column="25" selection-end-line="257" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
+        <state relative-caret-position="470">
           <caret line="38" column="34" lean-forward="false" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/interactions/sense.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-292">
+          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/player.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="721" column="0" lean-forward="true" selection-start-line="721" selection-start-column="0" selection-end-line="721" selection-end-column="0" />
+        <state relative-caret-position="7">
+          <caret line="171" column="0" lean-forward="true" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
           <folding>
             <element signature="e#1673#2744#0" expanded="false" />
+            <element signature="n#!!block;n#cargarJSON#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearGeometria#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#formarPoligono#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
+            <element signature="e#7956#8040#0" expanded="false" />
             <element signature="n#!!block;n#posicionarElemento#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearImagen#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearTexto#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearIframe#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearVideo#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#crearIndex#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
-            <element signature="n#!!block;n#crearSense#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#styleText#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#eliminarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
             <element signature="n#!!block;n#reiniciarInteracciones#0;n#!!block;n#PlateaPlayer#0;n#PlateaPlayer#0;n#!!top" expanded="false" />
@@ -769,19 +952,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="813">
-          <caret line="184" column="8" lean-forward="false" selection-start-line="184" selection-start-column="8" selection-end-line="184" selection-end-column="8" />
+        <state relative-caret-position="73">
+          <caret line="153" column="5" lean-forward="true" selection-start-line="153" selection-start-column="5" selection-end-line="153" selection-end-column="5" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/interactions/sense.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="55">
-          <caret line="41" column="49" lean-forward="false" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>

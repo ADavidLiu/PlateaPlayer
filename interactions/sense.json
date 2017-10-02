@@ -16,7 +16,7 @@
                                 {
                                     "deviceID": 1,
                                     "start_time": 0,
-                                    "duration": 5
+                                    "duration": 0
                                 }
                             ]
                         }
@@ -39,7 +39,7 @@
                             "transform": [
                                 {
                                     "start_time": 0,
-                                    "duration": 5
+                                    "duration": 10
                                 }
                             ]
                         }
@@ -62,8 +62,8 @@
                             "transform": [
                                 {
                                     "color": [255, 34, 0],
-                                    "start_time": 11,
-                                    "duration": 5
+                                    "start_time": 0,
+                                    "duration": 0
                                 }
                             ]
                         }
@@ -85,8 +85,8 @@
                             "type": "SMOKE",
                             "transform": [
                                 {
-                                    "start_time": 5,
-                                    "duration": 5
+                                    "start_time": 0,
+                                    "duration": 0
                                 }
                             ]
                         }
@@ -109,8 +109,8 @@
                             "transform": [
                                 {
                                     "state": 1,
-                                    "start_time": 17,
-                                    "duration": 5
+                                    "start_time": 0,
+                                    "duration": 0
                                 }
                             ]
                         }

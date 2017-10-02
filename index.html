@@ -16,7 +16,7 @@
     <!-- Contenedor de ejemplo -->
     <div id="main"></div>
     <!-- Botón para mostrar el funcionamiento de la API -->
-    <button class="btn btn-danger" id="btnStop">PAUSAR VIDEO</button>
+    <!--<button class="btn btn-danger" id="btnStop">PAUSAR VIDEO</button>-->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.5/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/addons/p5.dom.min.js"></script>
@@ -32,11 +32,11 @@
         // "main" hace referencia al id del contendor opcional para el player
         var opciones = {
             contenedor: "main",
-            path: "videos/videoPrueba.mp4",
+            path: "videos/nature.mp4",
             pathJSON: "interactions/sense.json"
         };
         var local = "http://localhost:7879";
-        var url = "http://e46e7555.ngrok.io";
+        var url = "http://7f077c6e.ngrok.io";
         var socket = io.connect(url);
         var plateaPlayer = new PlateaPlayer(p5, opciones, socket);
 
