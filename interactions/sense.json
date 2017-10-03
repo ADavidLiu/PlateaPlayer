@@ -38,8 +38,8 @@
                             "type": "WATER",
                             "transform": [
                                 {
-                                    "start_time": 0,
-                                    "duration": 10
+                                    "start_time": 5,
+                                    "duration": 5
                                 }
                             ]
                         }
@@ -86,7 +86,11 @@
                             "transform": [
                                 {
                                     "start_time": 0,
-                                    "duration": 0
+                                    "duration": 5
+                                },
+                                {
+                                    "start_time": 10,
+                                    "duration": 5
                                 }
                             ]
                         }

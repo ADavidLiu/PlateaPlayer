@@ -24,9 +24,14 @@ var tiempoActual = 0;
 
 ------------------------------------*/
 
-var pinPeltier;
-var pinAgua;
-var pinHumo;
+var pinPeltierFrio,
+    pinPeltierCalor,
+    pinAgua,
+    pinHumo,
+    pinLuzR,
+    pinLuzG,
+    pinLuzB,
+    pinViento;
 
 
 
@@ -49,16 +54,39 @@ board.on("ready", function() {
     ------------------------------------*/
 
     // TEMP
-    var numPinPeltier = 51;
-    pinPeltier = new five.Pin(numPinPeltier);
+    var numPinPeltierFrio = 50;
+    var numPinPeltierCalor = 51;
+    pinPeltierFrio = new five.Pin(numPinPeltierFrio);
+    pinPeltierCalor = new five.Pin(numPinPeltierCalor);
 
     // AGUA
-    var numPinAgua = 52;
+    var numPinAgua = 34;
     pinAgua = new five.Pin(numPinAgua);
 
     // HUMO
     var numPinHumo = 32;
     pinHumo = new five.Pin(numPinHumo);
+
+    // LUZ
+    var numPinLuzR = 42;
+    var numPinLuzG = 44;
+    var numPinLuzB = 46;
+    pinLuzR = new five.Pin({
+        pin: numPinLuzR,
+        mode: 3
+    });
+    pinLuzG = new five.Pin({
+        pin: numPinLuzG,
+        mode: 3
+    });
+    pinLuzB = new five.Pin({
+        pin: numPinLuzB,
+        mode: 3
+    });
+
+    // VIENTO
+    var numPinViento = 22;
+    pinViento = new five.Pin(numPinViento);
 
 
 
@@ -102,7 +130,7 @@ board.on("ready", function() {
 
 /*------------------------------------
 
-    Determina las interacciones SENSE respectivas
+    Determina las interacciones respectivas
 
 ------------------------------------*/
 
@@ -138,93 +166,107 @@ function determinarInteracciones(interacciones) {
 
 /*------------------------------------
 
+    Ejecución de interacciones
+
+------------------------------------*/
+
+function ejecutarInteraccion(transform, funcion, label) {
+    var fin = transform.start_time + transform.duration;
+    var intervalo = setInterval(function () {
+        if (tiempoActual >= transform.start_time && tiempoActual < fin) {
+            console.log("SÍ " + label);
+            funcion.iniciar();
+            var timeout = setTimeout(function () {
+                funcion.detener();
+                clearTimeout(timeout);
+                clearInterval(intervalo);
+            }, transform.duration * 1000);
+        }
+    }, 1000);
+}
+
+
+
+/*------------------------------------
+
     Funciones para cada acción
 
 ------------------------------------*/
 
 function crearViento(transform) {
-    var fin = transform.start_time + transform.duration;
-    var intervalo = setInterval(function () {
-        if (tiempoActual >= transform.start_time && tiempoActual < fin) {
-            console.log("SÍ VIENTO");
-
-            var timeout = setTimeout(function () {
-
-                clearTimeout(timeout);
-                clearInterval(intervalo);
-            }, transform.duration * 1000);
+    var funcion = {
+        iniciar: function() {
+            pinViento.high();
+        },
+        detener: function() {
+            pinViento.low();
         }
-    }, 1000);
+    };
+    ejecutarInteraccion(transform, funcion, "VIENTO");
 }
 
 function crearAgua(transform) {
-    var fin = transform.start_time + transform.duration;
-    var intervalo = setInterval(function () {
-        if (tiempoActual > transform.start_time && tiempoActual < fin) {
-            console.log("SÍ AGUA");
-            pinAgua.high();
-            encenderLED(13);
-            var timeout = setTimeout(function () {
-                pinAgua.low();
-                apagarLED(13);
-                clearTimeout(timeout);
-                clearInterval(intervalo);
-            }, transform.duration * 1000);
-        }
-    }, 1000);
+    var funcion = {
+       iniciar: function() {
+           pinAgua.high();
+       },
+       detener: function () {
+           pinAgua.low();
+       }
+    };
+    ejecutarInteraccion(transform, funcion, "AGUA");
 }
 
 function crearLuz(transform) {
-    var fin = transform.start_time + transform.duration;
-    var intervalo = setInterval(function () {
-        if (tiempoActual > transform.start_time && tiempoActual < fin) {
-            console.log("SÍ LUZ");
-
-            var timeout = setTimeout(function () {
-
-                clearTimeout(timeout);
-                clearInterval(intervalo);
-            }, transform.duration * 1000);
+    var color = {
+        R: transform.color[0],
+        G: transform.color[1],
+        B: transform.color[2]
+    };
+    var funcion = {
+        iniciar: function() {
+            board.io.pwmWrite(pinLuzR, color.R);
+            board.io.pwmWrite(pinLuzG, color.G);
+            board.io.pwmWrite(pinLuzB, color.B);
+        },
+        detener: function() {
+            board.io.pwmWrite(pinLuzR, 0);
+            board.io.pwmWrite(pinLuzG, 0);
+            board.io.pwmWrite(pinLuzB, 0);
         }
-    }, 1000);
+    };
+    ejecutarInteraccion(transform, funcion, "LUZ");
 }
 
 function crearHumo(transform) {
-    var fin = transform.start_time + transform.duration;
-    var intervalo = setInterval(function () {
-        if (tiempoActual > transform.start_time && tiempoActual < fin) {
-            console.log("SÍ HUMO");
+    var funcion = {
+        iniciar: function() {
             pinHumo.high();
-            var timeout = setTimeout(function () {
-                pinHumo.low();
-                clearTimeout(timeout);
-                clearInterval(intervalo);
-            }, transform.duration * 1000);
+        },
+        detener: function () {
+            pinHumo.low();
         }
-    }, 1000);
+    };
+    ejecutarInteraccion(transform, funcion, "HUMO");
 }
 
 function crearTemp(transform) {
-    var fin = transform.start_time + transform.duration;
-    var intervalo = setInterval(function () {
-        if (tiempoActual > transform.start_time && tiempoActual < fin) {
-            console.log("SÍ TEMP");
-            //pinPeltier.high();
-            var timeout = setTimeout(function () {
-                //pinPeltier.low();
-                clearTimeout(timeout);
-                clearInterval(intervalo);
-            }, transform.duration * 1000);
+    var state = transform.state; // 0 = Frío, 1 = Calor
+    var funcion = {
+        iniciar: function () {
+            if (state === 0) {
+                pinPeltierFrio.high();
+            } else {
+                pinPeltierCalor.high();
+            }
+        },
+        detener: function () {
+            if (state === 0) {
+                pinPeltierFrio.low();
+            } else {
+                pinPeltierCalor.low();
+            }
         }
-    }, 1000);
-}
-
-function encenderLED(pin) {
-    var led = new five.Led(pin);
-    led.on();
-}
-
-function apagarLED(pin) {
-    var led = new five.Led(pin);
-    led.off();
+    };
+    ejecutarInteraccion(transform, funcion, "TEMP");
 }
