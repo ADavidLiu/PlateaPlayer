@@ -68,9 +68,9 @@ board.on("ready", function() {
     pinHumo = new five.Pin(numPinHumo);
 
     // LUZ
-    var numPinLuzR = 42;
-    var numPinLuzG = 44;
-    var numPinLuzB = 46;
+    var numPinLuzR = 10;
+    var numPinLuzG = 9;
+    var numPinLuzB = 8;
     pinLuzR = new five.Pin({
         pin: numPinLuzR,
         mode: 3
@@ -83,9 +83,12 @@ board.on("ready", function() {
         pin: numPinLuzB,
         mode: 3
     });
+    this.pinMode(numPinLuzR, five.Pin.PWM);
+    this.pinMode(numPinLuzG, five.Pin.PWM);
+    this.pinMode(numPinLuzB, five.Pin.PWM);
 
     // VIENTO
-    var numPinViento = 22;
+    var numPinViento = 30;
     pinViento = new five.Pin(numPinViento);
 
 
@@ -225,14 +228,14 @@ function crearLuz(transform) {
     };
     var funcion = {
         iniciar: function() {
-            board.io.pwmWrite(pinLuzR, color.R);
-            board.io.pwmWrite(pinLuzG, color.G);
-            board.io.pwmWrite(pinLuzB, color.B);
+            board.analogWrite(10, color.R);
+            board.analogWrite(9, color.G);
+            board.analogWrite(8, color.B);
         },
         detener: function() {
-            board.io.pwmWrite(pinLuzR, 0);
-            board.io.pwmWrite(pinLuzG, 0);
-            board.io.pwmWrite(pinLuzB, 0);
+            board.analogWrite(10, 0);
+            board.analogWrite(9, 0);
+            board.analogWrite(8, 0);
         }
     };
     ejecutarInteraccion(transform, funcion, "LUZ");
