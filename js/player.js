@@ -1074,7 +1074,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
             }
         }
         return false;
-    }
+    };
 
     function finalizarVideo() {
         if (!isLooping) {
@@ -1097,6 +1097,6 @@ var PlateaPlayer = function (p5, opciones, socket) {
         pausarVideo: pausarVideo,
         reanudarVideo: reanudarVideo,
         silenciarVideo: silenciarVideo
-    }
+    };
 
-}
+};

@@ -18,6 +18,7 @@
     <!-- Botón para mostrar el funcionamiento de la API -->
     <!--<button class="btn btn-danger" id="btnStop">PAUSAR VIDEO</button>-->
 
+    <!-- p5 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.5/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/addons/p5.dom.min.js"></script>
     <!-- Para la comunicación con el servidor -->
@@ -36,7 +37,7 @@
             pathJSON: "interactions/sense.json"
         };
         var local = "http://localhost:7879";
-        var url = "http://6104807c.ngrok.io";
+        var url = "http://2e53d50d.ngrok.io";
         var socket = io.connect(url);
         var plateaPlayer = new PlateaPlayer(p5, opciones, socket);
 

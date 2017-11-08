@@ -17,7 +17,6 @@ var tiempoActual = 0;
 
 
 
-
 /*------------------------------------
 
     Declaración de pines
@@ -26,12 +25,16 @@ var tiempoActual = 0;
 
 var pinPeltierFrio,
     pinPeltierCalor,
+    pinPeltierFrioViento,
+    pinPeltierCalorViento,
     pinAgua,
     pinHumo,
+    pinHumoViento,
     pinLuzR,
     pinLuzG,
     pinLuzB,
-    pinViento;
+    pinViento1,
+    pinViento2;
 
 
 
@@ -56,8 +59,12 @@ board.on("ready", function() {
     // TEMP
     var numPinPeltierFrio = 50;
     var numPinPeltierCalor = 51;
+    var numPinPeltierFrioViento = 52;
+    var numPinPeltierCalorViento = 53;
     pinPeltierFrio = new five.Pin(numPinPeltierFrio);
     pinPeltierCalor = new five.Pin(numPinPeltierCalor);
+    pinPeltierFrioViento = new five.Pin(numPinPeltierFrioViento);
+    pinPeltierCalorViento = new five.Pin(numPinPeltierCalorViento);
 
     // AGUA
     var numPinAgua = 34;
@@ -65,7 +72,9 @@ board.on("ready", function() {
 
     // HUMO
     var numPinHumo = 32;
+    var numPinHumoViento = 33;
     pinHumo = new five.Pin(numPinHumo);
+    pinHumoViento = new five.Pin(numPinHumoViento);
 
     // LUZ
     var numPinLuzR = 10;
@@ -88,8 +97,10 @@ board.on("ready", function() {
     this.pinMode(numPinLuzB, five.Pin.PWM);
 
     // VIENTO
-    var numPinViento = 30;
-    pinViento = new five.Pin(numPinViento);
+    var numPinViento1 = 30;
+    var numPinViento2 = 31;
+    pinViento1 = new five.Pin(numPinViento1);
+    pinViento2 = new five.Pin(numPinViento2);
 
 
 
@@ -120,7 +131,7 @@ board.on("ready", function() {
             console.log("TIEMPO ACTUAL: " + tiempoActual);
         }, 1000);
 
-        // Después de haber recibido todas las interacciones
+        // Después de haber recibido todas las interacciones, las determina
         setTimeout(function () {
             console.log("DETERMINAR INTERACCIONES");
             determinarInteracciones(interacciones);
@@ -183,7 +194,7 @@ function ejecutarInteraccion(transform, funcion, label) {
                 funcion.detener();
                 clearTimeout(timeout);
                 clearInterval(intervalo);
-            }, transform.duration * 1000);
+            }, transform.duration * 1000); // A segundos
         }
     }, 1000);
 }
@@ -199,10 +210,12 @@ function ejecutarInteraccion(transform, funcion, label) {
 function crearViento(transform) {
     var funcion = {
         iniciar: function() {
-            pinViento.high();
+            pinViento1.high();
+            pinViento2.high();
         },
         detener: function() {
-            pinViento.low();
+            pinViento1.low();
+            pinViento2.low();
         }
     };
     ejecutarInteraccion(transform, funcion, "VIENTO");
@@ -254,20 +267,24 @@ function crearHumo(transform) {
 }
 
 function crearTemp(transform) {
-    var state = transform.state; // 0 = Frío, 1 = Calor
+    var state = transform.state; // 1 = Frío, 0 = Calor
     var funcion = {
         iniciar: function () {
             if (state === 0) {
                 pinPeltierFrio.high();
+                pinPeltierFrioViento.high();
             } else {
                 pinPeltierCalor.high();
+                pinPeltierCalorViento.high();
             }
         },
         detener: function () {
             if (state === 0) {
                 pinPeltierFrio.low();
+                pinPeltierFrioViento.low();
             } else {
                 pinPeltierCalor.low();
+                pinPeltierCalorViento.low();
             }
         }
     };
