@@ -1,11 +1,13 @@
 .barra-progreso {
     width: 100% !important;
     height: 5px !important;
-    background-color: $black;
-    position: absolute;
-    left: 0;
-    top: -5px;
-    border-bottom: 1px solid $gray;
+    background-color: transparent;
+    opacity: .5;
+    transition: all .25s;
+    &:hover {
+        opacity: 1;
+    }
+    
     &__progreso {
         height: 5px;
         background-color: $accent;

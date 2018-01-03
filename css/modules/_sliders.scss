@@ -16,7 +16,7 @@ input[type=range]::-webkit-slider-runnable-track {
     cursor: pointer;
     animate: 0.2s;
     box-shadow: 0px 0px 0px #000000;
-    background: #4cddb0;
+    background: $accent;
     border-radius: 2px;
     border: 0px solid #000000;
 }
@@ -35,7 +35,7 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #4cddb0;
+    background: $accent;
 }
 
 input[type=range]::-moz-range-track {
@@ -44,7 +44,7 @@ input[type=range]::-moz-range-track {
     cursor: pointer;
     animate: 0.2s;
     box-shadow: 0px 0px 0px #000000;
-    background: #4cddb0;
+    background: $accent;
     border-radius: 2px;
     border: 0px solid #000000;
 }
@@ -71,7 +71,7 @@ input[type=range]::-ms-track {
 }
 
 input[type=range]::-ms-fill-lower {
-    background: #4cddb0;
+    background: $accent;
     border: 0px solid #000000;
     border-radius: 4px;
     box-shadow: 0px 0px 0px #000000;
@@ -96,7 +96,7 @@ input[type=range]::-ms-thumb {
 }
 
 input[type=range]:focus::-ms-fill-lower {
-    background: #4cddb0;
+    background: $accent;
 }
 
 input[type=range]:focus::-ms-fill-upper {

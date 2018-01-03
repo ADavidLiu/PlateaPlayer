@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Se incluyen los estilos base -->
     <link rel="stylesheet" href="css/PlateaPlayer.css">
+    <style>
+        #main {
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,7 +24,7 @@
     <!-- Botón para mostrar el funcionamiento de la API -->
     <!--<button class="btn btn-danger" id="btnStop">PAUSAR VIDEO</button>-->
 
-    <!-- p5 -->
+    <!-- p5.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.5/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.4/addons/p5.dom.min.js"></script>
     <!-- Para la comunicación con el servidor -->
@@ -34,18 +40,18 @@
         var opciones = {
             contenedor: "main",
             path: "videos/nature.mp4",
-            pathJSON: "interactions/sense.json"
+            pathJSON: "interactions/interacciones.json"
         };
         var local = "http://localhost:7879";
-        var url = "http://2e53d50d.ngrok.io";
-        var socket = io.connect(url);
-        var plateaPlayer = new PlateaPlayer(p5, opciones, socket);
+        var url = "http://2da4dc22.ngrok.io";
+        //var socket = io.connect(local);
+        var plateaPlayer = new PlateaPlayer(p5, opciones, null);
 
         // Ejemplo de utilización de la API
-        var btnStop = document.getElementById("btnStop");
+        /*var btnStop = document.getElementById("btnStop");
         btnStop.onclick = function () {
             plateaPlayer.pausarVideo();
-        }
+        }*/
     </script>
 
 </body>

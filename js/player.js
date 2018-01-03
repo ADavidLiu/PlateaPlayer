@@ -51,7 +51,9 @@ var PlateaPlayer = function (p5, opciones, socket) {
         indexOpened,
         indexLista,
         intervalos = [],
-        timeouts = [];
+        timeouts = [],
+        hideControls,
+        isFullscreen = false;
     
     
     
@@ -99,19 +101,23 @@ var PlateaPlayer = function (p5, opciones, socket) {
                     finalizarVideo();
             }
             // Se lee el JSON después de que se cargue el video
-            var pathJSON = opc.pathJSON;
-            cargarJSON(pathJSON);
+            /* var pathJSON = opc.pathJSON;
+            cargarJSON(pathJSON); */
+
+            // Para integrarse a la plataforma
             var jsonString = window.atob(opc.json);
             json = JSON.parse(jsonString);
-            console.log(jsonString);
-            determinarInteracciones();
+            determinarInteracciones(0);
         });
-        video.parent("videoContainer");
+        /* video.parent("videoContainer"); */
+        video.parent("videoAdjusted");
     }
 
     function cargarJSON(path) {
         // Determinar interacciones una vez cargue el JSON
-        json = p5.loadJSON(path, determinarInteracciones);
+        json = p5.loadJSON(path, function () {
+            determinarInteracciones(0);
+        });
     }
 
 
@@ -122,7 +128,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
 
     ------------------------------------*/
 
-    function determinarInteracciones() {
+    function determinarInteracciones(nuevoTiempo) {
         if (json) {
             console.log("Determinar interacciones");
             interactions = json.interactions;
@@ -134,29 +140,29 @@ var PlateaPlayer = function (p5, opciones, socket) {
                         switch (interaccion.type.event) {
                         case "HOT_SPOT":
                             switch (interaccion.type.data.shift[j].type) {
-                            case "ELLIPSE":
-                            case "POLY":
-                                crearGeometria(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
-                                break;
-                            case "IMAGE":
-                                crearImagen(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
-                                break;
-                            case "TEXT":
-                                crearTexto(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
-                                break;
-                            case "WEB_CONTENT":
-                                crearIframe(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
-                                break;
-                            case "VIDEO":
-                                crearVideo(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
-                                break;
+                                case "ELLIPSE":
+                                case "POLY":
+                                    crearGeometria(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
+                                    break;
+                                case "IMAGE":
+                                    crearImagen(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
+                                    break;
+                                case "TEXT":
+                                    crearTexto(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
+                                    break;
+                                case "WEB_CONTENT":
+                                    crearIframe(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
+                                    break;
+                                case "VIDEO":
+                                    crearVideo(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
+                                    break;
                             }
                             break;
                         case "WEB_CONTENT":
-                            crearIframe(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused);
+                            crearIframe(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
                             break;
                         case "INDEX":
-                            crearIndex(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k]);
+                            crearIndex(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], nuevoTiempo);
                             break;
                         case "SENSE":
                             crearSense(interaccion);
@@ -178,10 +184,11 @@ var PlateaPlayer = function (p5, opciones, socket) {
 
     ------------------------------------*/
 
-    function crearGeometria(data, shift, transform, isPaused) {
+    function crearGeometria(data, shift, transform, isPaused, nuevoTiempo) {
         // Crea el elemento con un 'div' vacío
         var elem = p5.createDiv("");
-        elem.parent("videoContainer");
+        /* elem.parent("videoContainer"); */
+        elem.parent("videoAdjusted");
         // Añade los estilos necesarios
         if (shift.type === "ELLIPSE") {
             elem.addClass("interactive interactive__geometry interactive__geometry--ellipse");
@@ -194,7 +201,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
         elem.style("width", shift.geometry.width + "%");
         elem.style("height", shift.geometry.height + "%");
         // Se manejan los tiempos de aparición
-        mostrarElemento(elem, transform, isPaused);
+        mostrarElemento(elem, transform, isPaused, nuevoTiempo);
         asignarAccion(elem, data);
     }
 
@@ -208,7 +215,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
         elem.style("clip-path", "polygon(" + verticesFormatted + ")");
     }
 
-    function mostrarElemento(elem, transform, isPaused) {
+    function mostrarElemento(elem, transform, isPaused, nuevoTiempo) {
         // Posiciona el elemento si no es un index
         if (!hasClass(elem, "interactive__index-item")) {
             posicionarElemento(elem, transform.translate.y, transform.translate.x);
@@ -221,11 +228,38 @@ var PlateaPlayer = function (p5, opciones, socket) {
             intervalos.push(intervalo);
             // Si está en su rango de "aparición"
             if (video.time() >= transform.start_time && video.time() < fin) {
+                // Se muestra
+                elem.show();
+
+                // Se elimina después de cumplida su duración
+                var duracion = fin - nuevoTiempo;
+
+                var timeout = setTimeout(function () {
+                    // Se agrega al array global
+                    timeouts.push(timeout);
+                    // Elimina el elemento del DOM
+                    elem.remove();
+                    // Si pausó el video, lo reanuda
+                    if (isPaused) {
+                        reanudarVideo();
+                    }
+                    // Si el elemento es un video, lo detiene
+                    if (hasClass(elem, "interactive__video")) {
+                        elem.stop();
+                    }
+                    // Si es un index, oculta el padre si no quedan otros elementos
+                    if (!checkIndexContent() && !hasClass(elem, "menu__item--hidden")) {
+                        menuIndex.addClass("menu__item--hidden");
+                    }
+                    clearTimeout(timeout);
+                    console.log("INTERACCIÓN TERMINADA");
+                }, duracion * 1000); // Se convierte a segundos
+                
                 // Si es un elemento index, muestra el botón
                 if (hasClass(elem, "interactive__index-item")) {
                     menuIndex.removeClass("menu__item--hidden");
                 }
-                // Sólo se ejecuta una vez
+                // Sólo se ejecuta una vez por elemento
                 if (!hasClass(elem, "interactive--visible")) {
                     // Muestra el elemento
                     elem.addClass("interactive--visible");
@@ -249,30 +283,11 @@ var PlateaPlayer = function (p5, opciones, socket) {
                         elem.style("transform", transformacion);
                         break;
                     }
-                    // Se elimina después de cumplida su duración
-                    var timeout = setTimeout(function () {
-                        // Se agrega al array global
-                        timeouts.push(timeout);
-                        // Elimina el elemento del DOM
-                        elem.remove();
-                        // Si pausó el video, lo reanuda
-                        if (isPaused) {
-                            reanudarVideo();
-                        }
-                        // Si el elemento es un video, lo detiene
-                        if (hasClass(elem, "interactive__video")) {
-                            elem.stop();
-                        }
-                        // Si es un index, oculta el padre si no quedan otros elementos
-                        if (!checkIndexContent() && !hasClass(elem, "menu__item--hidden")) {
-                            menuIndex.addClass("menu__item--hidden");
-                        }
-                        clearTimeout(timeout);
-                        console.log("INTERACCIÓN TERMINADA");
-                    }, transform.duration * 1000); // Se convierte a segundos
                 } else {
                     clearInterval(intervalo);
                 }
+            } else {
+                elem.hide();
             }
         }, 1); // Cada milisegundo
     }
@@ -282,60 +297,60 @@ var PlateaPlayer = function (p5, opciones, socket) {
         elem.style("left", x + "%");
     }
 
-    function crearImagen(data, shift, transform, isPaused) {
+    function crearImagen(data, shift, transform, isPaused, nuevoTiempo) {
         var img = createImg(shift.image.src, shift.image.alt);
         img.parent("videoContainer");
         img.addClass("interactive interactive__img");
         img.style("width", shift.image.width + "%");
-        mostrarElemento(img, transform, isPaused);
+        mostrarElemento(img, transform, isPaused, nuevoTiempo);
         asignarAccion(img, data, transform);
     }
 
-    function crearTexto(data, shift, transform, isPaused) {
+    function crearTexto(data, shift, transform, isPaused, nuevoTiempo) {
         // Se crea el contenedor y se aplican los estilos propios
         var div = p5.createDiv(shift.html);
         styleText(div, shift);
-        div.parent("videoContainer");
+        div.parent("videoAdjusted");
         div.addClass("interactive interactive__text");
-        mostrarElemento(div, transform, isPaused);
+        mostrarElemento(div, transform, isPaused, nuevoTiempo);
         asignarAccion(div, data, transform);
     }
 
-    function crearIframe(data, shift, transform, isPaused) {
+    function crearIframe(data, shift, transform, isPaused, nuevoTiempo) {
         // Se crea el iFrame
         var iframe = p5.createElement("iframe", "");
-        iframe.parent("videoContainer");
+        iframe.parent("videoAdjusted");
         iframe.attribute("src", shift.src);
         iframe.style("width", shift.width + "%");
         iframe.style("height", shift.height + "%");
         iframe.addClass("interactive interactive__iframe");
-        mostrarElemento(iframe, transform, isPaused);
+        mostrarElemento(iframe, transform, isPaused, nuevoTiempo);
         asignarAccion(iframe, data, transform);
     }
 
-    function crearVideo(data, shift, transform, isPaused) {
+    function crearVideo(data, shift, transform, isPaused, nuevoTiempo) {
         var newVideo = p5.createVideo(shift.src);
-        newVideo.parent("videoContainer");
+        newVideo.parent("videoAdjusted");
         newVideo.addClass("interactive interactive__video");
         newVideo.style("width", shift.width + "%");
         newVideo.style("height", shift.height + "%");
-        mostrarElemento(newVideo, transform, isPaused);
+        mostrarElemento(newVideo, transform, isPaused, nuevoTiempo);
         asignarAccion(newVideo, data, transform);
     }
 
-    function crearIndex(data, shift, transform) {
+    function crearIndex(data, shift, transform, nuevoTiempo) {
         var label = shift.label;
         var item = p5.createElement("li", label);
         styleText(item, shift);
         item.parent("indexLista");
         item.addClass("interactive interactive__index-item");
-        mostrarElemento(item, transform, false);
+        mostrarElemento(item, transform, false, nuevoTiempo);
         asignarAccion(item, data, transform);
     }
 
     function crearSense(interaccion) {
         // Envía la información de la interacción al servidor conectado al arduino
-        socket.emit("sense", interaccion);
+        //socket.emit("sense", interaccion);
     }
 
     function styleText(elem, shift) {
@@ -351,17 +366,17 @@ var PlateaPlayer = function (p5, opciones, socket) {
     }
 
     function eliminarInteracciones() {
+        console.log("ELIMINAR INTERACCIONES");
         var interacciones = p5.selectAll(".interactive");
-        if (interacciones != undefined || interacciones != null) {
-            for (var i = 0; i < interacciones.length; i++) {
-                interacciones[i].remove();
-            }
+        for (var i = 0; i < interacciones.length; i++) {
+            interacciones[i].remove();
         }
     }
 
-    function reiniciarInteracciones() {
+    function reiniciarInteracciones(nuevoTiempo) {
+        eliminarTimeEvents();
         eliminarInteracciones();
-        determinarInteracciones();
+        determinarInteracciones(nuevoTiempo);
     }
 
 
@@ -442,7 +457,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
 
     function goto(nuevoTiempo) {
         video.time(nuevoTiempo);
-        reiniciarInteracciones();
+        reiniciarInteracciones(nuevoTiempo);
     }
 
     function checkIndexContent() {
@@ -475,7 +490,8 @@ var PlateaPlayer = function (p5, opciones, socket) {
         var alto = p5.select("video").height;
         var ancho = p5.select("video").width;
         canvas = p5.createCanvas(ancho, alto);
-        canvas.parent("videoContainer");
+        /* canvas.parent("videoContainer"); */
+        canvas.parent("videoAdjusted");
 
         // Se inicia el video
         video.play();
@@ -495,16 +511,22 @@ var PlateaPlayer = function (p5, opciones, socket) {
         var mensaje = p5.createDiv("");
         var menu = p5.createDiv("");
         var videoControls = p5.createDiv("");
+        var videoAdjusted = p5.createDiv("");
 
         // Crea el contenedor padre si está definido
         if (opc.contenedor) {
             videoContainer.parent(opc.contenedor);
             var wrapper = p5.select("#" + opc.contenedor);
             wrapper.addClass("video__wrapper");
+            wrapper.attribute("tabindex", "0");
         }
         
         videoContainer.addClass("video__container");
         videoContainer.attribute("id", "videoContainer");
+
+        videoAdjusted.addClass("video__adjusted");
+        videoAdjusted.attribute("id", "videoAdjusted");
+        videoAdjusted.parent("videoContainer");
 
         // Crea la información superior
         informacion.parent(videoContainer);
@@ -532,7 +554,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
         menuItemIconLista.addClass("menu__item-icon menu__item-icon--filters");
         var menuItemIconListaI = p5.createElement("i", "");
         menuItemIconListaI.parent(menuItemIconLista);
-        menuItemIconListaI.addClass("fa fa-magic");
+        menuItemIconListaI.addClass("fa fa-sliders");
         var menuItemContentLista = p5.createDiv("");
         menuItemContentLista.parent(menuItemLista);
         menuItemContentLista.addClass("menu__item-content menu__item-content--filters");
@@ -627,32 +649,10 @@ var PlateaPlayer = function (p5, opciones, socket) {
         barraProgreso.attribute("max", "100");
         barraProgreso.attribute("step", "0.05");
 
-        // Crea los controles
+        // Crea la barra de controles
         var videoControlsContent = p5.createElement("ul", "");
         videoControlsContent.parent(videoControls);
         videoControlsContent.addClass("list-inline video__controls-content");
-
-        // Crea el control del volumen
-        var videoControlsVolumen = p5.createElement("li", "");
-        videoControlsVolumen.parent(videoControlsContent);
-        videoControlsVolumen.addClass("video__control video__control--volume-wrapper");
-        var videoControlsVolumenUp = p5.createElement("i", "");
-        videoControlsVolumenUp.parent(videoControlsVolumen);
-        videoControlsVolumenUp.addClass("fa fa-volume-up");
-        var videoControlsVolumenOff = p5.createElement("i", "");
-        videoControlsVolumenOff.parent(videoControlsVolumen);
-        videoControlsVolumenOff.addClass("fa fa-volume-off hidden");
-        var videoControlsVolumenDown = p5.createElement("i", "");
-        videoControlsVolumenDown.parent(videoControlsVolumen);
-        videoControlsVolumenDown.addClass("fa fa-volume-down hidden");
-        var videoControlsVolumenSlider = p5.createElement("input", "");
-        videoControlsVolumenSlider.parent(videoControlsVolumen);
-        videoControlsVolumenSlider.addClass("video__control video__control--volume");
-        videoControlsVolumenSlider.attribute("type", "range");
-        videoControlsVolumenSlider.attribute("min", "0.0");
-        videoControlsVolumenSlider.attribute("max", "1.0");
-        videoControlsVolumenSlider.attribute("step", "0.01");
-        videoControlsVolumenSlider.attribute("value", "0.5");
 
         // Crea los controles de playback
         var videoControlsPlayback = p5.createElement("ul", "");
@@ -710,6 +710,28 @@ var PlateaPlayer = function (p5, opciones, socket) {
         var videoControlsPlaybackFasterIcon = p5.createElement("i", "");
         videoControlsPlaybackFasterIcon.parent(videoControlsPlaybackFaster);
         videoControlsPlaybackFasterIcon.addClass("fa fa-step-forward");
+
+        // Crea el control del volumen
+        var videoControlsVolumen = p5.createElement("li", "");
+        videoControlsVolumen.parent(videoControlsContent);
+        videoControlsVolumen.addClass("video__control video__control--volume-wrapper");
+        var videoControlsVolumenUp = p5.createElement("i", "");
+        videoControlsVolumenUp.parent(videoControlsVolumen);
+        videoControlsVolumenUp.addClass("fa fa-volume-up");
+        var videoControlsVolumenOff = p5.createElement("i", "");
+        videoControlsVolumenOff.parent(videoControlsVolumen);
+        videoControlsVolumenOff.addClass("fa fa-volume-off hidden");
+        var videoControlsVolumenDown = p5.createElement("i", "");
+        videoControlsVolumenDown.parent(videoControlsVolumen);
+        videoControlsVolumenDown.addClass("fa fa-volume-down hidden");
+        var videoControlsVolumenSlider = p5.createElement("input", "");
+        videoControlsVolumenSlider.parent(videoControlsVolumen);
+        videoControlsVolumenSlider.addClass("video__control video__control--volume");
+        videoControlsVolumenSlider.attribute("type", "range");
+        videoControlsVolumenSlider.attribute("min", "0.0");
+        videoControlsVolumenSlider.attribute("max", "1.0");
+        videoControlsVolumenSlider.attribute("step", "0.01");
+        videoControlsVolumenSlider.attribute("value", "0.5");
     }
 
 
@@ -728,17 +750,22 @@ var PlateaPlayer = function (p5, opciones, socket) {
             canvas.mouseClicked(pausarVideo);
 
             // Envia el tiempo actual de reproducción
-            socket.emit("video", video.time());
+            //socket.emit("video", video.time());
         }
 
         // Barra de progreso
         actualizarProgreso();
 
+        // Mostrar/Ocultar la lista de elementos index
+        if (!checkIndexContent() && !hasClass(menuIndex, "menu__item--hidden")) {
+            menuIndex.addClass("menu__item--hidden");
+        }
+
         //console.log(video.time());
 
         // Reinicia las interacciones si está en loop
         if (isLooping && video.time() === 0) {
-            reiniciarInteracciones();
+            reiniciarInteracciones(0);
         }
     }
 
@@ -752,7 +779,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
 
     p5.windowResized = function () {
         // Escala el canvas al tamaño del video cuando la ventana cambie de tamaño
-        escalarCanvas();
+        //escalarCanvas();
     }
 
 
@@ -787,7 +814,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
 
     function reanudarVideo() {
         if (video.time() === 0) {
-            reiniciarInteracciones();
+            reiniciarInteracciones(0);
         }
         video.play();
         isReproduciendo = true;
@@ -884,7 +911,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
     function cambiarTiempo() {
         var nuevoTiempo = duracion * (barraProgresoContainer.value() / 100);
         video.time(nuevoTiempo);
-        reiniciarInteracciones();
+        reiniciarInteracciones(nuevoTiempo);
     }
 
     function actualizarProgreso() {
@@ -920,12 +947,12 @@ var PlateaPlayer = function (p5, opciones, socket) {
             menu.addClass("menu--visible");
             label.addClass("informacion__titulo--visible");
             p5.cursor();
-            // Oculta los controles después de 4 segundos si no se mueve el mouse
-            var hideControls = setTimeout(function () {
+            // Oculta los controles después de 4 segundos si no se mueve el cursor
+            /* hideControls = setTimeout(function () {
                 ocultarControles();
                 p5.noCursor();
-                clearTimeout(hideControls);
-            }, 4000);
+                clearTimeout(this);
+            }, 4000); */
         }
     }
 
@@ -988,13 +1015,35 @@ var PlateaPlayer = function (p5, opciones, socket) {
         btnNoFullscreen = p5.select(".fa-compress");
 
         btnFullscreen.mouseClicked(function () {
-            p5.fullscreen(1);
+            if (navigator.userAgent.search("MSIE") >= 0) {
+                document.getElementById("main").msRequestFullscreen();
+            } else if (navigator.userAgent.search("Chrome") >= 0) {
+                document.getElementById("main").webkitRequestFullscreen();
+            } else if (navigator.userAgent.search("Firefox") >= 0) {
+                document.getElementById("main").mozRequestFullScreen();
+            } else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+                document.getElementById("main").webkitRequestFullscreen();
+            }
+            isFullscreen = true;
             cambiarIconos(btnNoFullscreen, btnFullscreen);
         });
 
         btnNoFullscreen.mouseClicked(function () {
             p5.fullscreen(0);
+            isFullscreen = false;
             cambiarIconos(btnFullscreen, btnNoFullscreen);
+        });
+
+        ["webkitfullscreenchange", "msfullscreenchange", "mozfullscreenchange"].map(function (e) {
+            window.addEventListener(e, function () {
+                if (isFullscreen) {
+                    cambiarIconos(btnNoFullscreen, btnFullscreen);
+                    isFullscreen = false;
+                } else {
+                    cambiarIconos(btnFullscreen, btnNoFullscreen);
+                    isFullscreen = true;
+                }
+            });
         });
 
         // Controles del menú
@@ -1063,8 +1112,9 @@ var PlateaPlayer = function (p5, opciones, socket) {
     }
 
     p5.keyReleased = function () {
-        // Si se presiona spacebar
-        if (p5.keyCode == 32) {
+        // Si se presiona spacebar y el contendor está en focus
+        if (p5.keyCode == 32 && p5.select("#" + opc.contenedor).elt == document.activeElement) {
+            // Pausa/Reanuda el video
             if (!isReproduciendo) {
                 reanudarVideo();
                 ocultarControles();
@@ -1073,6 +1123,19 @@ var PlateaPlayer = function (p5, opciones, socket) {
                 mostrarControles();
             }
         }
+
+        // Si se presiona la flecha izquierda y el contendor está en focus
+        if (p5.keyCode == 37 && p5.select("#" + opc.contenedor).elt == document.activeElement) {
+            // Retrasa el video 5 segundos
+            goto(video.time() - 5);
+        }
+
+        // Si se presiona la flecha derecha y el contendor está en focus
+        if (p5.keyCode == 39 && p5.select("#" + opc.contenedor).elt == document.activeElement) {
+            // Adelanta el video 5 segundos
+            goto(video.time() + 5);
+        }
+
         return false;
     };
 
@@ -1080,7 +1143,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
         if (!isLooping) {
             detenerVideo();
         }
-    }
+    };
     
     
     
@@ -1100,3 +1163,9 @@ var PlateaPlayer = function (p5, opciones, socket) {
     };
 
 };
+
+window.addEventListener('keydown', function(e) {
+    if(e.keyCode == 32) {
+        e.preventDefault();
+    }
+});
