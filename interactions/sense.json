@@ -14,17 +14,14 @@
                             "type": "WIND",
                             "transform": [
                                 {
-                                    "deviceID": 1,
                                     "start_time": 0,
                                     "duration": 4
                                 },
                                 {
-                                    "deviceID": 1,
                                     "start_time": 7,
                                     "duration": 3
                                 },
                                 {
-                                    "deviceID": 1,
                                     "start_time": 19,
                                     "duration": 5
                                 }

@@ -42,10 +42,8 @@
             path: "videos/nature.mp4",
             pathJSON: "interactions/interacciones.json"
         };
-        var local = "http://localhost:7879";
-        var url = "http://2da4dc22.ngrok.io";
-        //var socket = io.connect(local);
-        var plateaPlayer = new PlateaPlayer(p5, opciones, null);
+        var socket = io.connect("https://platea.localtunnel.me");
+        var plateaPlayer = new PlateaPlayer(p5, opciones, socket);
 
         // Ejemplo de utilización de la API
         /*var btnStop = document.getElementById("btnStop");

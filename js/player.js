@@ -101,6 +101,8 @@ var PlateaPlayer = function (p5, opciones, socket) {
                     finalizarVideo();
             }
             // Se lee el JSON después de que se cargue el video
+
+            // Para usarse como plugin individual
             /* var pathJSON = opc.pathJSON;
             cargarJSON(pathJSON); */
 
@@ -299,7 +301,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
 
     function crearImagen(data, shift, transform, isPaused, nuevoTiempo) {
         var img = createImg(shift.image.src, shift.image.alt);
-        img.parent("videoContainer");
+        img.parent("videoAdjusted");
         img.addClass("interactive interactive__img");
         img.style("width", shift.image.width + "%");
         mostrarElemento(img, transform, isPaused, nuevoTiempo);
@@ -350,7 +352,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
 
     function crearSense(interaccion) {
         // Envía la información de la interacción al servidor conectado al arduino
-        //socket.emit("sense", interaccion);
+        socket.emit("sense", interaccion);
     }
 
     function styleText(elem, shift) {
@@ -750,7 +752,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
             canvas.mouseClicked(pausarVideo);
 
             // Envia el tiempo actual de reproducción
-            //socket.emit("video", video.time());
+            socket.emit("video", video.time());
         }
 
         // Barra de progreso
