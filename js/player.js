@@ -52,6 +52,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
         indexLista,
         intervalos = [],
         timeouts = [],
+        timers = [],
         hideControls,
         isFullscreen = false;
     
@@ -103,13 +104,13 @@ var PlateaPlayer = function (p5, opciones, socket) {
             // Se lee el JSON después de que se cargue el video
 
             // Para usarse como plugin individual
-            /* var pathJSON = opc.pathJSON;
-            cargarJSON(pathJSON); */
+            var pathJSON = opc.pathJSON;
+            cargarJSON(pathJSON);
 
-            // Para integrarse a la plataforma
-            var jsonString = window.atob(opc.json);
+            // Para integrarse a la plataforma YouPHPTube
+            /* var jsonString = window.atob(opc.json);
             json = JSON.parse(jsonString);
-            determinarInteracciones(0);
+            determinarInteracciones(0); */
         });
         /* video.parent("videoContainer"); */
         video.parent("videoAdjusted");
@@ -228,34 +229,11 @@ var PlateaPlayer = function (p5, opciones, socket) {
         var intervalo = setInterval(function () {
             // Se agrega al array global
             intervalos.push(intervalo);
+
             // Si está en su rango de "aparición"
             if (video.time() >= transform.start_time && video.time() < fin) {
                 // Se muestra
                 elem.show();
-
-                // Se elimina después de cumplida su duración
-                var duracion = fin - nuevoTiempo;
-
-                var timeout = setTimeout(function () {
-                    // Se agrega al array global
-                    timeouts.push(timeout);
-                    // Elimina el elemento del DOM
-                    elem.remove();
-                    // Si pausó el video, lo reanuda
-                    if (isPaused) {
-                        reanudarVideo();
-                    }
-                    // Si el elemento es un video, lo detiene
-                    if (hasClass(elem, "interactive__video")) {
-                        elem.stop();
-                    }
-                    // Si es un index, oculta el padre si no quedan otros elementos
-                    if (!checkIndexContent() && !hasClass(elem, "menu__item--hidden")) {
-                        menuIndex.addClass("menu__item--hidden");
-                    }
-                    clearTimeout(timeout);
-                    console.log("INTERACCIÓN TERMINADA");
-                }, duracion * 1000); // Se convierte a segundos
                 
                 // Si es un elemento index, muestra el botón
                 if (hasClass(elem, "interactive__index-item")) {
@@ -285,11 +263,30 @@ var PlateaPlayer = function (p5, opciones, socket) {
                         elem.style("transform", transformacion);
                         break;
                     }
-                } else {
-                    clearInterval(intervalo);
                 }
             } else {
                 elem.hide();
+            }
+
+            // Se elimina después de cumplida su duración
+            if (video.time() >= fin) {
+                console.log("Sí");
+                // Elimina el elemento del DOM
+                elem.remove();
+                // Si pausó el video, lo reanuda
+                if (isPaused) {
+                    reanudarVideo();
+                }
+                // Si el elemento es un video, lo detiene
+                if (hasClass(elem, "interactive__video")) {
+                    elem.stop();
+                }
+                // Si es un index, oculta el padre si no quedan otros elementos
+                if (!checkIndexContent() && !hasClass(elem, "menu__item--hidden")) {
+                    menuIndex.addClass("menu__item--hidden");
+                }
+                clearInterval(intervalo);
+                console.log("INTERACCIÓN TERMINADA");
             }
         }, 1); // Cada milisegundo
     }
@@ -352,7 +349,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
 
     function crearSense(interaccion) {
         // Envía la información de la interacción al servidor conectado al arduino
-        socket.emit("sense", interaccion);
+        /* socket.emit("sense", interaccion); */
     }
 
     function styleText(elem, shift) {
@@ -752,8 +749,11 @@ var PlateaPlayer = function (p5, opciones, socket) {
             canvas.mouseClicked(pausarVideo);
 
             // Envia el tiempo actual de reproducción
-            socket.emit("video", video.time());
+            /* socket.emit("video", video.time()); */
         }
+
+        // Pausa y resume las interacciones dependiendo del estado del video
+        /* checkPausedInteractions(); */
 
         // Barra de progreso
         actualizarProgreso();
@@ -1151,7 +1151,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
     
     /*------------------------------------
 
-    Objeto que expone algunas funciones al exterior (pueden ir cualquier otra, o variables)
+    Objeto que expone algunas funciones al exterior (API) (pueden ir cualquier otra, o variables)
 
     ------------------------------------*/
     

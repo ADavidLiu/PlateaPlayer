@@ -42,8 +42,8 @@
             path: "videos/nature.mp4",
             pathJSON: "interactions/interacciones.json"
         };
-        var socket = io.connect("https://platea.localtunnel.me");
-        var plateaPlayer = new PlateaPlayer(p5, opciones, socket);
+        /* var socket = io.connect("https://platea.localtunnel.me"); */
+        var plateaPlayer = new PlateaPlayer(p5, opciones, null);
 
         // Ejemplo de utilización de la API
         /*var btnStop = document.getElementById("btnStop");
