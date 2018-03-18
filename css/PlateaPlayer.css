@@ -269,10 +269,7 @@ canvas {
   .menu__item {
     position: absolute;
     width: 100%;
-    opacity: .5;
     transition: all .25s; }
-    .menu__item:hover {
-      opacity: 1; }
     .menu__item + .menu__item {
       margin-top: 3rem; }
       .menu__item + .menu__item .menu__item-icon + .menu__item + .menu__item .menu__item-icon {
@@ -281,7 +278,7 @@ canvas {
       display: none; }
     .menu__item-icon {
       pointer-events: all;
-      background-color: rgba(64, 64, 64, 0.5);
+      background-color: rgba(0, 0, 0, 0.75);
       display: inline-block;
       height: 2.3rem;
       width: 2.3rem;

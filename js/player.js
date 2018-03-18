@@ -99,18 +99,19 @@ var PlateaPlayer = function (p5, opciones, socket) {
             videoNativo = document.getElementById("video");
             // Al terminar el video
             videoNativo.onended = function () {
-                    finalizarVideo();
+                finalizarVideo();
             }
             // Se lee el JSON después de que se cargue el video
 
             // Para usarse como plugin individual
-            var pathJSON = opc.pathJSON;
-            cargarJSON(pathJSON);
+            /* var pathJSON = opc.pathJSON;
+            cargarJSON(pathJSON); */
 
             // Para integrarse a la plataforma YouPHPTube
-            /* var jsonString = window.atob(opc.json);
+            var jsonString = window.atob(opc.json);
             json = JSON.parse(jsonString);
-            determinarInteracciones(0); */
+            console.log(json);
+            determinarInteracciones(0);
         });
         /* video.parent("videoContainer"); */
         video.parent("videoAdjusted");
@@ -349,7 +350,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
 
     function crearSense(interaccion) {
         // Envía la información de la interacción al servidor conectado al arduino
-        /* socket.emit("sense", interaccion); */
+        socket.emit("sense", interaccion);
     }
 
     function styleText(elem, shift) {
@@ -687,7 +688,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
         videoControlsPlaybackSlower.addClass("video__control video__control--slower");
         var videoControlsPlaybackSlowerIcon = p5.createElement("i", "");
         videoControlsPlaybackSlowerIcon.parent(videoControlsPlaybackSlower);
-        videoControlsPlaybackSlowerIcon.addClass("fa fa-step-backward");
+        videoControlsPlaybackSlowerIcon.addClass("fa fa-fast-backward");
 
         var videoControlsPlaybackPlay = p5.createElement("li", "");
         videoControlsPlaybackPlay.parent(videoControlsPlayback);
@@ -708,7 +709,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
         videoControlsPlaybackFaster.addClass("video__control video__control--faster");
         var videoControlsPlaybackFasterIcon = p5.createElement("i", "");
         videoControlsPlaybackFasterIcon.parent(videoControlsPlaybackFaster);
-        videoControlsPlaybackFasterIcon.addClass("fa fa-step-forward");
+        videoControlsPlaybackFasterIcon.addClass("fa fa-fast-forward");
 
         // Crea el control del volumen
         var videoControlsVolumen = p5.createElement("li", "");
@@ -749,7 +750,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
             canvas.mouseClicked(pausarVideo);
 
             // Envia el tiempo actual de reproducción
-            /* socket.emit("video", video.time()); */
+            socket.emit("video", video.time());
         }
 
         // Pausa y resume las interacciones dependiendo del estado del video
@@ -815,6 +816,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
     }
 
     function reanudarVideo() {
+        console.log("Reanudar video");
         if (video.time() === 0) {
             reiniciarInteracciones(0);
         }
@@ -966,6 +968,26 @@ var PlateaPlayer = function (p5, opciones, socket) {
         }
     }
 
+    function toggleFullscreen() {
+        if (!isFullscreen) {
+            if (navigator.userAgent.search("MSIE") >= 0) {
+                document.getElementById("main").msRequestFullscreen();
+            } else if (navigator.userAgent.search("Chrome") >= 0) {
+                document.getElementById("main").webkitRequestFullscreen();
+            } else if (navigator.userAgent.search("Firefox") >= 0) {
+                document.getElementById("main").mozRequestFullScreen();
+            } else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+                document.getElementById("main").webkitRequestFullscreen();
+            }
+            isFullscreen = true;
+            cambiarIconos(btnNoFullscreen, btnFullscreen);
+        } else {
+            p5.fullscreen(0);
+            isFullscreen = false;
+            cambiarIconos(btnFullscreen, btnNoFullscreen);
+        }
+    }
+
     function bindEvents() {
         // Pointer a los controles
         controles = p5.select(".video__controls");
@@ -1016,25 +1038,9 @@ var PlateaPlayer = function (p5, opciones, socket) {
         btnFullscreen = p5.select(".fa-expand");
         btnNoFullscreen = p5.select(".fa-compress");
 
-        btnFullscreen.mouseClicked(function () {
-            if (navigator.userAgent.search("MSIE") >= 0) {
-                document.getElementById("main").msRequestFullscreen();
-            } else if (navigator.userAgent.search("Chrome") >= 0) {
-                document.getElementById("main").webkitRequestFullscreen();
-            } else if (navigator.userAgent.search("Firefox") >= 0) {
-                document.getElementById("main").mozRequestFullScreen();
-            } else if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
-                document.getElementById("main").webkitRequestFullscreen();
-            }
-            isFullscreen = true;
-            cambiarIconos(btnNoFullscreen, btnFullscreen);
-        });
-
-        btnNoFullscreen.mouseClicked(function () {
-            p5.fullscreen(0);
-            isFullscreen = false;
-            cambiarIconos(btnFullscreen, btnNoFullscreen);
-        });
+        btnFullscreen.mouseClicked(toggleFullscreen);
+        btnNoFullscreen.mouseClicked(toggleFullscreen);
+        canvas.doubleClicked(toggleFullscreen);
 
         ["webkitfullscreenchange", "msfullscreenchange", "mozfullscreenchange"].map(function (e) {
             window.addEventListener(e, function () {
@@ -1138,6 +1144,12 @@ var PlateaPlayer = function (p5, opciones, socket) {
             goto(video.time() + 5);
         }
 
+        // Si se presiona ESC y está en Fullscreen
+        if (p5.keyCode == 27 && isFullscreen) {
+            // Cambia los íconos al estado inicial
+            cambiarIconos(btnFullscreen, btnNoFullscreen);
+        }
+
         return false;
     };
 
@@ -1146,7 +1158,6 @@ var PlateaPlayer = function (p5, opciones, socket) {
             detenerVideo();
         }
     };
-    
     
     
     /*------------------------------------
@@ -1165,9 +1176,3 @@ var PlateaPlayer = function (p5, opciones, socket) {
     };
 
 };
-
-window.addEventListener('keydown', function(e) {
-    if(e.keyCode == 32) {
-        e.preventDefault();
-    }
-});

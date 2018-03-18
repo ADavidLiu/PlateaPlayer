@@ -15,11 +15,7 @@
     &__item {
         position: absolute;
         width: 100%;
-        opacity: .5;
         transition: all .25s;
-        &:hover {
-            opacity: 1;
-        }
         & + & {
             margin-top: 3rem;
             .menu__item-icon {
@@ -33,7 +29,7 @@
         }
         &-icon {
             pointer-events: all;
-            background-color: $black;
+            background-color: rgba($full-black, .75);
             display: inline-block;
             height: 2.3rem;
             width: 2.3rem;
