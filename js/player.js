@@ -104,14 +104,14 @@ var PlateaPlayer = function (p5, opciones, socket) {
             // Se lee el JSON después de que se cargue el video
 
             // Para usarse como plugin individual
-            /* var pathJSON = opc.pathJSON;
-            cargarJSON(pathJSON); */
+            var pathJSON = opc.pathJSON;
+            cargarJSON(pathJSON);
 
             // Para integrarse a la plataforma YouPHPTube
-            var jsonString = window.atob(opc.json);
+            /* var jsonString = window.atob(opc.json);
             json = JSON.parse(jsonString);
             console.log(json);
-            determinarInteracciones(0);
+            determinarInteracciones(0); */
         });
         /* video.parent("videoContainer"); */
         video.parent("videoAdjusted");

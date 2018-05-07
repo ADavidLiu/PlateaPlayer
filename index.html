@@ -40,10 +40,10 @@
         var opciones = {
             contenedor: "main",
             path: "videos/nature.mp4",
-            pathJSON: "interactions/interacciones.json"
+            pathJSON: "interactions/sense-test.json"
         };
-        /* var socket = io.connect("https://platea.localtunnel.me"); */
-        var plateaPlayer = new PlateaPlayer(p5, opciones, null);
+        var socket = io.connect("https://platea.localtunnel.me");
+        var plateaPlayer = new PlateaPlayer(p5, opciones, socket);
 
         // Ejemplo de utilización de la API
         /*var btnStop = document.getElementById("btnStop");

@@ -1,0 +1,27 @@
+{
+    "interactions": [
+        {
+            "id": "0001",
+            "show_time": 0,
+            "duration": 10,
+            "isPaused": false,
+            "type": {
+                "event": "SENSE",
+                "data": {
+                    "action": "EXTERNAL",
+                    "shift": [
+                        {
+                            "type": "SMOKE",
+                            "transform": [
+                                {
+                                    "start_time": 0,
+                                    "duration": 10
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

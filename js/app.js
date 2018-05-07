@@ -44,11 +44,11 @@ var pinPeltierFrio,
 
 ------------------------------------*/
 
-//var board = new five.Board();
+var board = new five.Board();
 
 var interacciones = [];
 
-//board.on("ready", function() {
+board.on("ready", function() {
 
     /*------------------------------------
 
@@ -57,7 +57,7 @@ var interacciones = [];
     ------------------------------------*/
 
     // TEMP
-    /* var numPinPeltierFrio = 50;
+    var numPinPeltierFrio = 50;
     var numPinPeltierCalor = 51;
     var numPinPeltierFrioViento = 52;
     var numPinPeltierCalorViento = 53;
@@ -72,9 +72,7 @@ var interacciones = [];
 
     // HUMO
     var numPinHumo = 32;
-    var numPinHumoViento = 33;
     pinHumo = new five.Pin(numPinHumo);
-    pinHumoViento = new five.Pin(numPinHumoViento);
 
     // LUZ
     var numPinLuzR = 10;
@@ -97,10 +95,12 @@ var interacciones = [];
     this.pinMode(numPinLuzB, five.Pin.PWM);
 
     // VIENTO
-    var numPinViento1 = 30;
-    var numPinViento2 = 31;
+    var numPinViento1 = 29;
+    var numPinViento2 = 30;
+    var numPinViento3 = 31;
     pinViento1 = new five.Pin(numPinViento1);
-    pinViento2 = new five.Pin(numPinViento2); */
+    pinViento2 = new five.Pin(numPinViento2);
+    pinViento3 = new five.Pin(numPinViento3);
 
 
 
@@ -110,7 +110,7 @@ var interacciones = [];
 
     ------------------------------------*/
 
-    /* io.on("connect", function (socket) {
+    io.on("connect", function (socket) {
         console.log("PlateaPlayer conectado!");
 
         // Lee la información de interacciones desde el JSON (una vez por cada interacción)
@@ -136,46 +136,9 @@ var interacciones = [];
             console.log("DETERMINAR INTERACCIONES");
             determinarInteracciones(interacciones);
         }, 500);
-    }); */
-
-//});
-
-
-
-/*------------------------------------
-
-    Conexión con el Player
-
-    ------------------------------------*/
-
-    io.on("connect", function (socket) {
-        console.log("PlateaPlayer conectado!");
-
-        // Lee la información de interacciones desde el JSON (una vez por cada interacción)
-        socket.on("sense", function (datos) {
-            console.log("SENSE RECIBIDO");
-            var string = JSON.stringify(datos);
-            var sense = JSON.parse(string);
-            interacciones.push(sense);
-        });
-
-        // Actualiza el tiempo del video
-        socket.on("video", function (time) {
-            tiempoActual = time;
-            console.log("TIEMPO ACTUAL: " + time);
-        });
-
-        // Imprime el tiempo actual cada segundo
-        /* setInterval(function () {
-            console.log("TIEMPO ACTUAL: " + tiempoActual);
-        }, 1000); */
-
-        // Después de haber recibido todas las interacciones, las determina
-        /* setTimeout(function () {
-            console.log("DETERMINAR INTERACCIONES");
-            determinarInteracciones(interacciones);
-        }, 500); */
     });
+
+});
 
 
 
@@ -249,10 +212,12 @@ function crearViento(transform) {
         iniciar: function() {
             pinViento1.high();
             pinViento2.high();
+            pinViento3.high();
         },
         detener: function() {
             pinViento1.low();
             pinViento2.low();
+            pinViento3.low();
         }
     };
     ejecutarInteraccion(transform, funcion, "VIENTO");
