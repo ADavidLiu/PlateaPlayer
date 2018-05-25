@@ -46,11 +46,11 @@
                             "transform": [
                                 {
                                     "start_time": 13,
-                                    "duration": 3
+                                    "duration": 0
                                 },
                                 {
                                     "start_time": 31,
-                                    "duration": 6
+                                    "duration": 0
                                 }
                             ]
                         }
@@ -72,49 +72,19 @@
                             "type": "LIGHT",
                             "transform": [
                                 {
-                                    "color": [48, 57, 67],
+                                    "color": [255, 0, 0],
                                     "start_time": 0,
-                                    "duration": 2
+                                    "duration": 3
                                 },
                                 {
-                                    "color": [21, 24, 33],
-                                    "start_time": 2,
-                                    "duration": 2
-                                },
-                                {
-                                    "color": [198, 103, 104],
+                                    "color": [0, 255, 0],
                                     "start_time": 4,
-                                    "duration": 3
+                                    "duration": 5
                                 },
                                 {
-                                    "color": [81, 107, 110],
-                                    "start_time": 11,
-                                    "duration": 3
-                                },
-                                {
-                                    "color": [204, 199, 181],
-                                    "start_time": 14,
-                                    "duration": 2
-                                },
-                                {
-                                    "color": [185, 118, 110],
-                                    "start_time": 19,
-                                    "duration": 1
-                                },
-                                {
-                                    "color": [85, 62, 84],
-                                    "start_time": 20,
-                                    "duration": 3
-                                },
-                                {
-                                    "color": [251, 215, 82],
-                                    "start_time": 24,
-                                    "duration": 6
-                                },
-                                {
-                                    "color": [189, 202, 252],
-                                    "start_time": 31,
-                                    "duration": 3
+                                    "color": [0, 0, 255],
+                                    "start_time": 10,
+                                    "duration": 5
                                 }
                             ]
                         }
