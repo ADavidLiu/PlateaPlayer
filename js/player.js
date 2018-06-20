@@ -104,14 +104,14 @@ var PlateaPlayer = function (p5, opciones, socket) {
             // Se lee el JSON después de que se cargue el video
 
             // Para usarse como plugin individual
-            var pathJSON = opc.pathJSON;
-            cargarJSON(pathJSON);
+            /* var pathJSON = opc.pathJSON;
+            cargarJSON(pathJSON); */
 
             // Para integrarse a la plataforma YouPHPTube
-            /* var jsonString = window.atob(opc.json);
+            var jsonString = window.atob(opc.json);
             json = JSON.parse(jsonString);
             console.log(json);
-            determinarInteracciones(0); */
+            determinarInteracciones(0);
         });
         /* video.parent("videoContainer"); */
         video.parent("videoAdjusted");
@@ -686,9 +686,14 @@ var PlateaPlayer = function (p5, opciones, socket) {
         var videoControlsPlaybackSlower = p5.createElement("li", "");
         videoControlsPlaybackSlower.parent(videoControlsPlayback);
         videoControlsPlaybackSlower.addClass("video__control video__control--slower");
-        var videoControlsPlaybackSlowerIcon = p5.createElement("i", "");
+        /* var videoControlsPlaybackSlowerIcon = p5.createElement("i", "");
         videoControlsPlaybackSlowerIcon.parent(videoControlsPlaybackSlower);
-        videoControlsPlaybackSlowerIcon.addClass("fa fa-fast-backward");
+        videoControlsPlaybackSlowerIcon.addClass("fa fa-fast-backward"); */
+        var videoControlsPlaybackSlowerIcon = p5.createElement("img", "");
+        videoControlsPlaybackSlowerIcon.parent(videoControlsPlaybackSlower);
+        videoControlsPlaybackSlowerIcon.attribute("src", "https://svgshare.com/i/6xQ.svg");
+        videoControlsPlaybackSlowerIcon.attribute("style", "heigth: 16px; width: 18px;");
+        videoControlsPlaybackSlowerIcon.addClass("fa");
 
         var videoControlsPlaybackPlay = p5.createElement("li", "");
         videoControlsPlaybackPlay.parent(videoControlsPlayback);
@@ -707,9 +712,14 @@ var PlateaPlayer = function (p5, opciones, socket) {
         var videoControlsPlaybackFaster = p5.createElement("li", "");
         videoControlsPlaybackFaster.parent(videoControlsPlayback);
         videoControlsPlaybackFaster.addClass("video__control video__control--faster");
-        var videoControlsPlaybackFasterIcon = p5.createElement("i", "");
+        /* var videoControlsPlaybackFasterIcon = p5.createElement("i", "");
         videoControlsPlaybackFasterIcon.parent(videoControlsPlaybackFaster);
-        videoControlsPlaybackFasterIcon.addClass("fa fa-fast-forward");
+        videoControlsPlaybackFasterIcon.addClass("fa fa-fast-forward"); */
+        var videoControlsPlaybackFasterIcon = p5.createElement("img", "");
+        videoControlsPlaybackFasterIcon.parent(videoControlsPlaybackFaster);
+        videoControlsPlaybackFasterIcon.attribute("src", "https://svgshare.com/i/6xR.svg");
+        videoControlsPlaybackFasterIcon.attribute("style", "heigth: 16px; width: 18px;");
+        videoControlsPlaybackFasterIcon.addClass("fa");
 
         // Crea el control del volumen
         var videoControlsVolumen = p5.createElement("li", "");
