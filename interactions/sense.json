@@ -1,152 +1,152 @@
 {
-    "interactions": [
-        {
-            "id": "0001",
-            "show_time": 1,
-            "duration": 5,
-            "isPaused": false,
-            "type": {
-                "event": "SENSE",
-                "data": {
-                    "action": "EXTERNAL",
-                    "shift": [
-                        {
-                            "type": "WIND",
-                            "transform": [
-                                {
-                                    "start_time": 0,
-                                    "duration": 4
-                                },
-                                {
-                                    "start_time": 7,
-                                    "duration": 3
-                                },
-                                {
-                                    "start_time": 19,
-                                    "duration": 5
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
-        },
-        {
-            "id": "0002",
-            "show_time": 10,
-            "duration": 5,
-            "isPaused": false,
-            "type": {
-                "event": "SENSE",
-                "data": {
-                    "action": "EXTERNAL",
-                    "shift": [
-                        {
-                            "type": "WATER",
-                            "transform": [
-                                {
-                                    "start_time": 13,
-                                    "duration": 0
-                                },
-                                {
-                                    "start_time": 31,
-                                    "duration": 0
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
-        },
-        {
-            "id": "0003",
-            "show_time": 10,
-            "duration": 5,
-            "isPaused": false,
-            "type": {
-                "event": "SENSE",
-                "data": {
-                    "action": "EXTERNAL",
-                    "shift": [
-                        {
-                            "type": "LIGHT",
-                            "transform": [
-                                {
-                                    "color": [255, 0, 0],
-                                    "start_time": 0,
-                                    "duration": 3
-                                },
-                                {
-                                    "color": [0, 255, 0],
-                                    "start_time": 4,
-                                    "duration": 5
-                                },
-                                {
-                                    "color": [0, 0, 255],
-                                    "start_time": 10,
-                                    "duration": 5
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
-        },
-        {
-            "id": "0004",
-            "show_time": 10,
-            "duration": 5,
-            "isPaused": false,
-            "type": {
-                "event": "SENSE",
-                "data": {
-                    "action": "EXTERNAL",
-                    "shift": [
-                        {
-                            "type": "SMOKE",
-                            "transform": [
-                                {
-                                    "start_time": 4,
-                                    "duration": 6
-                                },
-                                {
-                                    "start_time": 13,
-                                    "duration": 5
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
-        },
-        {
-            "id": "0005",
-            "show_time": 10,
-            "duration": 5,
-            "isPaused": false,
-            "type": {
-                "event": "SENSE",
-                "data": {
-                    "action": "EXTERNAL",
-                    "shift": [
-                        {
-                            "type": "TEMP",
-                            "transform": [
-                                {
-                                    "state": 0,
-                                    "start_time": 18,
-                                    "duration": 2
-                                },
-                                {
-                                    "state": 1,
-                                    "start_time": 31,
-                                    "duration": 3
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
-        }
-    ]
+	"interactions": [
+		{
+			"id": "0001",
+			"show_time": 1,
+			"duration": 5,
+			"isPaused": false,
+			"type": {
+				"event": "SENSE",
+				"data": {
+					"action": "EXTERNAL",
+					"shift": [
+						{
+							"type": "WIND",
+							"transform": [
+								{
+									"start_time": 0,
+									"duration": 4
+								},
+								{
+									"start_time": 7,
+									"duration": 3
+								},
+								{
+									"start_time": 19,
+									"duration": 5
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "0002",
+			"show_time": 10,
+			"duration": 5,
+			"isPaused": false,
+			"type": {
+				"event": "SENSE",
+				"data": {
+					"action": "EXTERNAL",
+					"shift": [
+						{
+							"type": "WATER",
+							"transform": [
+								{
+									"start_time": 13,
+									"duration": 0
+								},
+								{
+									"start_time": 31,
+									"duration": 0
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "0003",
+			"show_time": 10,
+			"duration": 5,
+			"isPaused": false,
+			"type": {
+				"event": "SENSE",
+				"data": {
+					"action": "EXTERNAL",
+					"shift": [
+						{
+							"type": "LIGHT",
+							"transform": [
+								{
+									"color": [255, 0, 0],
+									"start_time": 0,
+									"duration": 3
+								},
+								{
+									"color": [0, 255, 0],
+									"start_time": 4,
+									"duration": 5
+								},
+								{
+									"color": [0, 0, 255],
+									"start_time": 10,
+									"duration": 5
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "0004",
+			"show_time": 10,
+			"duration": 5,
+			"isPaused": false,
+			"type": {
+				"event": "SENSE",
+				"data": {
+					"action": "EXTERNAL",
+					"shift": [
+						{
+							"type": "SMOKE",
+							"transform": [
+								{
+									"start_time": 4,
+									"duration": 6
+								},
+								{
+									"start_time": 13,
+									"duration": 5
+								}
+							]
+						}
+					]
+				}
+			}
+		},
+		{
+			"id": "0005",
+			"show_time": 10,
+			"duration": 5,
+			"isPaused": false,
+			"type": {
+				"event": "SENSE",
+				"data": {
+					"action": "EXTERNAL",
+					"shift": [
+						{
+							"type": "TEMP",
+							"transform": [
+								{
+									"state": 0,
+									"start_time": 18,
+									"duration": 2
+								},
+								{
+									"state": 1,
+									"start_time": 31,
+									"duration": 3
+								}
+							]
+						}
+					]
+				}
+			}
+		}
+	]
 }

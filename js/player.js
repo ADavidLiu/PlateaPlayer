@@ -1,4 +1,6 @@
-var PlateaPlayer = function (p5, opciones, socket) {
+var PlateaPlayer = function (p5, opciones, socket, _paq) {
+
+    console.log(_paq);
     
 
     /*------------------------------------
@@ -110,7 +112,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
             // Para integrarse a la plataforma YouPHPTube
             var jsonString = window.atob(opc.json);
             json = JSON.parse(jsonString);
-            console.log(json);
+            //console.log(json);
             determinarInteracciones(0);
         });
         /* video.parent("videoContainer"); */
@@ -298,7 +300,7 @@ var PlateaPlayer = function (p5, opciones, socket) {
     }
 
     function crearImagen(data, shift, transform, isPaused, nuevoTiempo) {
-        var img = createImg(shift.image.src, shift.image.alt);
+        var img = p5.createImg(shift.image.src, shift.image.alt);
         img.parent("videoAdjusted");
         img.addClass("interactive interactive__img");
         img.style("width", shift.image.width + "%");

@@ -40,7 +40,8 @@
         var opciones = {
             contenedor: "main",
             path: "videos/nature.mp4",
-            pathJSON: "interactions/sense-test.json"
+            pathJSON: "interactions/interacciones.json"
+            /* pathJSON: "interactions/sense-test.json" */
         };
         var socket = io.connect("https://platea.localtunnel.me");
         var plateaPlayer = new PlateaPlayer(p5, opciones, socket);

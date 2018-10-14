@@ -1,0 +1,37 @@
+{
+    "interactions": [
+        {
+            "id": "00001",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "PLAY",
+                    "shift": [
+                        {
+                            "type": "IMAGE",
+                            "image": {
+                                "src": "http://placekitten.com/g/500/300"
+                            },
+                            "width": 50,
+                            "height": 50,
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 1,
+                                    "duration": 5,
+                                    "translate": {
+                                        "x": 30,
+                                        "y": 25
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 8,
+            "duration": 3,
+            "isPaused": true
+        }
+    ]
+}

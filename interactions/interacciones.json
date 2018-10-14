@@ -196,7 +196,7 @@
                     "shift": [
                         {
                             "src": "http://www.uao.edu.co/",
-                            "width": 80,
+                            "width": 40,
                             "height": 80,
                             "transform": [
                                 {
@@ -204,7 +204,7 @@
                                     "start_time": 12,
                                     "duration": 15,
                                     "translate": {
-                                        "x": 10,
+                                        "x": 50,
                                         "y": 5
                                     }
                                 }
@@ -215,7 +215,7 @@
             },
             "show_time": 12,
             "duration": 15,
-            "isPaused": true
+            "isPaused": false
         },
         {
             "id": "00007",
@@ -225,18 +225,20 @@
                     "action": "PLAY",
                     "shift": [
                         {
-                            "type": "VIDEO",
-                            "src": "../videos/videoPrueba.mp4",
+                            "type": "IMAGE",
+                            "image": {
+                                "src": "http://placekitten.com/g/500/300"
+                            },
                             "width": 50,
-                            "height": 50,
+                            "height": 25,
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
-                                    "start_time": 8,
-                                    "duration": 0,
+                                    "start_time": 1,
+                                    "duration": 5,
                                     "translate": {
-                                        "x": 30,
-                                        "y": 25
+                                        "x": 60,
+                                        "y": 50
                                     }
                                 }
                             ]
@@ -246,10 +248,10 @@
             },
             "show_time": 8,
             "duration": 3,
-            "isPaused": true
+            "isPaused": false
         },
         {
-            "id": "00007",
+            "id": "00008",
             "type": {
                 "event": "INDEX",
                 "data": {
@@ -320,7 +322,7 @@
             "isPaused": false
         },
         {
-            "id": "0008",
+            "id": "0009",
             "show_time": 1,
             "duration": 5,
             "isPaused": false,
@@ -351,7 +353,7 @@
             }
         },
         {
-            "id": "0009",
+            "id": "0010",
             "show_time": 10,
             "duration": 5,
             "isPaused": false,
@@ -364,12 +366,16 @@
                             "type": "WATER",
                             "transform": [
                                 {
+                                    "start_time": 0,
+                                    "duration": 5
+                                },
+                                {
                                     "start_time": 13,
-                                    "duration": 0
+                                    "duration": 5
                                 },
                                 {
                                     "start_time": 31,
-                                    "duration": 0
+                                    "duration": 5
                                 }
                             ]
                         }
@@ -378,7 +384,7 @@
             }
         },
         {
-            "id": "0010",
+            "id": "0011",
             "show_time": 10,
             "duration": 5,
             "isPaused": false,
@@ -412,7 +418,7 @@
             }
         },
         {
-            "id": "0011",
+            "id": "0012",
             "show_time": 10,
             "duration": 5,
             "isPaused": false,
@@ -439,7 +445,7 @@
             }
         },
         {
-            "id": "0012",
+            "id": "0013",
             "show_time": 10,
             "duration": 5,
             "isPaused": false,

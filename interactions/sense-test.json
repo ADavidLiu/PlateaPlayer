@@ -1,27 +1,38 @@
 {
     "interactions": [
         {
-            "id": "0001",
-            "show_time": 0,
-            "duration": 10,
-            "isPaused": false,
-            "type": {
-                "event": "SENSE",
-                "data": {
-                    "action": "EXTERNAL",
-                    "shift": [
-                        {
-                            "type": "SMOKE",
-                            "transform": [
-                                {
-                                    "start_time": 0,
-                                    "duration": 10
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
-        }
+			"id": "0003",
+			"show_time": 0,
+			"duration": 5,
+			"isPaused": false,
+			"type": {
+				"event": "SENSE",
+				"data": {
+					"action": "EXTERNAL",
+					"shift": [
+						{
+							"type": "LIGHT",
+							"transform": [
+								{
+									"color": [255, 0, 0],
+									"start_time": 0,
+									"duration": 3
+								},
+								{
+									"color": [0, 255, 0],
+									"start_time": 4,
+									"duration": 5
+								},
+								{
+									"color": [0, 0, 255],
+									"start_time": 10,
+									"duration": 5
+								}
+							]
+						}
+					]
+				}
+			}
+		}
     ]
 }
