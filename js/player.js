@@ -1,6 +1,4 @@
-var PlateaPlayer = function (p5, opciones, socket, _paq) {
-
-    console.log(_paq);
+var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
     
 
     /*------------------------------------
@@ -78,6 +76,24 @@ var PlateaPlayer = function (p5, opciones, socket, _paq) {
 
     var json,
         interactions;
+
+
+
+    /*------------------------------------
+
+    Variables para el tracking de eventos
+
+    ------------------------------------*/
+
+    var viewingTotalTime = 0,
+        viewingIntervals = [];
+
+    if (userID != undefined && videoName != undefined) {
+        console.log(userID, videoName);
+        _paq.push(["trackEvent", "Eventos accionados en: " + videoName, "Visualizaciones totales", "Usuario: " + userID]);
+        _paq.push(["trackEvent", "Eventos accionados en: " + videoName, "Visualizar video: " + videoName, "Usuario: " + userID]);
+    }
+    /* _paq.push(["trackEvent", "Playback", "Tiempo de visualización", "", "variable_de_tiempo"]); */
 
 
 
