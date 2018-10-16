@@ -1,0 +1,725 @@
+{
+    "interactions": [
+        {
+            "id": "00001",
+            "type": {
+                "event": "INDEX",
+                "data": {
+                    "action": "GOTO",
+                    "shift": [
+                        {
+                            "label": "INTRODUCCIÓN",
+                            "font": {
+                                "family": "Open Sans",
+                                "size": 1.5,
+                                "color": "#ffffff",
+                                "decoration": "none",
+                                "weight": "700",
+                                "backgroundColor": "transparent",
+                                "padding": [0.5, 0]
+                            },
+                            "transform": [
+                                {
+                                    "target": 8,
+                                    "start_time": 0,
+                                    "duration": 96
+                                }
+                            ]
+                        },
+                        {
+                            "label": "TRANSMISIÓN PARALELA",
+                            "font": {
+                                "family": "Open Sans",
+                                "size": 1.5,
+                                "color": "#ffffff",
+                                "decoration": "none",
+                                "weight": "700",
+                                "backgroundColor": "transparent",
+                                "padding": [0.5, 0]
+                            },
+                            "transform": [
+                                {
+                                    "target": 30,
+                                    "start_time": 0,
+                                    "duration": 96
+                                }
+                            ]
+                        },
+                        {
+                            "label": "TRANSMISIÓN SERIAL",
+                            "font": {
+                                "family": "Open Sans",
+                                "size": 1.5,
+                                "color": "#ffffff",
+                                "decoration": "none",
+                                "weight": "700",
+                                "backgroundColor": "transparent",
+                                "padding": [0.5, 0]
+                            },
+                            "transform": [
+                                {
+                                    "target": 40,
+                                    "start_time": 0,
+                                    "duration": 96
+                                }
+                            ]
+                        },
+                        {
+                            "label": "TRANSMISIÓN SERIAL SÍNCRONA",
+                            "font": {
+                                "family": "Open Sans",
+                                "size": 1.5,
+                                "color": "#ffffff",
+                                "decoration": "none",
+                                "weight": "700",
+                                "backgroundColor": "transparent",
+                                "padding": [0.5, 0]
+                            },
+                            "transform": [
+                                {
+                                    "target": 58,
+                                    "start_time": 0,
+                                    "duration": 96
+                                }
+                            ]
+                        },
+                        {
+                            "label": "TRANSMISIÓN SERIAL ASÍNCRONA",
+                            "font": {
+                                "family": "Open Sans",
+                                "size": 1.5,
+                                "color": "#ffffff",
+                                "decoration": "none",
+                                "weight": "700",
+                                "backgroundColor": "transparent",
+                                "padding": [0.5, 0]
+                            },
+                            "transform": [
+                                {
+                                    "target": 73,
+                                    "start_time": 0,
+                                    "duration": 96
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 0,
+            "duration": 96,
+            "isPaused": false
+        },
+        {
+            "id": "00002",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "GOTO",
+                    "target": 30,
+                    "shift": [
+                        {
+                            "type": "POLY",
+                            "geometry": {
+                                "background": "transparent",
+                                "width": 36,
+                                "height": 27,
+                                "vertices": [
+                                    {
+                                        "x": 0,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 100
+                                    },
+                                    {
+                                        "x": 0,
+                                        "y": 100
+                                    }
+                                ]
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 12,
+                                    "duration": 2,
+                                    "translate": {
+                                        "x": 32,
+                                        "y": 8
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 12,
+            "duration": 18,
+            "isPaused": false
+        },
+        {
+            "id": "00003",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "GOTO",
+                    "target": 58,
+                    "shift": [
+                        {
+                            "type": "POLY",
+                            "geometry": {
+                                "background": "transparent",
+                                "width": 36,
+                                "height": 27,
+                                "vertices": [
+                                    {
+                                        "x": 0,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 100
+                                    },
+                                    {
+                                        "x": 0,
+                                        "y": 100
+                                    }
+                                ]
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 12,
+                                    "duration": 2,
+                                    "translate": {
+                                        "x": 32,
+                                        "y": 37
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 12,
+            "duration": 18,
+            "isPaused": false
+        },
+        {
+            "id": "00004",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "GOTO",
+                    "target": 73,
+                    "shift": [
+                        {
+                            "type": "POLY",
+                            "geometry": {
+                                "background": "transparent",
+                                "width": 36,
+                                "height": 27,
+                                "vertices": [
+                                    {
+                                        "x": 0,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 100
+                                    },
+                                    {
+                                        "x": 0,
+                                        "y": 100
+                                    }
+                                ]
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 12,
+                                    "duration": 2,
+                                    "translate": {
+                                        "x": 32,
+                                        "y": 65
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 12,
+            "duration": 18,
+            "isPaused": false
+        },
+        {
+            "id": "00005",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "GOTO",
+                    "target": 30,
+                    "shift": [
+                        {
+                            "type": "POLY",
+                            "geometry": {
+                                "background": "transparent",
+                                "width": 37,
+                                "height": 26,
+                                "vertices": [
+                                    {
+                                        "x": 0,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 100
+                                    },
+                                    {
+                                        "x": 0,
+                                        "y": 100
+                                    }
+                                ]
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 14,
+                                    "duration": 16,
+                                    "translate": {
+                                        "x": 11,
+                                        "y": 9
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 14,
+            "duration": 16,
+            "isPaused": false
+        },
+        {
+            "id": "00006",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "GOTO",
+                    "target": 58,
+                    "shift": [
+                        {
+                            "type": "POLY",
+                            "geometry": {
+                                "background": "transparent",
+                                "width": 37,
+                                "height": 26,
+                                "vertices": [
+                                    {
+                                        "x": 0,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 100
+                                    },
+                                    {
+                                        "x": 0,
+                                        "y": 100
+                                    }
+                                ]
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 14,
+                                    "duration": 16,
+                                    "translate": {
+                                        "x": 11,
+                                        "y": 37
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 14,
+            "duration": 16,
+            "isPaused": false
+        },
+        {
+            "id": "00007",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "GOTO",
+                    "target": 73,
+                    "shift": [
+                        {
+                            "type": "POLY",
+                            "geometry": {
+                                "background": "transparent",
+                                "width": 37,
+                                "height": 26,
+                                "vertices": [
+                                    {
+                                        "x": 0,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 0
+                                    },
+                                    {
+                                        "x": 100,
+                                        "y": 100
+                                    },
+                                    {
+                                        "x": 0,
+                                        "y": 100
+                                    }
+                                ]
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 14,
+                                    "duration": 16,
+                                    "translate": {
+                                        "x": 11,
+                                        "y": 65
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 14,
+            "duration": 16,
+            "isPaused": false
+        },
+        {
+            "id": "00008",
+            "type": {
+                "event": "WEB_CONTENT",
+                "data": {
+                    "action": "NONE",
+                    "shift": [
+                        {
+                            "src": "https://es.m.wikipedia.org/wiki/Capa_f%C3%ADsica",
+                            "width": 43,
+                            "height": 26,
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 16,
+                                    "duration": 6,
+                                    "translate": {
+                                        "x": 50,
+                                        "y": 13
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 16,
+            "duration": 6,
+            "isPaused": false
+        },
+        {
+            "id": "00009",
+            "type": {
+                "event": "WEB_CONTENT",
+                "data": {
+                    "action": "NONE",
+                    "shift": [
+                        {
+                            "src": "https://es.m.wikipedia.org/wiki/Capa_de_enlace_de_datos",
+                            "width": 43,
+                            "height": 26,
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 16,
+                                    "duration": 6,
+                                    "translate": {
+                                        "x": 50,
+                                        "y": 46
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 16,
+            "duration": 6,
+            "isPaused": false
+        },
+        {
+            "id": "00010",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "GOTO",
+                    "shift": [
+                        {
+                            "type": "TEXT",
+                            "html": "<a href='https://es.wikipedia.org/wiki/Modelo_OSI' target='_blank'>MÁS ACERCA DEL MODELO OSI 🔗</a>",
+                            "font": {
+                                "family": "Open Sans",
+                                "size": 1.5,
+                                "color": "#787778",
+                                "decoration": "none",
+                                "weight": "700",
+                                "backgroundColor": "#d1d1d1",
+                                "lineHeight": 3,
+                                "padding": [0.5, 1.5]
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 16,
+                                    "duration": 6,
+                                    "translate": {
+                                        "x": 59,
+                                        "y": 81
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 16,
+            "duration": 6,
+            "isPaused": false
+        },
+        {
+            "id": "00011",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "NONE",
+                    "shift": [
+                        {
+                            "type": "IMAGE",
+                            "image": {
+                                "src": "https://mediosdetransmision07.files.wordpress.com/2015/03/medios-guiados.png"
+                            },
+                            "width": 50,
+                            "height": 25,
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 22,
+                                    "duration": 8,
+                                    "translate": {
+                                        "x": 56,
+                                        "y": 35
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 22,
+            "duration": 8,
+            "isPaused": false
+        },
+        {
+            "id": "00012",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "GOTO",
+                    "shift": [
+                        {
+                            "type": "TEXT",
+                            "html": "<a href='https://es.wikipedia.org/wiki/Medio_de_transmisi%C3%B3n#Medios_de_transmisi%C3%B3n_guiados' target='_blank'>MÁS ACERCA DE MEDIOS GUIADOS 🔗</a>",
+                            "font": {
+                                "family": "Open Sans",
+                                "size": 1.5,
+                                "color": "#787778",
+                                "decoration": "none",
+                                "weight": "700",
+                                "backgroundColor": "#d1d1d1",
+                                "lineHeight": 3,
+                                "padding": [0.5, 1.5]
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 22,
+                                    "duration": 8,
+                                    "translate": {
+                                        "x": 59,
+                                        "y": 81
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 22,
+            "duration": 8,
+            "isPaused": false
+        },
+        {
+            "id": "000013",
+            "type": {
+                "event": "WEB_CONTENT",
+                "data": {
+                    "action": "NONE",
+                    "shift": [
+                        {
+                            "src": "https://www.youtube.com/embed/CDgL-OfrGac",
+                            "width": 42,
+                            "height": 35,
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 30,
+                                    "duration": 9,
+                                    "translate": {
+                                        "x": 10,
+                                        "y": 58
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 30,
+            "duration": 9,
+            "isPaused": false
+        },
+        {
+            "id": "000014",
+            "type": {
+                "event": "WEB_CONTENT",
+                "data": {
+                    "action": "NONE",
+                    "shift": [
+                        {
+                            "src": "https://www.youtube.com/embed/Gn54_zAHp4w",
+                            "width": 40,
+                            "height": 35,
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 40,
+                                    "duration": 10,
+                                    "translate": {
+                                        "x": 54,
+                                        "y": 54
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 40,
+            "duration": 10,
+            "isPaused": false
+        },
+        {
+            "id": "00015",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "GOTO",
+                    "shift": [
+                        {
+                            "type": "TEXT",
+                            "html": "<a href='https://es.wikipedia.org/wiki/Registro_de_desplazamiento' target='_blank'>MÁS ACERCA DE LA CONVERSIÓN 🔗</a>",
+                            "font": {
+                                "family": "Open Sans",
+                                "size": 1.5,
+                                "color": "#787778",
+                                "decoration": "none",
+                                "weight": "700",
+                                "backgroundColor": "#d1d1d1",
+                                "lineHeight": 3,
+                                "padding": [0.5, 1.5]
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 50,
+                                    "duration": 8,
+                                    "translate": {
+                                        "x": 59,
+                                        "y": 81
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 50,
+            "duration": 8,
+            "isPaused": false
+        },
+        {
+            "id": "000016",
+            "type": {
+                "event": "WEB_CONTENT",
+                "data": {
+                    "action": "NONE",
+                    "shift": [
+                        {
+                            "src": "https://www.youtube.com/embed/-VE-a52Z6dw",
+                            "width": 80,
+                            "height": 60,
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 100,
+                                    "duration": 4,
+                                    "translate": {
+                                        "x": 10,
+                                        "y": 35
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 100,
+            "duration": 4,
+            "isPaused": false
+        }
+    ]
+}

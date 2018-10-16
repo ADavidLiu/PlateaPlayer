@@ -122,14 +122,14 @@ var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
             // Se lee el JSON después de que se cargue el video
 
             // Para usarse como plugin individual
-            /* var pathJSON = opc.pathJSON;
-            cargarJSON(pathJSON); */
+            var pathJSON = opc.pathJSON;
+            cargarJSON(pathJSON);
 
             // Para integrarse a la plataforma YouPHPTube
-            var jsonString = window.atob(opc.json);
+            /* var jsonString = window.atob(opc.json);
             json = JSON.parse(jsonString);
             //console.log(json);
-            determinarInteracciones(0);
+            determinarInteracciones(0); */
         });
         /* video.parent("videoContainer"); */
         video.parent("videoAdjusted");
@@ -218,6 +218,10 @@ var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
             elem.addClass("interactive interactive__geometry interactive__geometry--poly");
             var vertices = shift.geometry.vertices;
             formarPoligono(elem, vertices);
+        }
+        // Se aplica el color de fondo
+        if (shift.geometry.background != undefined && shift.geometry.background != null) {
+            elem.style("background", shift.geometry.background);
         }
         // Se dimensiona relativamente
         elem.style("width", shift.geometry.width + "%");
