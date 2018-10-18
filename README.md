@@ -1,2 +1,2 @@
 # PlateaPlayer
-PlateaPlayer - reproductor para videos interactivos a partir de archivos JSON predefinidos
+PlateaPlayer - reproductor para videos interactivos y multisensoriales a partir de archivos JSON predefinidos
