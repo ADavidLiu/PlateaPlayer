@@ -121,8 +121,8 @@
                             "type": "POLY",
                             "geometry": {
                                 "background": "transparent",
-                                "width": 36,
-                                "height": 27,
+                                "width": 40,
+                                "height": 15,
                                 "vertices": [
                                     {
                                         "x": 0,
@@ -148,8 +148,8 @@
                                     "start_time": 12,
                                     "duration": 2,
                                     "translate": {
-                                        "x": 32,
-                                        "y": 8
+                                        "x": 30,
+                                        "y": 5
                                     }
                                 }
                             ]
@@ -173,8 +173,8 @@
                             "type": "POLY",
                             "geometry": {
                                 "background": "transparent",
-                                "width": 36,
-                                "height": 27,
+                                "width": 40,
+                                "height": 15,
                                 "vertices": [
                                     {
                                         "x": 0,
@@ -200,8 +200,8 @@
                                     "start_time": 12,
                                     "duration": 2,
                                     "translate": {
-                                        "x": 32,
-                                        "y": 37
+                                        "x": 30,
+                                        "y": 21
                                     }
                                 }
                             ]
@@ -225,8 +225,8 @@
                             "type": "POLY",
                             "geometry": {
                                 "background": "transparent",
-                                "width": 36,
-                                "height": 27,
+                                "width": 40,
+                                "height": 15,
                                 "vertices": [
                                     {
                                         "x": 0,
@@ -252,8 +252,8 @@
                                     "start_time": 12,
                                     "duration": 2,
                                     "translate": {
-                                        "x": 32,
-                                        "y": 65
+                                        "x": 30,
+                                        "y": 37
                                     }
                                 }
                             ]
@@ -277,8 +277,8 @@
                             "type": "POLY",
                             "geometry": {
                                 "background": "transparent",
-                                "width": 37,
-                                "height": 26,
+                                "width": 40,
+                                "height": 15,
                                 "vertices": [
                                     {
                                         "x": 0,
@@ -304,8 +304,8 @@
                                     "start_time": 14,
                                     "duration": 16,
                                     "translate": {
-                                        "x": 11,
-                                        "y": 9
+                                        "x": 7,
+                                        "y": 5
                                     }
                                 }
                             ]
@@ -329,8 +329,8 @@
                             "type": "POLY",
                             "geometry": {
                                 "background": "transparent",
-                                "width": 37,
-                                "height": 26,
+                                "width": 40,
+                                "height": 15,
                                 "vertices": [
                                     {
                                         "x": 0,
@@ -356,8 +356,8 @@
                                     "start_time": 14,
                                     "duration": 16,
                                     "translate": {
-                                        "x": 11,
-                                        "y": 37
+                                        "x": 7,
+                                        "y": 21
                                     }
                                 }
                             ]
@@ -381,8 +381,8 @@
                             "type": "POLY",
                             "geometry": {
                                 "background": "transparent",
-                                "width": 37,
-                                "height": 26,
+                                "width": 40,
+                                "height": 15,
                                 "vertices": [
                                     {
                                         "x": 0,
@@ -408,8 +408,8 @@
                                     "start_time": 14,
                                     "duration": 16,
                                     "translate": {
-                                        "x": 11,
-                                        "y": 65
+                                        "x": 7,
+                                        "y": 37
                                     }
                                 }
                             ]
@@ -431,7 +431,7 @@
                         {
                             "src": "https://es.m.wikipedia.org/wiki/Capa_f%C3%ADsica",
                             "width": 47,
-                            "height": 26,
+                            "height": 14,
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
@@ -439,7 +439,7 @@
                                     "duration": 6,
                                     "translate": {
                                         "x": 50,
-                                        "y": 13
+                                        "y": 8
                                     }
                                 }
                             ]
@@ -461,7 +461,7 @@
                         {
                             "src": "https://es.m.wikipedia.org/wiki/Capa_de_enlace_de_datos",
                             "width": 47,
-                            "height": 26,
+                            "height": 14,
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
@@ -469,7 +469,7 @@
                                     "duration": 6,
                                     "translate": {
                                         "x": 50,
-                                        "y": 46
+                                        "y": 26
                                     }
                                 }
                             ]
@@ -490,16 +490,16 @@
                     "shift": [
                         {
                             "type": "TEXT",
-                            "html": "<a href='https://es.wikipedia.org/wiki/Modelo_OSI' target='_blank'>MÁS ACERCA DEL MODELO OSI 🔗</a>",
+                            "html": "<a href='https://es.wikipedia.org/wiki/Modelo_OSI' target='_blank'>MÁS ACERCA DEL MODELO OSI</a>",
                             "font": {
                                 "family": "Open Sans",
-                                "size": 1.125,
+                                "size": 1.5,
                                 "color": "#787778",
                                 "decoration": "none",
                                 "weight": "700",
                                 "backgroundColor": "#d1d1d1",
                                 "lineHeight": 3,
-                                "padding": [2, 1.5]
+                                "padding": [0.5, 1.5]
                             },
                             "transform": [
                                 {
@@ -507,8 +507,8 @@
                                     "start_time": 16,
                                     "duration": 6,
                                     "translate": {
-                                        "x": 60,
-                                        "y": 81
+                                        "x": 61,
+                                        "y": 47
                                     }
                                 }
                             ]
@@ -532,15 +532,15 @@
                             "image": {
                                 "src": "https://mediosdetransmision07.files.wordpress.com/2015/03/medios-guiados.png"
                             },
-                            "width": 40,
+                            "width": 46,
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
                                     "start_time": 22,
                                     "duration": 8,
                                     "translate": {
-                                        "x": 53,
-                                        "y": 30
+                                        "x": 50,
+                                        "y": 16
                                     }
                                 }
                             ]
@@ -561,16 +561,16 @@
                     "shift": [
                         {
                             "type": "TEXT",
-                            "html": "<a href='https://es.wikipedia.org/wiki/Medio_de_transmisi%C3%B3n#Medios_de_transmisi%C3%B3n_guiados' target='_blank'>MÁS ACERCA DE MEDIOS GUIADOS 🔗</a>",
+                            "html": "<a href='https://es.wikipedia.org/wiki/Medio_de_transmisi%C3%B3n#Medios_de_transmisi%C3%B3n_guiados' target='_blank'>MÁS ACERCA DE MEDIOS GUIADOS</a>",
                             "font": {
                                 "family": "Open Sans",
-                                "size": 1.125,
+                                "size": 1.5,
                                 "color": "#787778",
                                 "decoration": "none",
                                 "weight": "700",
                                 "backgroundColor": "#d1d1d1",
                                 "lineHeight": 3,
-                                "padding": [2, 1.5]
+                                "padding": [0.5, 1.5]
                             },
                             "transform": [
                                 {
@@ -578,8 +578,8 @@
                                     "start_time": 22,
                                     "duration": 8,
                                     "translate": {
-                                        "x": 58,
-                                        "y": 75
+                                        "x": 59,
+                                        "y": 44
                                     }
                                 }
                             ]
@@ -600,16 +600,16 @@
                     "shift": [
                         {
                             "src": "https://www.youtube.com/embed/CDgL-OfrGac",
-                            "width": 42,
-                            "height": 35,
+                            "width": 46,
+                            "height": 20,
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
                                     "start_time": 30,
                                     "duration": 9,
                                     "translate": {
-                                        "x": 10,
-                                        "y": 58
+                                        "x": 6,
+                                        "y": 33
                                     }
                                 }
                             ]
@@ -630,8 +630,8 @@
                     "shift": [
                         {
                             "src": "https://www.youtube.com/embed/Gn54_zAHp4w",
-                            "width": 40,
-                            "height": 35,
+                            "width": 44,
+                            "height": 21,
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
@@ -639,7 +639,7 @@
                                     "duration": 10,
                                     "translate": {
                                         "x": 54,
-                                        "y": 54
+                                        "y": 30
                                     }
                                 }
                             ]
@@ -660,16 +660,16 @@
                     "shift": [
                         {
                             "type": "TEXT",
-                            "html": "<a href='https://es.wikipedia.org/wiki/Registro_de_desplazamiento' target='_blank'>MÁS ACERCA DE LA CONVERSIÓN 🔗</a>",
+                            "html": "<a href='https://es.wikipedia.org/wiki/Registro_de_desplazamiento' target='_blank'>MÁS ACERCA DE LA CONVERSIÓN</a>",
                             "font": {
                                 "family": "Open Sans",
-                                "size": 1.125,
+                                "size": 1.5,
                                 "color": "#787778",
                                 "decoration": "none",
                                 "weight": "700",
                                 "backgroundColor": "#d1d1d1",
                                 "lineHeight": 3,
-                                "padding": [2, 1.5]
+                                "padding": [0.5, 1.5]
                             },
                             "transform": [
                                 {
@@ -678,7 +678,7 @@
                                     "duration": 7,
                                     "translate": {
                                         "x": 60,
-                                        "y": 66
+                                        "y": 37
                                     }
                                 }
                             ]
@@ -699,8 +699,8 @@
                     "shift": [
                         {
                             "src": "https://www.youtube.com/embed/-VE-a52Z6dw",
-                            "width": 88,
-                            "height": 60,
+                            "width": 90,
+                            "height": 32,
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
@@ -708,7 +708,7 @@
                                     "duration": 4,
                                     "translate": {
                                         "x": 6,
-                                        "y": 34
+                                        "y": 20
                                     }
                                 }
                             ]

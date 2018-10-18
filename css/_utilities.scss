@@ -3,3 +3,10 @@
         @content
     }
 }
+
+.main-video {
+    margin-top: 4rem;
+    @include atSmall {
+        margin-top: 0;
+    }
+}

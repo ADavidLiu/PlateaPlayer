@@ -122,14 +122,18 @@ var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
             // Se lee el JSON después de que se cargue el video
 
             // Para usarse como plugin individual
-            var pathJSON = opc.pathJSON;
-            cargarJSON(pathJSON);
+            /* var pathJSON = opc.pathJSON;
+            cargarJSON(pathJSON); */
 
             // Para integrarse a la plataforma YouPHPTube
-            /* var jsonString = window.atob(opc.json);
+            /* var jsonString = window.atob(opc.json); */
+            var jsonString = decodeURIComponent(Array.prototype.map.call(atob(opc.json), function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+            }).join(''));
+            /* console.log(jsonString); */
             json = JSON.parse(jsonString);
             //console.log(json);
-            determinarInteracciones(0); */
+            determinarInteracciones(0);
         });
         /* video.parent("videoContainer"); */
         video.parent("videoAdjusted");
@@ -140,6 +144,7 @@ var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
         json = p5.loadJSON(path, function () {
             determinarInteracciones(0);
         });
+        console.log(json);
     }
 
 
@@ -323,7 +328,8 @@ var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
         var img = p5.createImg(shift.image.src, shift.image.alt);
         img.parent("videoAdjusted");
         img.addClass("interactive interactive__img");
-        img.style("width", shift.image.width + "%");
+        img.style("width", shift.width + "%");
+        img.style("height", "auto");
         mostrarElemento(img, transform, isPaused, nuevoTiempo);
         asignarAccion(img, data, transform);
     }
@@ -377,13 +383,13 @@ var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
 
     function styleText(elem, shift) {
         elem.style("font-family", shift.font.family);
-        elem.style("font-size", shift.font.size + "vw");
+        elem.style("font-size", shift.font.size + "rem");
         elem.style("color", shift.font.color);
         elem.style("text-decoration", shift.font.decoration);
         elem.style("font-weight", shift.font.weight);
         elem.style("background-color", shift.font.backgroundColor);
-        elem.style("line-height", shift.font.lineHeight + 0.5 + "vw");
-        var padding = shift.font.padding[0] + "rem " + shift.font.padding[1] + "rem";
+        elem.style("line-height", shift.font.lineHeight + 0.5 + "%");
+        var padding = shift.font.padding[0] + "vw " + shift.font.padding[1] + "vw";
         elem.style("padding", padding);
     }
 

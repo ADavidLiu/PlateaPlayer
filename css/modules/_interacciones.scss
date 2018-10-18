@@ -19,6 +19,9 @@
         height: auto;
     }
     &__text {
+        * {
+            font-size: inherit !important;
+        }
         a,
         a:link,
         a:hover,

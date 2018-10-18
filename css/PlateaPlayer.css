@@ -54,6 +54,12 @@ button {
   body {
     font-size: 16px; } }
 
+.main-video {
+  margin-top: 4rem; }
+  @media screen and (min-width: 768px) {
+    .main-video {
+      margin-top: 0; } }
+
 /*------------- TABLE OF CONTENTS -------------*/
 /*
     A. PLAYER
@@ -131,7 +137,8 @@ canvas {
         left: 0;
         transform: translateY(-50%); */
   overflow: hidden;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: -5px; }
 
 .video__controls {
   position: absolute;
@@ -187,6 +194,18 @@ canvas {
         -webkit-transform: scale(1.25);
         -ms-transform: scale(1.25);
         transform: scale(1.25); }
+  .video__controls:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: -1rem;
+    left: 0;
+    width: 100%;
+    height: 150%;
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.5)), to(transparent));
+    background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.5), transparent);
+    background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.5), transparent);
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent); }
 
 .video__control + .video__control {
   margin-left: 1rem; }
@@ -560,6 +579,8 @@ B. INTERACTIONS
     background-color: #ff0000; }
   .interactive__img {
     height: auto; }
+  .interactive__text * {
+    font-size: inherit !important; }
   .interactive__text a,
   .interactive__text a:link,
   .interactive__text a:hover,
