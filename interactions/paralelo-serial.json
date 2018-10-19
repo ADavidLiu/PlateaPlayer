@@ -22,7 +22,7 @@
                                 {
                                     "target": 8,
                                     "start_time": 0,
-                                    "duration": 96
+                                    "duration": 119
                                 }
                             ]
                         },
@@ -39,9 +39,9 @@
                             },
                             "transform": [
                                 {
-                                    "target": 30,
+                                    "target": 33,
                                     "start_time": 0,
-                                    "duration": 96
+                                    "duration": 119
                                 }
                             ]
                         },
@@ -58,9 +58,9 @@
                             },
                             "transform": [
                                 {
-                                    "target": 40,
+                                    "target": 42,
                                     "start_time": 0,
-                                    "duration": 96
+                                    "duration": 119
                                 }
                             ]
                         },
@@ -77,9 +77,9 @@
                             },
                             "transform": [
                                 {
-                                    "target": 58,
+                                    "target": 61,
                                     "start_time": 0,
-                                    "duration": 96
+                                    "duration": 119
                                 }
                             ]
                         },
@@ -96,9 +96,28 @@
                             },
                             "transform": [
                                 {
-                                    "target": 73,
+                                    "target": 76,
                                     "start_time": 0,
-                                    "duration": 96
+                                    "duration": 119
+                                }
+                            ]
+                        },
+                        {
+                            "label": "BAUDIOS Y BPS",
+                            "font": {
+                                "family": "Open Sans",
+                                "size": 1.125,
+                                "color": "#ffffff",
+                                "decoration": "none",
+                                "weight": "700",
+                                "backgroundColor": "transparent",
+                                "padding": [0.5, 0]
+                            },
+                            "transform": [
+                                {
+                                    "target": 88,
+                                    "start_time": 0,
+                                    "duration": 119
                                 }
                             ]
                         }
@@ -106,7 +125,7 @@
                 }
             },
             "show_time": 0,
-            "duration": 96,
+            "duration": 119,
             "isPaused": false
         },
         {
@@ -115,7 +134,7 @@
                 "event": "HOT_SPOT",
                 "data": {
                     "action": "GOTO",
-                    "target": 30,
+                    "target": 33,
                     "shift": [
                         {
                             "type": "POLY",
@@ -167,7 +186,7 @@
                 "event": "HOT_SPOT",
                 "data": {
                     "action": "GOTO",
-                    "target": 58,
+                    "target": 61,
                     "shift": [
                         {
                             "type": "POLY",
@@ -219,7 +238,7 @@
                 "event": "HOT_SPOT",
                 "data": {
                     "action": "GOTO",
-                    "target": 73,
+                    "target": 76,
                     "shift": [
                         {
                             "type": "POLY",
@@ -271,7 +290,7 @@
                 "event": "HOT_SPOT",
                 "data": {
                     "action": "GOTO",
-                    "target": 30,
+                    "target": 33,
                     "shift": [
                         {
                             "type": "POLY",
@@ -304,8 +323,8 @@
                                     "start_time": 14,
                                     "duration": 16,
                                     "translate": {
-                                        "x": 11,
-                                        "y": 9
+                                        "x": 9,
+                                        "y": 6
                                     }
                                 }
                             ]
@@ -323,7 +342,7 @@
                 "event": "HOT_SPOT",
                 "data": {
                     "action": "GOTO",
-                    "target": 58,
+                    "target": 61,
                     "shift": [
                         {
                             "type": "POLY",
@@ -356,7 +375,7 @@
                                     "start_time": 14,
                                     "duration": 16,
                                     "translate": {
-                                        "x": 11,
+                                        "x": 6,
                                         "y": 37
                                     }
                                 }
@@ -375,7 +394,7 @@
                 "event": "HOT_SPOT",
                 "data": {
                     "action": "GOTO",
-                    "target": 73,
+                    "target": 76,
                     "shift": [
                         {
                             "type": "POLY",
@@ -408,8 +427,8 @@
                                     "start_time": 14,
                                     "duration": 16,
                                     "translate": {
-                                        "x": 11,
-                                        "y": 65
+                                        "x": 6,
+                                        "y": 67
                                     }
                                 }
                             ]
@@ -435,8 +454,8 @@
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
-                                    "start_time": 16,
-                                    "duration": 6,
+                                    "start_time": 18,
+                                    "duration": 7,
                                     "translate": {
                                         "x": 50,
                                         "y": 13
@@ -447,8 +466,8 @@
                     ]
                 }
             },
-            "show_time": 16,
-            "duration": 6,
+            "show_time": 18,
+            "duration": 7,
             "isPaused": false
         },
         {
@@ -465,8 +484,8 @@
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
-                                    "start_time": 16,
-                                    "duration": 6,
+                                    "start_time": 18,
+                                    "duration": 7,
                                     "translate": {
                                         "x": 50,
                                         "y": 46
@@ -477,8 +496,8 @@
                     ]
                 }
             },
-            "show_time": 16,
-            "duration": 6,
+            "show_time": 18,
+            "duration": 7,
             "isPaused": false
         },
         {
@@ -504,8 +523,8 @@
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
-                                    "start_time": 16,
-                                    "duration": 6,
+                                    "start_time": 18,
+                                    "duration": 7,
                                     "translate": {
                                         "x": 60,
                                         "y": 81
@@ -516,8 +535,8 @@
                     ]
                 }
             },
-            "show_time": 16,
-            "duration": 6,
+            "show_time": 18,
+            "duration": 7,
             "isPaused": false
         },
         {
@@ -536,7 +555,7 @@
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
-                                    "start_time": 22,
+                                    "start_time": 25,
                                     "duration": 8,
                                     "translate": {
                                         "x": 53,
@@ -548,7 +567,7 @@
                     ]
                 }
             },
-            "show_time": 22,
+            "show_time": 25,
             "duration": 8,
             "isPaused": false
         },
@@ -575,7 +594,7 @@
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
-                                    "start_time": 22,
+                                    "start_time": 25,
                                     "duration": 8,
                                     "translate": {
                                         "x": 58,
@@ -587,7 +606,7 @@
                     ]
                 }
             },
-            "show_time": 22,
+            "show_time": 25,
             "duration": 8,
             "isPaused": false
         },
@@ -605,7 +624,7 @@
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
-                                    "start_time": 30,
+                                    "start_time": 33,
                                     "duration": 9,
                                     "translate": {
                                         "x": 10,
@@ -617,7 +636,7 @@
                     ]
                 }
             },
-            "show_time": 30,
+            "show_time": 33,
             "duration": 9,
             "isPaused": false
         },
@@ -635,7 +654,7 @@
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
-                                    "start_time": 40,
+                                    "start_time": 42,
                                     "duration": 10,
                                     "translate": {
                                         "x": 54,
@@ -647,7 +666,7 @@
                     ]
                 }
             },
-            "show_time": 40,
+            "show_time": 42,
             "duration": 10,
             "isPaused": false
         },
@@ -674,7 +693,7 @@
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
-                                    "start_time": 50,
+                                    "start_time": 52,
                                     "duration": 7,
                                     "translate": {
                                         "x": 60,
@@ -686,7 +705,7 @@
                     ]
                 }
             },
-            "show_time": 50,
+            "show_time": 52,
             "duration": 7,
             "isPaused": false
         },
@@ -704,8 +723,8 @@
                             "transform": [
                                 {
                                     "type": "TRANSLATE",
-                                    "start_time": 100,
-                                    "duration": 4,
+                                    "start_time": 110,
+                                    "duration": 9,
                                     "translate": {
                                         "x": 6,
                                         "y": 34
@@ -716,8 +735,48 @@
                     ]
                 }
             },
-            "show_time": 100,
-            "duration": 4,
+            "show_time": 110,
+            "duration": 9,
+            "isPaused": false
+        },
+        {
+            "id": "00017",
+            "type": {
+                "event": "HOT_SPOT",
+                "data": {
+                    "action": "GOTO",
+                    "target": 12,
+                    "shift": [
+                        {
+                            "type": "TEXT",
+                            "html": "🔙 VOLVER AL INICIO",
+                            "font": {
+                                "family": "Open Sans",
+                                "size": 1.125,
+                                "color": "#787778",
+                                "decoration": "none",
+                                "weight": "700",
+                                "backgroundColor": "#d1d1d1",
+                                "lineHeight": 3,
+                                "padding": [2, 1.5]
+                            },
+                            "transform": [
+                                {
+                                    "type": "TRANSLATE",
+                                    "start_time": 35,
+                                    "duration": 49,
+                                    "translate": {
+                                        "x": 75,
+                                        "y": 7
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
+            "show_time": 35,
+            "duration": 49,
             "isPaused": false
         }
     ]
