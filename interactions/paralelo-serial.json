@@ -764,9 +764,9 @@
                                 {
                                     "type": "TRANSLATE",
                                     "start_time": 35,
-                                    "duration": 49,
+                                    "duration": 84,
                                     "translate": {
-                                        "x": 75,
+                                        "x": 70,
                                         "y": 7
                                     }
                                 }
@@ -776,7 +776,7 @@
                 }
             },
             "show_time": 35,
-            "duration": 49,
+            "duration": 84,
             "isPaused": false
         }
     ]

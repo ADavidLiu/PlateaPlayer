@@ -85,15 +85,10 @@ var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
 
     ------------------------------------*/
 
-    var viewingTotalTime = 0,
-        viewingIntervals = [];
-
     if (userID != undefined && videoName != undefined) {
-        console.log(userID, videoName);
         _paq.push(["trackEvent", videoName + " - eventos accionados", "Visualizaciones totales", userID]);
-        _paq.push(["trackEvent", videoName + "- eventos accionados", videoName + " - visualizar video", userID]);
+        _paq.push(["trackEvent", videoName + " - eventos accionados", videoName + " - visualizar video", userID]);
     }
-    /* _paq.push(["trackEvent", "Playback", "Tiempo de visualización", "", "variable_de_tiempo"]); */
 
 
 
@@ -169,27 +164,27 @@ var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
                             switch (interaccion.type.data.shift[j].type) {
                                 case "ELLIPSE":
                                 case "POLY":
-                                    crearGeometria(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
+                                    crearGeometria(interaccion.id, interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
                                     break;
                                 case "IMAGE":
-                                    crearImagen(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
+                                    crearImagen(interaccion.id, interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
                                     break;
                                 case "TEXT":
-                                    crearTexto(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
+                                    crearTexto(interaccion.id, interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
                                     break;
                                 case "WEB_CONTENT":
-                                    crearIframe(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
+                                    crearIframe(interaccion.id, interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
                                     break;
                                 case "VIDEO":
-                                    crearVideo(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
+                                    crearVideo(interaccion.id, interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
                                     break;
                             }
                             break;
                         case "WEB_CONTENT":
-                            crearIframe(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
+                            crearIframe(interaccion.id, interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], interaccion.isPaused, nuevoTiempo);
                             break;
                         case "INDEX":
-                            crearIndex(interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], nuevoTiempo);
+                            crearIndex(interaccion.id, interaccion.type.data, interaccion.type.data.shift[j], interaccion.type.data.shift[j].transform[k], nuevoTiempo);
                             break;
                         case "SENSE":
                             crearSense(interaccion);
@@ -211,7 +206,7 @@ var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
 
     ------------------------------------*/
 
-    function crearGeometria(data, shift, transform, isPaused, nuevoTiempo) {
+    function crearGeometria(id, data, shift, transform, isPaused, nuevoTiempo) {
         // Crea el elemento con un 'div' vacío
         var elem = p5.createDiv("");
         /* elem.parent("videoContainer"); */
@@ -232,7 +227,7 @@ var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
         elem.style("width", shift.geometry.width + "%");
         elem.style("height", shift.geometry.height + "%");
         // Se manejan los tiempos de aparición
-        mostrarElemento(elem, transform, isPaused, nuevoTiempo);
+        mostrarElemento(id, elem, transform, isPaused, nuevoTiempo);
         asignarAccion(elem, data);
     }
 
@@ -246,7 +241,10 @@ var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
         elem.style("clip-path", "polygon(" + verticesFormatted + ")");
     }
 
-    function mostrarElemento(elem, transform, isPaused, nuevoTiempo) {
+    function mostrarElemento(interaccionID, elem, transform, isPaused, nuevoTiempo) {
+        // Tracking de la interacción a partir de su ID en el JSON
+        _paq.push(["trackEvent", videoName + " - eventos accionados", videoName + " - despliegue de interacción ID: " + interaccionID, userID]);
+
         // Posiciona el elemento si no es un index
         if (!hasClass(elem, "interactive__index-item")) {
             posicionarElemento(elem, transform.translate.y, transform.translate.x);
@@ -324,27 +322,27 @@ var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
         elem.style("left", x + "%");
     }
 
-    function crearImagen(data, shift, transform, isPaused, nuevoTiempo) {
+    function crearImagen(id, data, shift, transform, isPaused, nuevoTiempo) {
         var img = p5.createImg(shift.image.src, shift.image.alt);
         img.parent("videoAdjusted");
         img.addClass("interactive interactive__img");
         img.style("width", shift.width + "%");
         img.style("height", "auto");
-        mostrarElemento(img, transform, isPaused, nuevoTiempo);
+        mostrarElemento(id, img, transform, isPaused, nuevoTiempo);
         asignarAccion(img, data, transform);
     }
 
-    function crearTexto(data, shift, transform, isPaused, nuevoTiempo) {
+    function crearTexto(id, data, shift, transform, isPaused, nuevoTiempo) {
         // Se crea el contenedor y se aplican los estilos propios
         var div = p5.createDiv(shift.html);
         styleText(div, shift);
         div.parent("videoAdjusted");
         div.addClass("interactive interactive__text");
-        mostrarElemento(div, transform, isPaused, nuevoTiempo);
+        mostrarElemento(id, div, transform, isPaused, nuevoTiempo);
         asignarAccion(div, data, transform);
     }
 
-    function crearIframe(data, shift, transform, isPaused, nuevoTiempo) {
+    function crearIframe(id, data, shift, transform, isPaused, nuevoTiempo) {
         // Se crea el iFrame
         var iframe = p5.createElement("iframe", "");
         iframe.parent("videoAdjusted");
@@ -352,27 +350,27 @@ var PlateaPlayer = function (p5, opciones, socket, userID, videoName, _paq) {
         iframe.style("width", shift.width + "%");
         iframe.style("height", shift.height + "%");
         iframe.addClass("interactive interactive__iframe");
-        mostrarElemento(iframe, transform, isPaused, nuevoTiempo);
+        mostrarElemento(id, iframe, transform, isPaused, nuevoTiempo);
         asignarAccion(iframe, data, transform);
     }
 
-    function crearVideo(data, shift, transform, isPaused, nuevoTiempo) {
+    function crearVideo(id, data, shift, transform, isPaused, nuevoTiempo) {
         var newVideo = p5.createVideo(shift.src);
         newVideo.parent("videoAdjusted");
         newVideo.addClass("interactive interactive__video");
         newVideo.style("width", shift.width + "%");
         newVideo.style("height", shift.height + "%");
-        mostrarElemento(newVideo, transform, isPaused, nuevoTiempo);
+        mostrarElemento(id, newVideo, transform, isPaused, nuevoTiempo);
         asignarAccion(newVideo, data, transform);
     }
 
-    function crearIndex(data, shift, transform, nuevoTiempo) {
+    function crearIndex(id, data, shift, transform, nuevoTiempo) {
         var label = shift.label;
         var item = p5.createElement("li", label);
         styleText(item, shift);
         item.parent("indexLista");
         item.addClass("interactive interactive__index-item");
-        mostrarElemento(item, transform, false, nuevoTiempo);
+        mostrarElemento(id, item, transform, false, nuevoTiempo);
         asignarAccion(item, data, transform);
     }
 
